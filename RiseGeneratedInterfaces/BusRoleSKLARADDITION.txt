@@ -1,0 +1,35 @@
+	  // DFSklar CREATED THIS FUNCTION MANUALLY:
+	  // DFSklar CREATED THIS FUNCTION MANUALLY:
+	  // DFSklar CREATED THIS FUNCTION MANUALLY:
+	  // DFSklar CREATED THIS FUNCTION MANUALLY:
+	  public int SetBusRole(int ID, string Name, string Description, string OwnerPrimaryEID, string OwnerSecondaryEID, string DesignDetails)
+        {
+            int rv = 0;
+            DBConnect();
+            OdbcCommand cmd = _dbConnection.CreateCommand();
+            cmd.CommandText = "update \"t_RBSR_AUFW_u_BusRole\" set \"c_u_Name\"=?,\"c_u_Description\"=?,\"c_u_OwnerPrimaryEID\"=?,\"c_u_OwnerSecondaryEID\"=?,\"c_u_DesignDetails\"=? where \"c_id\" = ?";
+            if (Name == null) throw new Exception("Name must not be null!");
+            cmd.Parameters.Add("c_u_Name", OdbcType.NVarChar, 100);
+            cmd.Parameters["c_u_Name"].Value = (Name != null ? (object)Name : DBNull.Value);
+            if (Description == null) throw new Exception("Description must not be null!");
+            cmd.Parameters.Add("c_u_Description", OdbcType.NVarChar, 250);
+            cmd.Parameters["c_u_Description"].Value = (Description != null ? (object)Description : DBNull.Value);
+            cmd.Parameters.Add("c_u_OwnerPrimaryEID", OdbcType.NVarChar, 50);
+            cmd.Parameters["c_u_OwnerPrimaryEID"].Value = (OwnerPrimaryEID != null ? (object)OwnerPrimaryEID : DBNull.Value);
+            cmd.Parameters.Add("c_u_OwnerSecondaryEID", OdbcType.NVarChar, 50);
+            cmd.Parameters["c_u_OwnerSecondaryEID"].Value = (OwnerSecondaryEID != null ? (object)OwnerSecondaryEID : DBNull.Value);
+	    cmd.Parameters.Add("c_u_DesignDetails", OdbcType.NText);
+	    cmd.Parameters["c_u_DesignDetails"].Value = (DesignDetails != null ? (object)DesignDetails : DBNull.Value);
+            cmd.Parameters.Add("c_id", OdbcType.Int);
+            cmd.Parameters["c_id"].Value = (object)ID;
+            cmd.Connection = _dbConnection;
+            rv = cmd.ExecuteNonQuery();
+            if (rv != 1) throw new Exception("Update resulted in " + rv.ToString() + " objects being updated!");
+            cmd.Dispose();
+            DBClose();
+            return rv;
+        }
+	  // END OF DFSKLAR MANUAL ADDITION.
+	  // END OF DFSKLAR MANUAL ADDITION.
+
+

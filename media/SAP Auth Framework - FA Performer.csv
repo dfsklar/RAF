@@ -1,0 +1,60 @@
+ID,Application Role,Application,Platform,Entitlement Description,Entitlement Value,Standard Activity,Org Category,Org Value,Auth Object,Activity,Additional Comments
+1,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Change asset document,AB02,FI: AM - Asset Postings,BUKRS,NA+EU,,,
+2,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Reverse Line Items,AB08,FI: AM - Asset Postings,BUKRS,NA+EU,,,
+3,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Unplanned depreciation,ABAA,FI: AM - Asset Depreciation,BUKRS,NA+EU,,,
+4,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Asset Sale Without Customer,ABAON,FI: AM - Asset Retirement,BUKRS,NA+EU,,,
+5,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Asset Retirement by Scrapping,ABAVN,FI: AM - Asset Retirement,BUKRS,NA+EU,,,
+6,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Credit Memo in Year after Invoice,ABGF,FI: AM - Asset Postings,BUKRS,NA+EU,,,
+7,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Enter Credit Memo in Year of Invoice,ABGL,FI: AM - Asset Postings,BUKRS,NA+EU,,,
+8,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Subsequent Revenue,ABNE,FI: AM - Asset Postings,BUKRS,NA+EU,,,
+9,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Subsequent Costs,ABNK,FI: AM - Asset Postings,BUKRS,NA+EU,,,
+10,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Miscellaneous Transactions,ABSO,FI: AM - Asset Postings,BUKRS,NA+EU,,,
+11,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Reconciliation Analysis FI-AA,ABST2,FI: AM - Period Close,BUKRS,NA+EU,,,
+12,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Intercompany Asset Transfer,ABT1N,FI: AM - Asset Transfers,BUKRS,NA+EU,,,
+13,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Transfer within Company Code,ABUMN,FI: AM - Asset Transfers,BUKRS,NA+EU,,,
+14,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,,NEWTcodeSKLAR,,,,,,,,,,,,,,,,,,,,,,,,,,
+15,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Post depreciation,AFAB,FI: AM - Asset Depreciation,BUKRS,NA+EU,,,
+16,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Recalculate Depreciation,AFAR,FI: AM - Asset Depreciation,BUKRS,NA+EU,,,
+17,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Create depreciation posting log,AFBP,FI: AM - Asset Depreciation,BUKRS,NA+EU,,,
+18,ZSF_FAPERFORMER_GLOBule,SAP R/3 Production,PR1,Year-End Closing,AJAB,FI: AM - Period Close,BUKRS,NA+EU,,,
+19,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Fiscal Year Change,AJRW,FI: AM - Period Close,BUKRS,NA+EU,,,
+20,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Call Asset List,AR01,FI: AM - Common Display,BUKRS,NA+EU,,,Display Access
+21,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Display Worklist,AR30,FI: AM - Common Display,BUKRS,NA+EU,,,Display Access
+22,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Edit Worklist,AR31,FI: AM - Asset Postings,BUKRS,NA+EU,,,
+23,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Create Asset Master Record,AS01,FI: AM - Master Data Maintenance,BUKRS,NA+EU,,,
+24,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Change Asset Master Record,AS02,FI: AM - Master Data Maintenance,BUKRS,NA+EU,,,
+25,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Display Asset Master Record,AS03,FI: AM - Common Display,BUKRS,NA+EU,,,Display Access
+26,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Delete Asset Record/Mark for Delet.,AS06,FI: AM - Master Data Maintenance,BUKRS,NA+EU,,,
+27,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Periodic APC Posting Run,ASKBN,,BUKRS,NA+EU,,,
+28,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,FI-AA Incomplete Assets,AUVA,FI: AM - Common Display,,,,,Display Access
+29,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Asset Explorer,AW01N,FI: AM - Common Display,BUKRS,NA+EU,,,Display Access
+30,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Currency Test Converter,EWCT,,,,,,
+31,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,G/L: Account Balances,F.08,FI: GL - Common Display,BUKRS,NA+EU,,,Display Access
+32,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,G/L: Chart of Accounts,F.10,FI: GL - Common Display,,,,,Display Access
+33,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,ABAP/4 Report: Recurring Entries,F.14,FI: FI - Recurring Entry Maintenance,BUKRS,NA+EU,,,
+34,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,ABAP/4 Report: List Recurr.Entries,F.15,FI: FI - Common Display,BUKRS,NA+EU,,,Display Access
+35,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Enter G/L Account Posting,F-02,FI: GL - Document Processing,BUKRS,NA+EU,,,
+36,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Post Foreign Currency Valuation,F-05,FI: GL - Foreign Currency Valuation,BUKRS,NA+EU,,,
+37,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Accounting Editing Options,FB00,FI: FI - Common Display,,,,,Display Access
+38,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Change Document,FB02,FI: FI - Document Processing,BUKRS,NA+EU,,,
+39,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Display Document,FB03,FI: FI - Common Display,BUKRS,NA+EU,,,Display Access
+40,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Document Changes,FB04,FI: FI - Common Display,BUKRS,NA+EU,,,Display Access
+#REF!,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Reverse Document,FB08,FI: FI - Document Reversal,BUKRS,NA+EU,,,
+#REF!,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,G/L Acct Pstg: Single Screen Trans.,FB50,FI: GL - Document Processing,BUKRS,NA+EU,,,
+#REF!,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Post Foreign Currency Valn,FBB1,FI: GL - Foreign Currency Valuation,BUKRS,NA+EU,,,
+#REF!,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Vendor Line Items,FBL1N,FI: AP - Common Display,BUKRS,NA+EU,,,Display Access
+#REF!,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,G/L Account Line Items,FBL3N,FI: GL - Common Display,BUKRS,NA+EU,,,Display Access
+#REF!,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Post Parked Document,FBV0,FI: FI - Parked Document Posting,BUKRS,NA+EU,,,
+#REF!,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Change Parked Document,FBV2,FI: FI - Document Processing,BUKRS,NA+EU,,,
+#REF!,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Display Parked Document,FBV3,FI: FI - Common Display,BUKRS,NA+EU,,,Display Access
+#REF!,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Post Parked Document,FBVB,FI: FI - Parked Document Posting,BUKRS,NA+EU,,,
+#REF!,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Display Payment Document Checks,FCH2,FI: AP - Common Display,BUKRS,NA+EU,,,Display Access
+#REF!,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Display Vendor (Accounting),FK03,FI: AP - Common Display,BUKRS,NA+EU,,,Display Access
+#REF!,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Vendor Balance Display,FK10N,FI: AP - Common Display,BUKRS,NA+EU,,,Display Access
+#REF!,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,G/L acct master record maintenance,FS00,FI: GL - Master Data Maintenance,BUKRS,NA+EU,,,Display Access
+#REF!,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,G/L acct master record maintenance,FS00,FI: GL - Master Data Maintenance,,,F_SKA1_BES,Activitiy 03,Display Access
+#REF!,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,G/L acct master record maintenance,FS00,FI: GL - Master Data Maintenance,,,F_SKA1_BUK,Activitiy 03,Display Access
+#REF!,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,G/L acct master record maintenance,FS00,FI: GL - Master Data Maintenance,,,F_SKA1_KTP,Activitiy 03,Display Access
+#REF!,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,G/L Account Balance,FS10,FI: GL - Common Display,BUKRS,NA+EU,,,Display Access
+#REF!,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Balance Display,FS10N,FI: GL - Common Display,BUKRS,NA+EU,,,Display Access
+#REF!,ZSF_FAPERFORMER_GLOB,SAP R/3 Production,PR1,Park G/L Account Items,FV50,FI: GL - Document Processing,BUKRS,NA+EU,,,

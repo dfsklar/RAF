@@ -1,0 +1,10 @@
+<items>
+  <item ID='CMT' Text="Comment..." ClientSideCommand="MENUACT_editComment()"/>
+  <item ID='STAT' Text="Status  &gt;&gt;" >
+        <item Text="Pending" ClientSideCommand="MENUACT_editStatus('P');"/>
+        <item Text="Out of scope" ClientSideCommand="MENUACT_editStatus('O');"/>
+        <item Text="Ready - Export to IDM" ClientSideCommand="MENUACT_editStatus('i');"/>
+        <item Text="Ready - Repair R-AF" ClientSideCommand="MENUACT_editStatus('r');"/>
+  </item>
+  <item ID='ASSIGN' Text="Assign..."  ClientSideCommand="MENUACT_editAssignment()"/>
+</items>

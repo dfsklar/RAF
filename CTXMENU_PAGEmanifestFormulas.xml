@@ -1,0 +1,4 @@
+<items>
+  <item Text="Edit Formula" ClientSideCommand="MENUACT_editFORMULA();"/>
+  <item Text="Rename Application" ClientSideCommand="MENUACT_renameAPP();"/>
+</items>

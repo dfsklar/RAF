@@ -1,0 +1,918 @@
+using System;
+using System.Data;
+using System.Data.Odbc;
+using System.Web;
+using System.Collections;
+using System.Web.Services;
+using System.Web.Services.Protocols;
+using RBSR_AUFW.DB.IMVFormula;
+using RBSR_AUFW.DB.IEntitlement;
+using Eval3;
+
+using CarlosAg.ExcelXmlWriter;
+using RBSR_AUFW.DB.IBusRoleOwner;
+using RBSR_AUFW.DB.IUser;
+using RBSR_AUFW.DB.IEntAssignmentSet;
+using RBSR_AUFW.DB.IBusRole;
+
+
+
+namespace _6MAR_WebApplication.export
+{
+  /// <summary>
+  /// Summary description for $codebehindclassname$
+  /// </summary>
+  [WebService(Namespace = "http://tempuri.org/")]
+  [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+  public class Handler2 : IHttpHandler
+  {
+
+    public void ProcessRequest(HttpContext context)
+    {
+
+      int idWS = Int32.Parse(context.Request.Params["id"]);
+
+      // Legal formats are:  CSV and XLSX
+      string strFormat = "XLSX";
+      try
+        {
+          strFormat = context.Request.Params["fmt"].ToUpper();
+        }
+      catch (Exception eign) { }
+
+
+      string annotation = context.Request.Params["name"];
+
+      // Comma-separated list of busrole ID numbers e.g. 34,38,47
+      string strRoleList = "";
+      try { strRoleList = context.Request.Params["brol"]; }
+      catch (Exception eignore) { strRoleList = ""; }
+
+
+      // Default TRUE
+      bool singlesheet = true;
+      try { singlesheet = bool.Parse(context.Request.Params["singlesheet"]); }
+      catch (Exception eignore) { singlesheet=true; }
+
+      // Default FALSE
+      bool showOnlyDeltas = false;
+      try { showOnlyDeltas = bool.Parse(context.Request.Params["deltasonly"]); }
+      catch (Exception eignore) { showOnlyDeltas=false; }
+
+      // Default TRUE
+      bool showStatusColumn = true;
+      try { showStatusColumn = bool.Parse(context.Request.Params["showstatus"]); }
+      catch (Exception eignore) { showStatusColumn=true; }
+
+
+
+
+      // THE IDM-FORMATTING OPTION OVERRIDES ALL OTHER OPTIONS!
+
+      // Default FALSE
+      bool BOOLidmformat = false;
+      try { BOOLidmformat = bool.Parse(context.Request.Params["IDMFMT"]); }
+      catch (Exception eignore) { BOOLidmformat=false; }
+
+      if (BOOLidmformat) {
+        strFormat = "CSV";
+        showOnlyDeltas = false;
+        singlesheet = true;
+        showStatusColumn = false;
+      }
+
+
+      
+      OdbcCommand cmd = new OdbcCommand();
+      cmd.Connection = HELPERS.NewOdbcConn();
+
+
+      if (strFormat == "CSV") {
+        context.Response.ContentType = "text/csv";
+        context.Response.AddHeader("Content-Disposition",
+                                   "filename=export.csv;attachment");
+      }
+
+
+      string extraconds = "";
+
+      if (strRoleList != null)
+        {
+          if (strRoleList != "")
+            {
+              extraconds = " AND (TEASS.c_r_BusRole IN (" + strRoleList + ")) ";
+            }
+        }
+
+
+      if (showOnlyDeltas)
+        {
+          extraconds +=
+            " AND (TEASS.c_u_Status NOT IN ('A')) ";
+        }
+      else
+        {
+          extraconds +=
+            " AND (TENT.c_u_Status NOT IN ('X')) ";
+        }
+
+
+
+
+
+      cmd.CommandText = @"
+
+SELECT 
+TENT.c_id as EntID,";
+
+
+
+
+      if (showStatusColumn) {
+        cmd.CommandText +=
+          "TEASS.c_u_Status as Mod,";
+      }else{
+        // If not showing status column, this should be an active entitlement set, not a workspace.
+        // Thus, eliminate rows that are marked as having been deleted when that active EASet was published.
+        extraconds +=
+          " AND (TEASS.c_u_Status NOT IN ('X')) ";
+      }
+
+
+      cmd.CommandText += @"
+BROL.c_u_Name as BusRole,
+BROL.c_u_Description as BusRoleDescr,
+TENT.c_u_StandardActivity as StandardActivity,
+TENT.c_u_RoleType as RoleType,
+TENT.c_u_Application as Application,
+TENT.c_u_System as System,
+TENT.c_u_Platform as Platform,
+TENT.c_u_EntitlementName as EntitlementName,
+TENT.c_u_EntitlementValue as EntitlementValue,
+TENT.c_u_AuthObjValue as AuthObjValue,
+TENT.c_u_FieldSecName as FieldSecName,
+TENT.c_u_FieldSecValue as FieldSecValue,
+TENT.c_u_Level4SecName as Level4SecName,
+TENT.c_u_Level4SecValue as Level4SecValue,
+TENT.c_u_Commentary as Commentary,
+MVF.c_u_Formula as Formula
+FROM 
+   t_RBSR_AUFW_u_EntAssignment TEASS
+LEFT OUTER JOIN 
+   t_RBSR_AUFW_u_Entitlement TENT
+ON
+   TEASS.c_r_Entitlement = TENT.c_id
+LEFT OUTER JOIN 
+   t_RBSR_AUFW_u_BusRole BROL
+ON
+   BROL.c_id = TEASS.c_r_BusRole
+LEFT OUTER JOIN
+   t_RBSR_AUFW_u_MVFormula MVF
+ON
+   MVF.c_u_KEYapplication = TENT.c_u_Application
+WHERE
+   (TEASS.c_r_EntAssignmentSet = ?) 
+" + extraconds + " ORDER BY TEASS.c_r_BusRole;";
+
+
+
+      cmd.Parameters.Add("c_r_EditingWorkspace", OdbcType.Int);
+      cmd.Parameters["c_r_EditingWorkspace"].Value = (object)idWS;
+      OdbcDataReader dr = cmd.ExecuteReader();
+
+
+      OdbcConnection conn2 = HELPERS.NewOdbcConn_FORCE();
+      IMVFormula ENGINEmanif = new IMVFormula(conn2);
+      IEntitlement ENGINEwsent = new IEntitlement(conn2);
+
+
+
+      if (strFormat == "CSV")
+        {
+          CSVgenerate(context, dr, ENGINEmanif, ENGINEwsent, BOOLidmformat);
+        }
+
+      if (strFormat == "XLSX")
+        {
+            
+            Workbook book = XLSXgenerate(context, dr, ENGINEmanif, ENGINEwsent, singlesheet, idWS, annotation);
+          context.Response.ContentType = "text/xml";
+
+          // If the suffix is xlsx, it works in OpenOffice but not in MSOffice!
+          // Now trying xls !
+          context.Response.AddHeader("Content-Disposition",
+                                     "filename=export.xls;attachment");
+
+          book.Save(context.Response.OutputStream);
+
+        }
+      
+
+      dr.Close();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private void CSVgenerate(HttpContext context, OdbcDataReader dr, IMVFormula ENGINEmanif, IEntitlement ENGINEwsent,
+                             bool idmFormat)
+    {
+      int colnumFormula = -1;
+
+
+      if (!idmFormat)
+        {
+          for (int i = 0; i < dr.VisibleFieldCount; i++)
+            {
+              switch (dr.GetName(i) as string)
+                {
+                case "Formula":
+                  colnumFormula = i;
+                  break;
+                  /*
+                    case "EntID":
+                    break;
+                  */
+                default:
+                  context.Response.Write(CSVquoteize(dr.GetName(i)) + ",");
+                  break;
+                }
+            }
+          context.Response.Write("Manifest");
+          context.Response.Write("\n");
+        }
+
+
+      // FOR REACH ROW
+
+      while (dr.Read())
+        {
+          try
+            {
+
+
+              int IDwsentrow = (int)(dr.GetValue(0));
+
+              returnGetEntitlement OBJwsent =
+                ENGINEwsent.GetEntitlement(IDwsentrow);
+
+              int repaircount = 0;
+              TurnNullsToEmptyStrings(ref OBJwsent, ref repaircount);
+
+              string appname = OBJwsent.Application;
+
+              returnListMVFormula[] LISTformulas =
+                ENGINEmanif.ListMVFormula(null, "\"KEYapplication\" = ?",
+                                          new string[] { appname }, "");
+
+              string STRformula = "";
+
+              try
+                {
+                  returnListMVFormula TheFormula = LISTformulas[0];
+                  if (TheFormula.Formula == null)
+                    {
+                      TheFormula.Formula = "";
+                    }
+
+                  STRformula = HttpUtility.HtmlDecode(TheFormula.Formula.Trim());
+                }
+              catch (Exception eee) { }
+
+              if (STRformula == "")
+                {
+                  STRformula = "\"TBD - " + appname + "\"";
+                  //context.Response.Write("Error: the manifest formula for this application has NOT been specified.");
+                  //return;
+                }
+
+              // We have the formula; now we can evaluate.
+              Evaluator ev = new Evaluator(Eval3.eParserSyntax.cSharp, false);
+              ev.AddEnvironmentFunctions(this);
+              ev.AddEnvironmentFunctions(new ManifestFormulaEvaluatorFunctions(OBJwsent));
+
+              opCode lCode;
+              try
+                {
+                  lCode = ev.Parse(STRformula);
+                }
+              catch (Exception e)
+                {
+                  context.Response.Write("The formula for this app has parse errors: " + e.ToString());
+                  return;
+                }
+
+              object RESLT;
+              try
+                {
+                  RESLT = lCode.value;
+                }
+              catch (Exception e)
+                {
+                    RESLT = "NULL";
+                  //context.Response.Write("Interpreting the formula for this app resulted in errors: " + e.ToString());
+                  //return;
+                }
+
+              for (int i = 0; i < dr.VisibleFieldCount; i++)
+                {
+                  if (i != 0)
+                    {
+                      if (i != colnumFormula)
+                        {
+                          context.Response.Write(CSVquoteize(dr.GetValue(i) as string) + ",");
+                        }
+                    }
+                }
+              context.Response.Write(CSVquoteize(RESLT as string));
+              context.Response.Write("\n");
+            }
+
+          catch (Exception e)
+            {
+              context.Response.Write(e.ToString() + e.StackTrace.ToString() + "\n");
+            }
+
+
+
+        }
+
+      return;
+
+    }
+
+
+
+
+
+    private Workbook XLSXgenerate
+      (HttpContext context, OdbcDataReader dr, IMVFormula ENGINEmanif, IEntitlement ENGINEwsent,
+       bool singlesheet, int idWS, string annotation)
+    {
+      Workbook book = new Workbook();
+
+      Worksheet sheet = null;
+
+      Worksheet sheetMetadata = null;
+
+      int colnumFormula = -1;
+      int colnumStatus = -1;
+      int colnumBusRole = -1;
+
+      string currolename = null;
+
+      WorksheetRow row;
+
+
+
+      if (singlesheet)
+        {
+          sheet = book.Worksheets.Add("ALL ROLES");
+          sheetMetadata = book.Worksheets.Add("Metadata");
+
+          
+          // Create an annotation row with info about the snapshot context.
+          row = sheetMetadata.Table.Rows.Add();
+          row.Cells.Add(annotation);
+
+
+          row = sheet.Table.Rows.Add();
+
+          for (int i = 0; i < dr.VisibleFieldCount; i++)
+            {
+              switch (dr.GetName(i) as string)
+                {
+                case "Formula":
+                  colnumFormula = i;
+                  break;
+                case "Mod":
+                  colnumStatus = i;
+                  row.Cells.Add(dr.GetName(i));
+                  break;
+                  /*
+                    case "EntID":
+                    break;
+                  */
+                case "BusRole":
+                  colnumBusRole = i;
+                  row.Cells.Add(dr.GetName(i));
+                  break;
+                default:
+                  row.Cells.Add(dr.GetName(i));
+                  break;
+                }
+            }
+          row.Cells.Add("Manifest");
+          row.Cells.Add("AutoCorrectedNulls");
+        }
+
+
+
+
+
+      // FOR EACH ROW
+
+      while (dr.Read())
+        {
+          try
+            {
+
+             string newrolename = dr.GetValue(colnumBusRole) as string;
+
+
+             if (singlesheet)
+             {
+                 bool isBabySheet = false;
+                 if (currolename == null)
+                 {
+                     currolename = newrolename;
+                     isBabySheet = true;
+                 }
+                 else if (currolename != newrolename)
+                 {
+                     currolename = newrolename;
+                     isBabySheet = true;
+                 }
+
+                 if (isBabySheet) {
+                      RoleMetadata mdat = this.GenerateRoleMetadata(newrolename, idWS);
+                      GenMetadataSpreadsheetRow(sheetMetadata, "----------", "---------");
+                      GenMetadataSpreadsheetRow(sheetMetadata, "Workspace ID:", mdat.WSid.ToString());
+                      GenMetadataSpreadsheetRow(sheetMetadata, "Workspace Status:", mdat.WSstatus);
+                      GenMetadataSpreadsheetRow(sheetMetadata, "Workspace owner:", mdat.WSownerident);
+                    if (mdat.WSstatus == "WORKSPACE") {
+                        GenMetadataSpreadsheetRow(sheetMetadata, "Workspace start time:", mdat.WSdateOfImport);
+                    }else{
+                        GenMetadataSpreadsheetRow(sheetMetadata, "Workspace lock time:", mdat.WSdateOfImport);
+                    }
+                    GenMetadataSpreadsheetRow(sheetMetadata, "Role name:", mdat.rolename);
+                    foreach (object x in mdat.ROLEownersident) {
+                        GenMetadataSpreadsheetRow(sheetMetadata, "Principal: ", x.ToString());
+                    }
+
+                 }
+
+             }
+
+              if ( ! singlesheet) {
+                bool isBabySheet = false;
+                if (colnumBusRole < 0)
+                  {
+                    // We haven't even gone through the SQL result's columns to determine
+                    // key column numbers yet!  Special case donehere.
+                    for (int i = 0; i < dr.VisibleFieldCount; i++)
+                      {
+
+                        switch (dr.GetName(i) as string)
+                          {
+                          case "Formula":
+                            colnumFormula = i;
+                            break;
+                          case "Mod":
+                            colnumStatus = i;
+                            break;
+                            /*
+                              case "EntID":
+                              break;
+                              * */
+                          case "BusRole":
+                            colnumBusRole = i;
+                            break;
+                          default:
+                            break;
+                          }
+                      }
+                  }
+
+                //Note: Excel cannot handle worksheet names longer than 31 chars
+                string truncsheetname = newrolename;
+                if (truncsheetname.Length > 31) {
+                  truncsheetname = truncsheetname.Substring(truncsheetname.Length - 31);
+                }
+                
+                if (currolename == null) {
+                  sheet = book.Worksheets.Add(truncsheetname);
+                  currolename = newrolename;
+                  isBabySheet = true;
+                }
+                else if (currolename != newrolename) {
+                  sheet = book.Worksheets.Add(truncsheetname);
+                  isBabySheet = true;
+                }
+                if (isBabySheet)
+                  {
+
+                    // Create an annotation row with info about the snapshot context.
+                      RoleMetadata mdat = this.GenerateRoleMetadata(newrolename, idWS);
+
+
+                      GenMetadataSpreadsheetRow(sheet, "Workspace ID:", mdat.WSid.ToString());
+                      GenMetadataSpreadsheetRow(sheet, "Workspace Status:", mdat.WSstatus);
+                      GenMetadataSpreadsheetRow(sheet, "Workspace owner:", mdat.WSownerident);
+                    if (mdat.WSstatus == "WORKSPACE") {
+                        GenMetadataSpreadsheetRow(sheet, "Workspace start time:", mdat.WSdateOfImport);
+                    }else{
+                        GenMetadataSpreadsheetRow(sheet, "Workspace lock time:", mdat.WSdateOfImport);
+                    }
+                    GenMetadataSpreadsheetRow(sheet, "Role name:", mdat.rolename);
+                    foreach (object x in mdat.ROLEownersident) {
+                        GenMetadataSpreadsheetRow(sheet, "Principal: ", x.ToString());
+                    }
+
+
+
+                    /*
+
+                    row = sheet.Table.Rows.Add();
+                    row.Cells.Add(annotation);
+                    */
+
+
+                    currolename = newrolename;
+                    row = sheet.Table.Rows.Add();
+
+                    for (int i = 0; i < dr.VisibleFieldCount; i++)
+                      {
+
+                        switch (dr.GetName(i) as string)
+                          {
+                          case "Formula":
+                            colnumFormula = i;
+                            break;
+                          case "Mod":
+                            colnumStatus = i;
+                            row.Cells.Add(dr.GetName(i));
+                            break;
+                            /*
+                              case "EntID":
+                              break;
+                              * */
+                          case "BusRole":
+                            colnumBusRole = i;
+                            row.Cells.Add(dr.GetName(i));
+                            break;
+                          default:
+                            row.Cells.Add(dr.GetName(i));
+                            break;
+                          }
+                      }
+                    row.Cells.Add("Manifest");
+                  }
+              }
+
+
+              row = sheet.Table.Rows.Add();
+
+              int IDwsentrow = (int)(dr.GetValue(0));
+
+              returnGetEntitlement OBJwsent =
+                ENGINEwsent.GetEntitlement(IDwsentrow);
+
+              string appname = OBJwsent.Application;
+
+              returnListMVFormula[] LISTformulas =
+                ENGINEmanif.ListMVFormula(null, "\"KEYapplication\" = ?",
+                                          new string[] { appname }, "");
+
+              string STRformula = "";
+
+              try
+                {
+                  returnListMVFormula TheFormula = LISTformulas[0];
+                  if (TheFormula.Formula == null)
+                    {
+                      TheFormula.Formula = "";
+                    }
+
+                  STRformula = HttpUtility.HtmlDecode(TheFormula.Formula.Trim());
+                }
+              catch (Exception eee) { }
+
+              if (STRformula == "")
+                {
+                  STRformula = "\"TBD - " + appname + "\"";
+                  //context.Response.Write("Error: the manifest formula for this application has NOT been specified.");
+                  //return;
+                }
+
+              // We have the formula; now we can evaluate.
+              Evaluator ev = new Evaluator(Eval3.eParserSyntax.cSharp, false);
+              ev.AddEnvironmentFunctions(this);
+              ev.AddEnvironmentFunctions(new ManifestFormulaEvaluatorFunctions(OBJwsent));
+
+              opCode lCode;
+
+              bool doMakeNullRepair2ndTry = false;
+
+              try
+                {
+                  lCode = ev.Parse(STRformula);
+                }
+              catch (Exception e)
+                {
+                  row.Cells.Add("The formula for " + appname + " has parse errors: " + e.ToString());
+                  return book;
+                }
+
+              object RESLT = null;
+              try
+                {
+                  RESLT = lCode.value;
+                }
+              catch (NullReferenceException enull)
+                {
+                  //row.Cells.Add("Interpreting the formula for this application resulted in an error because of references to one or more fields that are NULL in value.");
+                  //RESLT = "[ERROR: reference to one or more fields with null values]";
+                  //row = sheet.Table.Rows.Add();
+                  doMakeNullRepair2ndTry = true;
+                }
+              catch (Exception e)
+                {
+                  row.Cells.Add("Interpreting the formula for this application resulted in this exception: " + e.ToString());
+                  RESLT = "[ERROR: see line above for details]";
+                  row = sheet.Table.Rows.Add();
+                }
+
+
+
+              if (doMakeNullRepair2ndTry)
+                {
+
+                  int repairCount = 0;
+                  // NULLs caused failures in the 1st try. 
+                  // We will thus now repair all nulls and try again.
+                  // If succeeds, we will generate a useable row but the final column
+                  //   will alert the users to the fact that autorepair was performed.
+
+                  TurnNullsToEmptyStrings(ref OBJwsent, ref repairCount);
+                  if (repairCount == 0)
+                  {
+                      throw new Exception("ASSERTION FAILURE: null fields expected but not found");
+                  }
+
+
+                  opCode lCode2;
+
+                  ev = new Evaluator(Eval3.eParserSyntax.cSharp, false);
+                  ev.AddEnvironmentFunctions(this);
+                  ev.AddEnvironmentFunctions(new ManifestFormulaEvaluatorFunctions(OBJwsent));
+                  lCode2 = ev.Parse(STRformula);
+
+                  try
+                    {
+                      RESLT = lCode2.value;
+                    }
+                  catch (Exception e)
+                    {
+                      row.Cells.Add("2nd try: Interpreting the formula for this application resulted in this exception: " + e.ToString());
+                      RESLT = "[ERROR: see line above for details]";
+                      row = sheet.Table.Rows.Add();
+                    }
+
+                }
+
+
+              // NOW READY TO EMIT THE COLUMNS
+
+              for (int i = 0; i < dr.VisibleFieldCount; i++)
+                {
+                  if (i != -342350)  /*used to be != 0 */
+                    {
+                      if (i != colnumFormula)
+                        {
+                          if (i == colnumStatus) {
+                            string statSemantics = "ERR";
+                            switch (dr.GetValue(i) as string) {
+                            case "N":
+                              statSemantics = "New"; break;
+                            case "P":
+                              statSemantics = "New"; break;
+                            case "X":
+                              statSemantics = "Deleted"; break;
+                            case "A":
+                              statSemantics = ""; break;
+                            }
+                            row.Cells.Add(statSemantics);
+                          }else{   
+                            row.Cells.Add(dr.GetValue(i).ToString());
+                          }
+                        }
+                    }
+                }
+
+              row.Cells.Add(RESLT as string);
+              row.Cells.Add(doMakeNullRepair2ndTry ? "Y" : "");      
+            }
+
+          catch (Exception e)
+            {
+              row = sheet.Table.Rows.Add();
+              row.Cells.Add(e.ToString() + e.StackTrace.ToString());
+            }
+
+        }
+
+
+      return book;
+
+    }
+
+      private static void TurnNullsToEmptyStrings(ref returnGetEntitlement OBJwsent, ref int repairCount)
+      {
+          if (OBJwsent.AuthObjName == null)
+          {
+              OBJwsent.AuthObjName = "";
+              repairCount++;
+          }
+          if (OBJwsent.AuthObjValue == null)
+          {
+              OBJwsent.AuthObjValue = "";
+              repairCount++;
+          }
+          if (OBJwsent.EntitlementName == null)
+          {
+              OBJwsent.EntitlementName = "";
+              repairCount++;
+          }
+          if (OBJwsent.EntitlementValue == null)
+          {
+              OBJwsent.EntitlementValue = "";
+              repairCount++;
+          }
+          if (OBJwsent.FieldSecName == null)
+          {
+              OBJwsent.FieldSecName = "";
+              repairCount++;
+          }
+          if (OBJwsent.FieldSecValue == null)
+          {
+              OBJwsent.FieldSecValue = "";
+              repairCount++;
+          }
+          if (OBJwsent.Level4SecName == null)
+          {
+              OBJwsent.Level4SecName = "";
+              repairCount++;
+          }
+          if (OBJwsent.Level4SecValue == null)
+          {
+              OBJwsent.Level4SecValue = "";
+              repairCount++;
+          }
+          if (OBJwsent.Platform == null)
+          {
+              OBJwsent.Platform = "";
+              repairCount++;
+          }
+          if (OBJwsent.RoleType == null)
+          {
+              OBJwsent.RoleType = "";
+              repairCount++;
+          }
+          if (OBJwsent.StandardActivity == null)
+          {
+              OBJwsent.StandardActivity = "";
+              repairCount++;
+          }
+          if (OBJwsent.System == null)
+          {
+              OBJwsent.System = "";
+              repairCount++;
+          }
+      }
+
+      private void GenMetadataSpreadsheetRow
+          (Worksheet sheet, string legend, string value)
+      {
+          WorksheetRow row = sheet.Table.Rows.Add();
+          row.Cells.Add(legend);
+          row.Cells.Add(value);
+      }
+
+
+
+      struct RoleMetadata
+      {
+          public int WSid;
+          public string rolename;
+          public string WSstatus;
+          public string WSdateOfImport;
+          public string EID;
+          public string WSownerident;  // Each is a string showing EID and name
+          public Queue ROLEownersident;  // For each owner: Ownertype, EID, name, geography
+      };
+
+
+
+      // Send either the numeric UUID or the employee's EID string
+      private string UserIdentificationString(int userID, OdbcConnection conn)
+      {
+          IUser engine = new IUser(conn);
+          returnGetUser user = engine.GetUser(userID);
+          return user.EID + " " + user.NameSurname + ", " + user.NameFirst;
+      }
+
+
+      // Send either the numeric UUID or the employee's EID string
+      private string UserIdentificationString (string eid, OdbcConnection conn)
+      {
+          IUser engine = new IUser(conn);
+          returnListUser[] user = engine.ListUser(null, "\"EID\" like ?",
+              new string[] { eid }, "");
+
+          return user[0].EID + " " + user[0].NameSurname + ", " + user[0].NameFirst;
+      }
+
+
+
+
+
+    private RoleMetadata GenerateRoleMetadata(string rolename, int wsID)
+    {
+        RoleMetadata newbee = new RoleMetadata();
+        newbee.ROLEownersident = new Queue();
+
+        int roleID;
+
+        OdbcConnection tempconn = HELPERS.NewOdbcConn();
+
+        IBusRole engineBR = new IBusRole(tempconn);
+        returnListBusRole[] retFindBRole
+           = engineBR.ListBusRole(null, "\"Name\" = ?", new string[] { rolename }, "");
+        roleID = retFindBRole[0].ID;
+
+
+        IEntAssignmentSet engineEASet = new IEntAssignmentSet(tempconn);
+
+        returnGetEntAssignmentSet eas =  engineEASet.GetEntAssignmentSet(wsID);
+        
+        newbee.WSid = wsID;
+        newbee.WSstatus = eas.Status;
+        newbee.WSownerident =
+            UserIdentificationString(eas.UserID, tempconn);
+        newbee.WSdateOfImport = 
+            (eas.Status == "WORKSPACE") ? eas.DATETIMEbirth.ToString() : 
+            eas.DATETIMElock.ToString();
+        newbee.rolename = rolename;
+
+        IBusRoleOwner engineBRole = new IBusRoleOwner(tempconn);
+        returnListBusRoleOwnerByBusRole[] roleowners
+            = engineBRole.ListBusRoleOwnerByBusRole(null, roleID);
+
+        foreach (returnListBusRoleOwnerByBusRole roleowner in roleowners) {
+            newbee.ROLEownersident.Enqueue
+                (roleowner.Rank + " " + roleowner.Geography + ": " +
+                UserIdentificationString(roleowner.EID, tempconn));
+           
+        }
+
+        return newbee;
+    }
+
+
+
+
+      private void IssueSpreadsheetRowsToShowRoleMetadata(RoleMetadata thedata) 
+      {
+      // Workspace name:_____
+      // Workspace status:  either WORK-IN-PROGRESS or PUBLISHED
+      // Workspace owner: ______
+      // Workspace creation date:  OR  Workspace publish date:
+      // Role name: _______
+      // THEN FOR EACH OWNER/APPROVER:
+      //     Role XXXXXXownerXXXXX: EID and name and geography
+    }
+
+
+    private string CSVquoteize(string strIN)
+    {
+      if (strIN == null)
+        {
+          return "\"\"";
+        }
+      else
+        {
+          return "\"" + strIN.Replace("\"", "\"\"") + "\"";
+        }
+    }
+
+
+
+    public bool IsReusable
+    {
+      get
+        {
+          return false;
+        }
+    }
+  }
+}

@@ -1,0 +1,4 @@
+<items>
+  <item ID='CMT' Text="Comment..." ClientSideCommand="MENUACT_editProperties()"/>
+  <item ID='DEL' Text="Delete..." ClientSideCommand="MENUACT_delete()"/>
+</items>

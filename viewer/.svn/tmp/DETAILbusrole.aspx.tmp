@@ -1,0 +1,108 @@
+<%@ Page Language="C#" MasterPageFile="~/viewer/viewer.Master" AutoEventWireup="true" 
+CodeBehind="DETAILbusrole.aspx.cs" Inherits="_6MAR_WebApplication.viewer.UIPAGE_DETAILbusrole" 
+Title="RBSR Authorization Framework - Bus Role Detail" %>
+
+<asp:Content ID="ContentNAV" ContentPlaceHolderID="CONTENTnav" runat="server">&nbsp;  &gt;  &nbsp; 
+<a href='LISTbusroles.aspx<%=Request.Url.Query%>'>Business Role Selection</a> &nbsp; &gt; &nbsp;
+ <b>Business Role Detail</b></asp:Content>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+			<div id="PageHeader">
+				<div id="PageTitle">
+					Business Role Detail
+				</div>
+				<div id="PageDescription">
+					Process: <%= this.nameOfProcess() %>
+					<br />
+					Subprocess: <%= this.nameOfSubProcess() %>
+					<br />
+					Role Name: <%= this.nameOfRole() %>
+					<br />
+					Description:  <%= this.descrOfRole() %>
+					<br />
+					Type: <%= this.theBR.RoleType_Displayable %>
+				</div>
+			</div>
+			<p />
+			<h3>Role Owners or Approvers</h3>
+						<table class='subprocess'>
+					<tr>
+						<th>Type</th>
+						<th>Name</th>
+						<th>EID</th>
+					</tr>
+					<%= this.rowsOwnersApprovers() %>
+			</table>
+			<br />
+<hr/>
+			<h3>Business Role Summary</h3>
+			The currently assigned application entitlements to this business role are listed.
+			<br />Business Process Activities <br />
+			<img src="../images/IsHead_false__IsKeyPoint_true.gif" /> Key Control Points 
+			<p />
+			<table class='subprocess'>
+					<tr>
+						<th>Activities</th>
+						<th>Performed By</th>
+						<th>System Mapping</th>
+					</tr>
+					<%= this.ActiveBusinessEntitlements() %>
+
+			</table>
+			<p />
+			The technical authorization framework is available for detailed viewing:  
+<a href="ENTVECTORbusrole.aspx<%=Request.Url.Query%>">Printable</a> &bull; 
+<a href="ENTVECTORbusrole_GRID.aspx<%=Request.Url.Query%>">Interactive</a>
+
+
+			<p />
+<a name='ANCHORsaproles'/><br/><hr/>
+			<h3 style='margin-top:14px'>SAP Roles</h3>
+    <p>
+        <asp:Panel ID="PANELsapdesignnote" runat="server" Width="748px">
+            Design note:<br />
+            <asp:TextBox ID="STATICTXTsapfuncappdesignnote" runat="server" CssClass="indentedbox" ReadOnly="True" TextMode="MultiLine"></asp:TextBox></asp:Panel>
+        &nbsp;</p>
+			The SAP roles / TCodes currently assigned to this business role are listed.
+			<p/>
+							<table class='subprocess'>
+					<tr>
+						<th>Role Name</th>
+						<th>Platform</th>
+						<th>Tcode</th>
+						<th>Description</th>
+						<th>Act. Folder</th>
+						<th>Access</th>
+					</tr>
+<%= this.ROWStcodes() %>
+</table>
+
+			<p />
+<hr/>			<h3>Available Exception Access</h3>
+<p>When an exception role is requested, it must be approved by the Segregation of Duties team, the user's Manager and the role owner.  Once the exception role  is approved, the role may take up to four days to be provisioned in the requested system.
+</p>
+				<table class='subprocess'>
+					<tr>
+						<th>Type</th>
+						<th>Name</th>
+						<th>Description</th>
+					</tr>
+
+					<%= this.ROWSadditionalBusinessRoles() %>
+<!--
+					<tr>
+						<td>Elevated</td>
+						<td><a href="business_user_role_detail.html">ELE_Audio_Conferencing</a></td>
+						<td>Elevated - Audio Conferencing</td>
+					</tr>
+					<tr>
+						<td>Extra</td>
+						<td><a href="business_user_role_detail.html">APP_VPN_Access</a></td>
+						<td>Application Access - VPN Access</td>
+					</tr>
+-->
+			</table>
+
+<p>&nbsp;</p>
+<hr/>
+</asp:Content>

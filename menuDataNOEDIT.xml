@@ -1,0 +1,6 @@
+<items>
+  <item Text="Add role assignments" ClientSideCommand="MENUACTroleassign('ADD')"/>
+  <item Text="Remove role assignments" ClientSideCommand="MENUACTroleassign('DEL')"/>
+  <item Text="Delete" ClientSideCommand="MENUACTdelete()"/>
+</items>
+<!-- note that get_table is an undocumented method on Grid, gives you the table that drives the grid, of class GridTable -->

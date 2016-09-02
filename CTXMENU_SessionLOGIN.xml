@@ -1,0 +1,6 @@
+<items>
+  <item Text="Rename Process" ClientSideCommand="MENUACT_renamePROCESS();"/>
+  <item Text="Rename SubProcess" ClientSideCommand="MENUACT_renameSUBPROCESS();"/>
+  <item Text="Edit Process Description" ClientSideCommand="MENUACT_descrPROCESS();"/>
+  <item Text="Delete" ClientSideCommand="MENUACT_delete()"/>
+</items>

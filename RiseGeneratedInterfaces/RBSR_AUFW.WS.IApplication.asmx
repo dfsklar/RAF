@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" CodeBehind="RBSR_AUFW.WS.IApplication.asmx.cs" Class="RBSR_AUFW.WS.IApplication.IApplication" %>

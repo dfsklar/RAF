@@ -1,0 +1,7 @@
+<items>
+  <item id="menuDataSAP_Edit" Text="Edit" ClientSideCommand="MENUACTedit();"/>
+  <item id="menuDataSAP_NewClone" Text="NEW by cloning this row" ClientSideCommand="MENUACTclone();"/>
+  <item id="menuDataSAP_NewBlank" Text="NEW (blank)" ClientSideCommand="MENUACTnewblank();"/> -->
+  <item id="menuDataSAP_Delete" Text="Delete" ClientSideCommand="MENUACTdelete()"/>
+  <item id="menuDataSAP_UnDelete" Text="UnDelete" ClientSideCommand="MENUACTundelete()"/>
+</items>

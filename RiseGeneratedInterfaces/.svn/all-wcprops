@@ -1,0 +1,491 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/repos/sklarchin/!svn/ver/3166/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces
+END
+RBSR_AUFW.WS.IBusRole.asmx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/repos/sklarchin/!svn/ver/2464/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.IBusRole.asmx.cs
+END
+RBSR_AUFW.DB.ITcodeAssignment.cs
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/repos/sklarchin/!svn/ver/3038/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.ITcodeAssignment.cs
+END
+RBSR_AUFW.WS.IProcess.asmx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/repos/sklarchin/!svn/ver/2464/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.IProcess.asmx.cs
+END
+RBSR_AUFW.DB.IUser1.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/repos/sklarchin/!svn/ver/2658/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IUser1.cs
+END
+RBSR_AUFW.WS.ITcodeAssignment.asmx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/repos/sklarchin/!svn/ver/2464/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.ITcodeAssignment.asmx.cs
+END
+RBSR_AUFW.DB.IAuthRow1251.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IAuthRow1251.cs
+END
+RBSR_AUFW.WS.ISubProcess.asmx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/repos/sklarchin/!svn/ver/2464/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.ISubProcess.asmx.cs
+END
+RBSR_AUFW.DB.IApplication.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IApplication.cs
+END
+RBSR_AUFW.DB.IReconcReport.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IReconcReport.cs
+END
+RBSR_AUFW.WS.IProcess1.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/repos/sklarchin/!svn/ver/2201/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.IProcess1.asmx
+END
+RBSR_AUFW.DB.ITcodeEntitlement.cs
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.ITcodeEntitlement.cs
+END
+RBSR_AUFW.DB.IWorkspaceEntitlement.cs
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/repos/sklarchin/!svn/ver/2656/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IWorkspaceEntitlement.cs
+END
+addGCtoTHROW.sh
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/repos/sklarchin/!svn/ver/2657/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/addGCtoTHROW.sh
+END
+RBSR_AUFW.WS.ITcodeAssignmentSet.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/repos/sklarchin/!svn/ver/2401/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.ITcodeAssignmentSet.asmx
+END
+RBSR_AUFW.WS.IUser1.asmx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/repos/sklarchin/!svn/ver/2204/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.IUser1.asmx.cs
+END
+RBSR_AUFW.WS.ISAProle.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/repos/sklarchin/!svn/ver/2401/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.ISAProle.asmx
+END
+RBSR_AUFW.DB.IWorkspaceTcode.cs
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/repos/sklarchin/!svn/ver/2658/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IWorkspaceTcode.cs
+END
+RBSR_AUFW.WS.IApplication.asmx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/repos/sklarchin/!svn/ver/2465/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.IApplication.asmx.cs
+END
+RBSR_AUFW.DB.IProcess.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IProcess.cs
+END
+RBSR_AUFW.DB.ITcodeDictionary.cs___SKLARMOD
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/repos/sklarchin/!svn/ver/2654/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.ITcodeDictionary.cs___SKLARMOD
+END
+RBSR_AUFW.DB.ISAPsecurityOrgValue.cs
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/repos/sklarchin/!svn/ver/2658/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.ISAPsecurityOrgValue.cs
+END
+RBSR_AUFW.WS.ISAProle.asmx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/repos/sklarchin/!svn/ver/2464/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.ISAProle.asmx.cs
+END
+RBSR_AUFW.DB.ISAPRoleOwner.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.ISAPRoleOwner.cs
+END
+RBSR_AUFW.DB.IEASfileAttachment.cs
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IEASfileAttachment.cs
+END
+RBSR_AUFW.WS.IWorkspaceEntitlement.asmx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/repos/sklarchin/!svn/ver/2464/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.IWorkspaceEntitlement.asmx.cs
+END
+RBSR_AUFW.WS.ITcodeEntitlement.asmx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/repos/sklarchin/!svn/ver/2464/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.ITcodeEntitlement.asmx.cs
+END
+RBSR_AUFW.WS.ISAPsecurityOrgAxis.asmx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/repos/sklarchin/!svn/ver/2465/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.ISAPsecurityOrgAxis.asmx.cs
+END
+RBSR_AUFW.DB.ITcodeDictionary.cs
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/repos/sklarchin/!svn/ver/2658/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.ITcodeDictionary.cs
+END
+RBSR_AUFW.WS.IProcess.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/repos/sklarchin/!svn/ver/2401/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.IProcess.asmx
+END
+RBSR_AUFW.WS.IEntAssignment.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/repos/sklarchin/!svn/ver/2401/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.IEntAssignment.asmx
+END
+RBSR_AUFW.DB.IBusRoleOwner.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IBusRoleOwner.cs
+END
+RBSR_AUFW.WS.ITcodeDictionary.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/repos/sklarchin/!svn/ver/2401/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.ITcodeDictionary.asmx
+END
+RBSR_AUFW.DB.IEntAssignmentSet.cs
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/repos/sklarchin/!svn/ver/3451/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IEntAssignmentSet.cs
+END
+RBSR_AUFW.DB.IMETADATA_SubprToActivityList.cs__SKLARCUSTOM
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/repos/sklarchin/!svn/ver/2654/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IMETADATA_SubprToActivityList.cs__SKLARCUSTOM
+END
+RBSR_AUFW.DB.ISAPauthObj.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.ISAPauthObj.cs
+END
+RBSR_AUFW.WS.IEntAssignmentSet.asmx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/repos/sklarchin/!svn/ver/2464/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.IEntAssignmentSet.asmx.cs
+END
+BusRoleSKLARADDITION.txt
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/repos/sklarchin/!svn/ver/2561/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/BusRoleSKLARADDITION.txt
+END
+RBSR_AUFW.DB.IMVFormula.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/repos/sklarchin/!svn/ver/2658/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IMVFormula.cs
+END
+addGCtoTHROW.pl
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/repos/sklarchin/!svn/ver/2658/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/addGCtoTHROW.pl
+END
+RBSR_AUFW.WS.IEditingWorkspace.asmx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/repos/sklarchin/!svn/ver/2464/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.IEditingWorkspace.asmx.cs
+END
+RBSR_AUFW.WS.IBusRole.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/repos/sklarchin/!svn/ver/2401/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.IBusRole.asmx
+END
+RBSR_AUFW.DB.IEntitlement.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IEntitlement.cs
+END
+RBSR_AUFW.WS.IUser.asmx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/repos/sklarchin/!svn/ver/2464/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.IUser.asmx.cs
+END
+RBSR_AUFW.WS.ISAPsecurityOrgValue.asmx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/repos/sklarchin/!svn/ver/2465/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.ISAPsecurityOrgValue.asmx.cs
+END
+RBSR_AUFW.DB.ISAPauthClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.ISAPauthClass.cs
+END
+RBSR_AUFW.DB.IEntAssignmentSet-SKLARCUSTOM
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/repos/sklarchin/!svn/ver/2655/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IEntAssignmentSet-SKLARCUSTOM
+END
+RBSR_AUFW.WS.ITcodeAssignment.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/repos/sklarchin/!svn/ver/2401/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.ITcodeAssignment.asmx
+END
+RBSR_AUFW.WS.IEntitlement.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/repos/sklarchin/!svn/ver/2401/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.IEntitlement.asmx
+END
+RBSR_AUFW.DB.IProcess1.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/repos/sklarchin/!svn/ver/2658/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IProcess1.cs
+END
+RBSR_AUFW.WS.ITcodeDictionary.asmx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/repos/sklarchin/!svn/ver/2464/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.ITcodeDictionary.asmx.cs
+END
+RBSR_AUFW.DB.IEditingWorkspace.cs
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/repos/sklarchin/!svn/ver/2658/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IEditingWorkspace.cs
+END
+RBSR_AUFW.DB.ITcodeAssignmentSet.cs
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.ITcodeAssignmentSet.cs
+END
+RBSR_AUFW.DB.IAdditionalBusRole.cs
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IAdditionalBusRole.cs
+END
+RBSR_AUFW.DB.ISAProle.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.ISAProle.cs
+END
+RBSR_AUFW.WS.IUser1.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/repos/sklarchin/!svn/ver/2201/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.IUser1.asmx
+END
+RBSR_AUFW.DB.IMETADATA_SubprToActivityList.cs
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IMETADATA_SubprToActivityList.cs
+END
+RBSR_AUFW.WS.IEditingWorkspace.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/repos/sklarchin/!svn/ver/2401/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.IEditingWorkspace.asmx
+END
+RBSR_AUFW.WS.IProcess1.asmx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/repos/sklarchin/!svn/ver/2204/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.IProcess1.asmx.cs
+END
+RBSR_AUFW.DB.IUser.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IUser.cs
+END
+RBSR_AUFW.WS.ITcodeAssignmentSet.asmx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/repos/sklarchin/!svn/ver/2464/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.ITcodeAssignmentSet.asmx.cs
+END
+RBSR_AUFW.WS.ITcodeEntitlement.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/repos/sklarchin/!svn/ver/2401/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.ITcodeEntitlement.asmx
+END
+RBSR_AUFW.WS.IWorkspaceEntitlement.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/repos/sklarchin/!svn/ver/2401/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.IWorkspaceEntitlement.asmx
+END
+RBSR_AUFW.DB.IEntAssignment.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/repos/sklarchin/!svn/ver/2658/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IEntAssignment.cs
+END
+RBSR_AUFW.DB.IReconcDiffItem.cs
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IReconcDiffItem.cs
+END
+RBSR_AUFW.DB.IEventLog.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IEventLog.cs
+END
+RBSR_AUFW.DB.IChangeManagementEvent.cs
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IChangeManagementEvent.cs
+END
+RBSR_AUFW.WS.IWorkspaceTcode.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/repos/sklarchin/!svn/ver/2401/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.IWorkspaceTcode.asmx
+END
+RBSR_AUFW.WS.IUser.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/repos/sklarchin/!svn/ver/2401/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.IUser.asmx
+END
+RBSR_AUFW.DB.ISubProcess.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/repos/sklarchin/!svn/ver/2658/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.ISubProcess.cs
+END
+RBSR_AUFW.WS.IWorkspaceTcode.asmx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/repos/sklarchin/!svn/ver/2464/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.IWorkspaceTcode.asmx.cs
+END
+RBSR_AUFW.DB.ISAPChangeManagementEvent.cs
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.ISAPChangeManagementEvent.cs
+END
+RBSR_AUFW.WS.IEntAssignment.asmx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/repos/sklarchin/!svn/ver/2464/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.IEntAssignment.asmx.cs
+END
+RBSR_AUFW.DB.IOrgValue1252.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IOrgValue1252.cs
+END
+RBSR_AUFW.WS.ISubProcess.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/repos/sklarchin/!svn/ver/2401/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.ISubProcess.asmx
+END
+RBSR_AUFW.WS.IEntAssignmentSet.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/repos/sklarchin/!svn/ver/2401/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.IEntAssignmentSet.asmx
+END
+RBSR_AUFW.WS.IEntitlement.asmx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/repos/sklarchin/!svn/ver/2464/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.WS.IEntitlement.asmx.cs
+END
+RBSR_AUFW.DB.ISAPsecurityOrgAxis.cs
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.ISAPsecurityOrgAxis.cs
+END
+RBSR_AUFW.DB.ISAPauthField.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.ISAPauthField.cs
+END
+RBSR_AUFW.DB.IBusRole.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IBusRole.cs
+END
+RBSR_AUFW.DB.IFuncApplNotes.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.IFuncApplNotes.cs
+END
+RBSR_AUFW.DB.ISAPsecurityOrg.cs
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/repos/sklarchin/!svn/ver/3552/CCE/AFWAC/16MAR_WebApplication/RiseGeneratedInterfaces/RBSR_AUFW.DB.ISAPsecurityOrg.cs
+END

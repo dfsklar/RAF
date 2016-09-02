@@ -1,0 +1,181 @@
+<%@ Master  Language="C#" AutoEventWireup="true" Codebehind="Site1.master.cs" Inherits="_6MAR_WebApplication.Site1" %>
+<%@ Register Assembly="ComponentArt.Web.UI" Namespace="ComponentArt.Web.UI" TagPrefix="ComponentArt" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link rel="stylesheet" type="text/css" href="GRIDcustom.css" />
+    <link rel="stylesheet" type="text/css" href="TABScustom.css" />
+    <link rel="stylesheet" type="text/css" href="menuStyle.css" />
+    <link rel="stylesheet" type="text/css" href="treeStyle.css" />
+    <link rel="stylesheet" type="text/css" href="afwac.css" />
+    <link rel="stylesheet" type="text/css" href="insideTabStyle.css" />
+    <link rel="stylesheet" type="text/css" href="JQ/jQueryAlertDialogs/jquery.alerts.css" />
+
+    <link rel="STYLESHEET" type="text/css" href="DHTMLX/dhtmlxCombo/codebase/dhtmlxcombo.css">
+
+
+    <!-- Ye Olde PortCompass Date Widget 
+    <SCRIPT LANGUAGE="JavaScript" SRC="CALPOP3.js"></SCRIPT>
+    <SCRIPT LANGUAGE="JavaScript">
+    var CALP = new CalendarPopup();
+    </SCRIPT>
+    -->
+
+
+
+
+<!-- JQUERY old -->
+<!--
+   <link type="text/css" href="JQ/css/custom-theme/jquery-ui-1.7.2.custom.css" rel="stylesheet" />
+	<script type="text/javascript" src="JQ/js/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="JQ/js/jquery-ui-1.7.2.custom.min.js"></script>
+   <script type="text/javascript">
+	    $JQ = jQuery.noConflict();
+   </script>
+-->
+
+
+
+
+
+<!-- JQUERY new -->
+   <link type="text/css" href="JQ/jquery.ui-1.8/css/custom-theme/jquery-ui-1.8rc3.custom.css" rel="stylesheet" />
+	<script type="text/javascript" src="JQ/jquery.ui-1.8/js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="JQ/jquery.ui-1.8/js/jquery-ui-1.8rc3.custom.min.js"></script>
+   <script type="text/javascript">
+	    $JQ = jQuery.noConflict();
+   </script>
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript" src="prototype.js"></script>
+
+
+
+    <script type="text/javascript" src='master.js'></script>
+  
+</head>
+<body onload="if(null == $('ctl00_TabStrip1')) { $('DIVsubprDeclarer').style.visibility = 'visible'; $('DIVholderTabStrip').style.height = 30; $('IDstatusheader').style.visibility='hidden'; $('IDstatusheader').innerHTML='.'; } else { $('DIVsubprDeclarer').style.visibility = 'hidden'; resizeImage(); }">
+    <form id="FORMstatusHeader" runat="server">
+            <asp:HiddenField ID="HIDDENidSubpr" runat="server" OnValueChanged="HiddenField1_ValueChanged" />
+            <asp:HiddenField ID="HIDDENidUser" runat="server" EnableViewState="False" />
+
+
+<input type='hidden' id='HIDDENipaddr' value='<%= this.THESESSION.strIPaddr%>'/>
+
+        <div id='IDstatusheader' class='statusheader'>
+            Login: <%= this.THESESSION.username %> &nbsp;<A class='statusheader' href='logout.aspx'>[Logout]</A>
+
+				&nbsp; &nbsp; &nbsp;
+            Scope: <%= this.THESESSION.nameProcess %>
+            /
+            <%= this.THESESSION.nameSubprocess %>
+&nbsp;
+<A style='font-size:7pt' href='SessionLOGIN.aspx' class='statusheader'>[Change]</A>
+        </div>
+
+
+		  <!-- This is shown only for workspaces, not when a tabstrip is present. -->
+        <div id='DIVsubprDeclarer' class='statusheader' style='margin-top:5px;margin-left:20px;font-weight:bold'>
+            <%= this.Page.Title %>
+        </div>
+
+
+
+
+
+
+
+	<div ID="DIVholderTabStrip" class="ts">
+<!--		<div class="ts-l"></div> -->
+		<div class="ts-m">
+            <componentart:tabstrip id="TabStrip1" runat="server" width="100%"
+				DefaultItemLookId="DefaultTabLook"
+				DefaultSelectedItemLookId="SelectedTabLook"
+				DefaultChildSelectedItemLookId="SelectedTabLook"
+				>
+
+				<ItemLooks>
+					<ComponentArt:ItemLook LookId="DefaultTabLook" CssClass="tab" HoverCssClass="tab-h" />
+					<ComponentArt:ItemLook LookId="SelectedTabLook" CssClass="tab-s" />
+				</ItemLooks>
+
+				<ClientTemplates>
+					<ComponentArt:ClientTemplate ID="TabTemplate">
+						<div class="t">
+							<div class="l"></div>
+							<div class="m">## DataItem.get_text(); ##</div>
+							<div class="r"></div>
+						</div>
+					</ComponentArt:ClientTemplate>
+				</ClientTemplates>
+
+				<Tabs>
+                <ComponentArt:TabStripTab runat="server" Text="B. Ents"  ClientTemplateId="TabTemplate">
+                    <ComponentArt:TabStripTab runat="server" NavigateUrl="PAGE_BEnts_Upload.aspx" Text="Upload"  ClientTemplateId="TabTemplate">
+                    </ComponentArt:TabStripTab>
+                    <ComponentArt:TabStripTab runat="server" Text="Dictionary" NavigateUrl="PAGE_BEnts_Vectors.aspx" ClientTemplateId="TabTemplate">
+                    </ComponentArt:TabStripTab>
+                    <ComponentArt:TabStripTab runat="server" NavigateUrl="PAGEmanifestFormulas.aspx" Text="Applications" ClientTemplateId="TabTemplate">
+                    </ComponentArt:TabStripTab>
+                </ComponentArt:TabStripTab>
+                <ComponentArt:TabStripTab runat="server" Text="B. Roles"  ClientTemplateId="TabTemplate">
+                    <ComponentArt:TabStripTab runat="server" NavigateUrl="PAGE_BRoles_Workspace.aspx" Text="History"  ClientTemplateId="TabTemplate">
+                    </ComponentArt:TabStripTab>
+                    <ComponentArt:TabStripTab runat="server" Text="Upload"  ClientTemplateId="TabTemplate" NavigateUrl="PAGElaunchBRoleEntitlementsUpload.aspx">
+                    </ComponentArt:TabStripTab>
+                    <ComponentArt:TabStripTab runat="server" NavigateUrl="ListBRoles.aspx" Text="Designer" ID="TAB_BUS_Designer" ClientTemplateId="TabTemplate">
+                    </ComponentArt:TabStripTab>
+                    <ComponentArt:TabStripTab runat="server" NavigateUrl="PAGEreportLaunchpad.aspx" Text="Reports" ID="TAB_BUS_Reports" ClientTemplateId="TabTemplate">
+                    </ComponentArt:TabStripTab>
+                </ComponentArt:TabStripTab>
+
+
+
+                <ComponentArt:TabStripTab runat="server" Text="SAP"  ClientTemplateId="TabTemplate">
+                    <ComponentArt:TabStripTab runat="server" Text="History" NavigateUrl="Page_SAP_History.aspx" ClientTemplateId="TabTemplate">
+                    </ComponentArt:TabStripTab>
+                    <ComponentArt:TabStripTab runat="server" Text="Upload Ents"  ClientTemplateId="TabTemplate" NavigateUrl="PAGElaunchSAPentitlementsUpload.aspx"/>
+                    <ComponentArt:TabStripTab runat="server" NavigateUrl="PAGE_DictTcodes.aspx" Text="Dictionary" ID="TAB_SAP_Dictionary"  ClientTemplateId="TabTemplate" />
+                    <ComponentArt:TabStripTab runat="server" NavigateUrl="ListSAPRoles.aspx" Text="Designer" ID="TAB_SAP_Designer"  ClientTemplateId="TabTemplate" />
+                    <ComponentArt:TabStripTab runat="server" Text="Upload Roles" ClientTemplateId="TabTemplate" NavigateUrl="PAGElaunchSAPUpload.aspx"/>
+                </ComponentArt:TabStripTab>
+
+
+                <ComponentArt:TabStripTab runat="server" Text="Reconcile"  ClientTemplateId="TabTemplate">
+                    <ComponentArt:TabStripTab runat="server" Text="History" NavigateUrl="Page_Reconc_History.aspx" ClientTemplateId="TabTemplate"/>
+                    <ComponentArt:TabStripTab runat="server" Text="IDM"  NavigateUrl="PAGE_idmreconcile.aspx" ClientTemplateId="TabTemplate"/>
+                    <ComponentArt:TabStripTab runat="server" Text="SAP"  NavigateUrl="PAGE_sapreconcile.aspx" ClientTemplateId="TabTemplate"/>
+                    <ComponentArt:TabStripTab runat="server" Text="Analysis"  NavigateUrl="Page_Reconc_Analysis.aspx" ClientTemplateId="TabTemplate"/>
+                </ComponentArt:TabStripTab>
+
+
+                <ComponentArt:TabStripTab runat="server" Text="Activities"  ClientTemplateId="TabTemplate" NavigateUrl="PAGE_MapSubprToActivities.aspx"/>
+
+</Tabs>
+</componentart:tabstrip>
+		</div>
+<!-- 		<div class="ts-r"></div>  -->
+	</div>
+
+
+<DIV class="WrapperContent">
+<TABLE style="width:100%" width="100%">
+<TR>
+<TD>&nbsp;</TD>
+<TD style='text-align: center'>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+</TD>
+<TD>&nbsp;</TD>
+</DIV>
+    </form>
+</body>
+</html>

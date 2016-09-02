@@ -1,0 +1,1 @@
+To change the red to green, use the Snagit editor and use color correction and simply adjust Hue 120 to the right.

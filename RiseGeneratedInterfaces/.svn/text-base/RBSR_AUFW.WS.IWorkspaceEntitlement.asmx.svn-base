@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" CodeBehind="RBSR_AUFW.WS.IWorkspaceEntitlement.asmx.cs" Class="RBSR_AUFW.WS.IWorkspaceEntitlement.IWorkspaceEntitlement" %>

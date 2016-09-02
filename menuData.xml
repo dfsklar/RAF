@@ -1,0 +1,8 @@
+<items>
+  <item Text="Edit" ClientSideCommand="MENUACTedit();"/>
+  <item Text="NEW by cloning this row" ClientSideCommand="MENUACTclone();"/>
+  <!-- <item Text="NEW (init empty)" ClientSideCommand="MENUACTnewblank();"/> -->
+  <item Text="Assign to roles" ClientSideCommand="MENUACTroleassign('SPECIFY')"/>
+  <item Text="Delete" ClientSideCommand="MENUACTdelete()"/>
+</items>
+<!-- note that get_table is an undocumented method on Grid, gives you the table that drives the grid, of class GridTable -->

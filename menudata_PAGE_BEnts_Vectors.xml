@@ -1,0 +1,8 @@
+<items>
+  <item Text="Clone"  id="mPBV_clone"  ClientSideCommand="MENUACTclone()"/>
+  <item Text="Details" id="mPBV_viewreadonly" ClientSideCommand="MENUACTviewreadonly()"/>
+  <item Text="Edit" id="mPBV_edit" ClientSideCommand="MENUACTedit()"/>
+  <item Text="Delete" id="mPBV_del" ClientSideCommand="MENUACTdel()"/>
+  <item Text="View usage" id="mPBV_usage" ClientSideCommand="MENUACTusage()"/>
+  <item Text="Bulk assignment" id="mPBV_bulkassign" ClientSideCommand="MENUACTbulkassign()" visible="false" />
+</items>

@@ -1,0 +1,28 @@
+.MenuGroup
+{
+  background-color:white;
+  border:solid 1px Gray; 
+}
+
+.MenuItem 
+{
+  color:black; 
+  font-family:MS Sans Serif, Verdana; 
+  font-size:10px; 
+  cursor:default;
+}
+
+.MenuItemHover 
+{
+  color:black; 
+  background-color:silver; 
+  color:black; 
+  font-family:MS Sans Serif, Verdana; 
+  font-size:10px; 
+  cursor:default;
+}
+
+.MenuBreak
+{
+  padding:0px; 
+}

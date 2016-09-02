@@ -1,0 +1,322 @@
+using System;
+using System.Data;
+using System.Configuration;
+using System.Collections;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+
+using RBSR_AUFW.DB.IBusRole;
+using System.Text.RegularExpressions;
+using RBSR_AUFW.DB.IEntAssignmentSet;
+using RBSR_AUFW.DB.IEntAssignment;
+
+
+
+namespace _6MAR_WebApplication
+{
+  public partial class WebForm16 : AFWACpage
+  {
+
+
+    override protected void OnInit(EventArgs e)
+    {
+      //
+      // CODEGEN: This call is required by the ASP.NET Web Form Designer.
+      //
+      InitializeComponent();
+      base.OnInit(e);
+    }
+
+
+    private void InitializeComponent()
+    {
+      this.Load += new System.EventHandler(this.Page_Load);
+
+      Grid1.UpdateCommand += new ComponentArt.Web.UI.Grid.GridItemEventHandler(this.Grid1_UpdateCommand);
+      Grid1.DeleteCommand += new ComponentArt.Web.UI.Grid.GridItemEventHandler(this.Grid1_DeleteCommand);
+      Grid1.InsertCommand += new ComponentArt.Web.UI.Grid.GridItemEventHandler(this.Grid1_InsertCommand);
+      Grid1.NeedRebind += new ComponentArt.Web.UI.Grid.NeedRebindEventHandler(this.OnNeedRebind);
+
+      GRIDadditionalRoles.NeedDataSource += new ComponentArt.Web.UI.Grid.NeedDataSourceEventHandler(OnNeedRebind_GRIDadditionalRoles);
+      GRIDadditionalRoles.NeedRebind += new ComponentArt.Web.UI.Grid.NeedRebindEventHandler(OnNeedRebind_GRIDadditionalRoles);
+
+      CALLBACKadditionalRoles.Callback +=
+        new ComponentArt.Web.UI.CallBack.CallbackEventHandler(this.OnCallback_additionalRoles);
+      CALLBACKinitChangeMgmt.Callback +=
+        new ComponentArt.Web.UI.CallBack.CallbackEventHandler(this.OnCallback_initChangeMgmt);
+
+    }
+
+
+
+    returnGetEntAssignmentSet targetEASet;
+
+
+
+
+    private void OnCallback_additionalRoles
+      (object sender,
+       ComponentArt.Web.UI.CallBackEventArgs e)
+    {
+      int idBusRole = int.Parse(e.Parameter);
+
+      this.HIDDENcurbrole.Value = idBusRole.ToString();
+      //Session["intFILTERBROLE"] = idBusRole;
+
+      this.SQL_additionalRoles.DataBind();
+
+      GRIDadditionalRoles.DataBind();
+    }
+
+
+
+
+
+
+      // This call ensures that the six rows of chg-mgmt already exist
+      // because the human is about to bring up that popup modal dlog!
+    private void OnCallback_initChangeMgmt
+      (object sender,
+       ComponentArt.Web.UI.CallBackEventArgs e)
+    {
+        HELPERS.InitChangeMgmtForWS(session.idWorkspace);
+    }
+
+
+
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+      base.Page_Load(sender, e);
+
+      session.ObtainWorkspaceContext();
+
+
+      if (IsPostBack)
+      {
+          return;
+      }
+
+
+
+
+      PANELcond_Editable.Visible = false;
+      PANELcond_ReadOnly.Visible = false;
+      PANELcond_ViewOtherUserWorkspace.Visible = false;
+
+      PANELcond_ViewActiveReadOnly.Visible = false;
+      PANELcond_ViewHistoricalReadOnly.Visible = false;
+
+      IEntAssignmentSet engineEASET = new IEntAssignmentSet(HELPERS.NewOdbcConn());
+
+        
+      int IDeaset = -1;
+        
+
+      // STICKINESS: If the URL does not specifically demand a particular
+      // workspace via query param, then draw it in from the session parameter.
+      // Only if no session preference for a particular workspace would you then
+      // default to the current open-for-editing workspace.
+      if (this.Request.Params["WSID"] == null)
+        {
+          // URL does not explicitly request a particular EASet
+          if (Session["INTcurWS"].ToString() != "")
+            {
+              IDeaset = int.Parse(Session["INTcurWS"].ToString());
+            }
+        } else {
+        IDeaset = int.Parse(this.Request.Params["WSID"].ToString());
+      }
+
+      if (IDeaset < 0)
+        {
+          // LAST RESORT:
+          IDeaset = session.idWorkspace;
+        }
+
+
+
+
+
+      if (IDeaset != session.idWorkspace) {
+          
+        // IMPORTANT: we are going back in time and looking at a frozen state.
+        // This is NOT a workspace!
+        
+        Session["INTcurWS"] = IDeaset;
+
+
+        // Get info about this snapshot
+        targetEASet = engineEASET.GetEntAssignmentSet(IDeaset);
+
+  
+        if (targetEASet.Status.ToLower() == "active")
+          {
+            PANELcond_ViewActiveReadOnly.Visible = true;
+          }else{
+          PANELcond_ViewHistoricalReadOnly.Visible = true;
+        }
+
+      }
+      else 
+        {
+
+          Session["INTcurWS"] = IDeaset;
+      
+          if (IDeaset >= 0)
+            {
+              // THIS IS A WORKSPACE !!
+              // THIS IS A WORKSPACE !!
+              // THIS IS A WORKSPACE !!
+              // It might not belong to "me" but it is definitely a workspace
+              targetEASet = engineEASET.GetEntAssignmentSet(session.idWorkspace);
+              if (session.isWorkspaceOwner) {
+                PANELcond_Editable.Visible = true;
+              }
+              else{
+                PANELcond_ViewOtherUserWorkspace.Visible = true;
+              }
+            }
+          else
+            {
+              // There IS no workspace!
+              PANELcond_ReadOnly.Visible = true;
+              Grid1.Visible = false;
+            }
+        }
+    }
+
+
+
+
+
+    public void OnNeedRebind_GRIDadditionalRoles(object sender, EventArgs oArgs)
+    {
+      // Without this, nothing works:
+      GRIDadditionalRoles.DataBind();
+    }
+
+
+
+      void HIDDENcurbrole_onchghid(object sender, EventArgs e)
+      {
+          int i = 5;
+      }
+
+
+
+    private void Grid1_InsertCommand(object sender, ComponentArt.Web.UI.GridItemEventArgs e)
+    {
+      UpdateDb(e.Item, "INSERT");
+    }
+
+    private void Grid1_UpdateCommand(object sender, ComponentArt.Web.UI.GridItemEventArgs e)
+    {
+      UpdateDb(e.Item, "UPDATE");
+    }
+
+    private void Grid1_DeleteCommand(object sender, ComponentArt.Web.UI.GridItemEventArgs e)
+    {
+      UpdateDb(e.Item, "DELETE");
+    }
+
+
+    public void OnNeedRebind(object sender, EventArgs oArgs)
+    {
+      Grid1.DataBind();
+    }
+
+
+
+
+
+
+
+
+
+
+
+    private void UpdateDb(ComponentArt.Web.UI.GridItem item, string command)
+    {
+      IBusRole engine = new IBusRole(HELPERS.NewOdbcConn());
+      IEntAssignment engineEA = new IEntAssignment(HELPERS.NewOdbcConn());
+
+       
+
+      switch (command)
+        {
+        case "INSERT":
+          ValidateAbbrev(item["c_u_Abbrev"] as string, -1);
+          item["c_id"] =
+            engine.NewBusRole(
+                              item["c_u_Name"] as string,
+                              item["c_u_Description"] as string,
+                              this.session.idSubprocess);
+          engine.SetBusRole
+            (
+             (int)(item["c_id"]),
+             item["c_u_Name"] as string,
+             item["c_u_Description"] as string,
+             this.session.idSubprocess,
+             item["c_u_Abbrev"] as string, null, null, null);
+          break;                    
+
+        case "UPDATE":
+          ValidateAbbrev(item["c_u_Abbrev"] as string,
+                         int.Parse(item["c_id"] as string));
+          engine.SetBusRole
+            (int.Parse(item["c_id"] as string),
+             item["c_u_Name"] as string,
+             item["c_u_Description"] as string,
+             this.session.idSubprocess,
+             item["c_u_Abbrev"] as string);
+          break;
+
+        case "DELETE":
+          int IDbusrole = int.Parse(item["c_id"] as string);
+
+          // 1. Delete any EntAssignments involving this business role... 
+          // ... in this workspace... ...that have status "X".
+          returnListEntAssignmentByBusRole[] ret = engineEA.ListEntAssignmentByBusRole
+            (null, "", new string[]{}, "", IDbusrole);
+          int refsStillPresent = 0;
+          for (int i = 0; i < ret.Length; i++)
+            {
+              if (ret[i].Status == "X")
+                {
+                  engineEA.DeleteEntAssignment(ret[i].ID);
+                }
+              else
+                {
+                  refsStillPresent++;
+                }
+            }
+
+          // 2. Check to see if there are any more references to this bus role
+          if (refsStillPresent > 0) {
+            throw new Exception
+              ("This business role cannot be deleted at this time, because there is/are still " + refsStillPresent + " reference(s) to this business role, in other workspaces or historical snapshots.");
+          }
+
+          // 3. Delete the business role itself.
+          engine.DeleteBusRole(IDbusrole);
+          break;
+        }
+    }
+
+
+
+    // No return value; this is designed to throw an exception if there is a problem.
+    // Limit the serach to: this.session.idSubprocess
+    private void ValidateAbbrev(string abbrev, int currID)
+    {
+      HELPERS.ValidateAbbrev(abbrev, currID, this.session.idSubprocess);
+    }
+
+
+  }
+}

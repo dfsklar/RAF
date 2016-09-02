@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" CodeBehind="RBSR_AUFW.WS.IEventLog.asmx.cs" Class="RBSR_AUFW.WS.IEventLog.IEventLog" %>

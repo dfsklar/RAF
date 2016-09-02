@@ -1,0 +1,53 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="_6MAR_WebApplication.viewer.Site1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>IDM User Portal</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css" /> 
+    <link rel="stylesheet" type="text/css" href="../GRIDcustom.css" />
+    <link rel="stylesheet" type="text/css" href="../TABScustom.css" />
+    <link rel="stylesheet" type="text/css" href="../menuStyle.css" />
+    <link rel="stylesheet" type="text/css" href="../treeStyle.css" />
+    <link rel="stylesheet" type="text/css" href="../afwac.css" />
+    <link rel="stylesheet" type="text/css" href="../insideTabStyle.css" />
+    <link rel="stylesheet" type="text/css" href="../JQ/jQueryAlertDialogs/jquery.alerts.css" />
+    <script type="text/javascript" src="../prototype.js"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+	<div id="Container">
+		<div id="Header">
+			<img src="images/CCElogo-white.png" align="left" />
+			&nbsp; &nbsp; RBSR Authorization Framework
+		</div>
+		<div id="Navigation">
+			<span id="Navigation">
+			    <A href='home.aspx'>IDM User Information</A>
+        <asp:ContentPlaceHolder ID="CONTENTnav" runat="server"></asp:ContentPlaceHolder></span>
+			<span id="StatusArea">
+
+<!--
+ (Session["RAFLOGINbusOwnerEID"] == null) ? 
+      "" : "Welcome, " + Session["RAFLOGINbusOwnerNameFirst"] -->
+  <!-- <a class='statusheader' href='logout.aspx'>[Logout]</a> -->
+			</span>&nbsp;
+			<span class="clear"></span>
+		</div>
+		<div id="Content">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+		</div>
+		<div id="Footer">
+<!--
+			Home | Site Map | Contact Us
+			<br />
+			&copy; Coca-Cola Enterprises Inc.
+			<br />
+			Strictly Private and Confidential -->
+		</div>
+	</div>
+    </form>
+</body>
+</html>

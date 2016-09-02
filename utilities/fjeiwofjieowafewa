@@ -1,0 +1,177 @@
+using System;
+using System.Data;
+using System.Web;
+using System.Collections;
+using System.Web.Services;
+using System.Web.Services.Protocols;
+using System.Data.Odbc;
+using System.Collections.Generic;
+
+namespace _6MAR_WebApplication.utilities
+{
+  /// <summary>
+  /// Summary description for $codebehindclassname$
+  /// </summary>
+  [WebService(Namespace = "http://tempuri.org/")]
+  [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+  public class Handler1 : IHttpHandler
+  {
+
+    public void ProcessRequest(HttpContext context)
+    {
+      context.Response.ContentType = "text/plain";
+
+      string cmd = (context.Request.Params["cmd"]);
+
+      string arg1 = (context.Request.Params["arg1"]);
+
+      switch (cmd)
+        {
+        case "FINDduplicateBEnts":
+          FINDduplicateBEnts(context.Response);
+          break;
+
+        case "WSdel":
+          HELPERS.RunSql
+            ("DELETE FROM t_r_BusRoleWorkspaceEntitlement WHERE c_r_EditingWorkspace=" + arg1);
+          HELPERS.RunSql
+            ("DELETE FROM t_RBSR_AUFW_u_WorkspaceEntitlement WHERE c_r_EditingWorkspace=" + arg1);
+          HELPERS.RunSql
+            ("DELETE FROM t_RBSR_AUFW_u_EditingWorkspace WHERE c_id=" + arg1);
+          context.Response.Write("DONE.  The workspace was deleted.  You can close this window now.\n");
+          break;
+        case "EASETdel":
+          HELPERS.RunSql
+            ("DELETE FROM t_RBSR_AUFW_u_EntAssignment WHERE c_r_EntAssignmentSet=" + arg1);
+          HELPERS.RunSql
+            ("DELETE FROM t_RBSR_AUFW_u_EntAssignmentSet WHERE c_id=" + arg1);
+          break;
+        case "SAPWSdel":
+          /*
+            HELPERS.RunSql
+            ("DELETE FROM t_RBSR_AUFW_u_TcodeAssignment WHERE c_r_TcodeAssignmentSet=" + arg1);
+          */
+          HELPERS.RunSql
+            ("UPDATE t_RBSR_AUFW_u_TcodeAssignmentSet SET c_u_Status='deleted' WHERE c_u_Status='WORKSPACE' AND c_id=" + arg1);
+          context.Response.Redirect("Page_SAP_History.aspx");
+          //context.Response.Write("DONE.  The workspace has been hidden from view but has been retained for archival purposes."); 
+          break;
+
+
+        case "SAPWSpurge":
+          HELPERS.RunSql
+            ("DELETE FROM t_RBSR_AUFW_u_TcodeAssignment WHERE c_r_TcodeAssignmentSet=" + arg1);
+          HELPERS.RunSql
+            ("DELETE FROM t_RBSR_AUFW_u_TcodeAssignmentSet WHERE c_u_Status='WORKSPACE' AND c_id=" + arg1);
+          context.Response.Write("DONE.  The workspace has been completely deleted.");
+          break;
+
+
+        case "SUBPRpurge":
+          HELPERS.RunSql
+            ("DELETE FROM t_RBSR_AUFW_u_BusRole WHERE c_r_SubProcess=" + arg1);
+          HELPERS.RunSql
+            ("DELETE FROM t_RBSR_AUFW_u_SAProle WHERE c_r_SubProcess=" + arg1);
+          context.Response.Write("DONE.  Any roles associated with that subprocess has been deleted and freed for reuse.");
+          break;
+
+        default:
+          throw new Exception("Unknown command: " + cmd);
+        }
+    }
+
+    private void FINDduplicateBEnts(HttpResponse response)
+    {
+      OdbcDataReader r = HELPERS.RunSqlSelect
+        (@"
+
+
+SELECT *,
+                ISNULL([c_u_StandardActivity],'') + '|.|' +
+        ISNULL([c_u_RoleType],'') + '|.|' +
+        ISNULL([c_u_System],'') + '|.|' +
+        ISNULL([c_u_Platform],'') + '|.|' +
+        ISNULL([c_u_EntitlementName],'') + '|.|' +
+        ISNULL([c_u_EntitlementValue],'') + '|.|' +
+        ISNULL([c_u_AuthObjName],'') + '|.|' +
+        ISNULL([c_u_AuthObjValue],'') + '|.|' +
+        ISNULL([c_u_FieldSecName],'') + '|.|' +
+        ISNULL([c_u_FieldSecValue],'') + '|.|' +
+        ISNULL([c_u_Level4SecName],'') + '|.|' +
+        ISNULL([c_u_Level4SecValue],'') as fingerprint,
+c_id as ENTID,
+
+(SELECT COUNT(*) FROM t_RBSR_AUFW_u_EntAssignment EA where EA.c_r_Entitlement=AUFWENT.c_id and EA.c_u_Status NOT IN ('X') ) as KOUNT
+               FROM t_RBSR_AUFW_u_Entitlement AUFWENT  ORDER BY AUFWENT.c_id
+
+");
+
+
+        
+
+
+      // maps a fingerprint to an entitlement UUID
+      Dictionary<string, int> dict = new Dictionary<string, int>();
+
+
+      // MAPs an ent UUID to its chksum
+      Dictionary<int,string> MAPtochksum = new Dictionary<int, string>();
+
+
+      while (r.Read())
+        {
+          string fprint = r["fingerprint"] as string;
+          MAPtochksum.Add((int)r["c_id"],
+                          (string)r["c_u_CHECKSUM"]
+              + "..." +
+                          (string)r["c_u_Status"]
+              + "..." +
+                          ((int)r["KOUNT"]).ToString()
+
+			  );
+          if (dict.ContainsKey(fprint)) {
+            int origuuid = dict[fprint];
+            response.Write(fprint+"\n"+"OrigUUID   =" + origuuid.ToString() + " = " + MAPtochksum[origuuid] + "\n");
+            response.Write("CulpritUUID=" + r["c_id"].ToString() + " = " +
+                           (string)(r["c_u_CHECKSUM"]) + "..." + (string)(r["c_u_Status"])
+              + "..." +
+                          ((int)r["KOUNT"]).ToString()
+                           
+                           + "\n" +
+                           "Actual valid checksum: " +
+                           HELPERS.ENTCHECKSUM
+              (
+              (string)(r["c_u_StandardActivity"]),
+              (string)(r["c_u_RoleType"]),
+              (string)(r["c_u_Application"]),
+              (string)(r["c_u_System"]),
+              (string)(r["c_u_Platform"]),
+              (string)(r["c_u_EntitlementName"]),
+              (string)(r["c_u_EntitlementValue"]),
+              (string)(r["c_u_AuthObjName"]),
+              (string)(r["c_u_AuthObjValue"]),
+              (string)(r["c_u_FieldSecName"]),
+              (string)(r["c_u_FieldSecValue"]),
+              (string)(r["c_u_Level4SecName"]),
+              (string)(r["c_u_Level4SecValue"])) +
+                           "\n");
+          }
+          else {
+            dict.Add(fprint, (int)r["c_id"]);
+          }
+        }
+
+    }
+
+      
+    
+
+    public bool IsReusable
+    {
+      get
+        {
+          return false;
+        }
+    }
+  }
+}

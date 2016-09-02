@@ -1,0 +1,5 @@
+<items>
+  <item Text="Edit" ClientSideCommand="MENUACT_orgaxis_edit();"/>
+  <item Text="Delete" ClientSideCommand="MENUACT_orgaxis_delete()"/>
+</items>
+

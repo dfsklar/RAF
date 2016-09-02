@@ -1,0 +1,7 @@
+<items>
+  <item ID='CMT' Text="Comment..." ClientSideCommand="MENUACT_editProperties()"/>
+  <item ID='Export' Text="Export &gt;&gt;">
+     <item Text="... for analysis"  ClientSideCommand="MENUACT_reconchist_exportforanal();"/>
+     <item Text="... for execution" ClientSideCommand="MENUACT_reconchist_exportforexec();"/>
+  </item>
+</items>

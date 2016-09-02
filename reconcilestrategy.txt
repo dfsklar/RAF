@@ -1,0 +1,100 @@
+The data coming in from the IDM is supposedly three fields: rolename, roledescr (long name), privstring
+
+This will be loaded and a DataReader object will thus be constructed, but not yet traversed.
+
+A single SQL statement will then be used to produce a DataReader bringing in all BRole entitlements across all active entitlement sets, with the exception of TEST subprocesses and (conditionally) excepting INT_ roles.  Thus, we will have a DataReader here as well, and it also will only have the three columns.
+
+Note that one option would be whether to report the IDM dump's large number of role names called:
+   "ELE_INT_%" or "INT_%" 
+The default is to ignore all such IDM-resident roles, which are never to be found in the R-AF system.
+
+See the SQL below.
+
+Now we have two DataReaders: DR_IDM and DR_activeents.  We now have to
+go into each row in DR_activeents and calculate the privilege string
+for each row.  A concat of the brolename with the computed privstring
+is entered as the key in a dictionary.  It is a fatal exception if the
+key is already present(?).  The value for each key is the entire row's
+information (serialized??).
+
+This produces:
+   DICT_activeents
+
+We then go through every row in DR_IDM:
+   If rolename+privstring found in DICT_activeents:
+         That entry in DICT_activeents is deleted.
+   Else:
+         This DR_IDM row is added to a queue (QUEUE_idmRowsLackingActiveMatch).
+
+After this pass, all remaining items left in DICT_activeents represent an active match lacking an IDM row.
+
+We now simply make our reports regarding all these orphans.
+
+Now, this comparison obviously does NOT include comparison of business role descriptions.
+
+One question is:  If the R-AF has a registered busrole but it has NO active entitlements, is it as though the
+busrole does not yet exists?  I think that should be the case.
+
+
+------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+
+
+The SQL:
+
+"
+SELECT
+BROL.c_u_Name as BusRole,
+BROL.c_u_Description as BusRoleDescr,
+TENT.c_u_StandardActivity as StandardActivity,
+TENT.c_u_RoleType as RoleType,
+TENT.c_u_Application as Application,
+TENT.c_u_System as System,
+TENT.c_u_Platform as Platform,
+TENT.c_u_EntitlementName as EntitlementName,
+TENT.c_u_EntitlementValue as EntitlementValue,
+TENT.c_u_AuthObjValue as AuthObjValue,
+TENT.c_u_FieldSecName as FieldSecName,
+TENT.c_u_FieldSecValue as FieldSecValue,
+TENT.c_u_Level4SecName as Level4SecName,
+TENT.c_u_Level4SecValue as Level4SecValue,
+TENT.c_u_Commentary as Commentary,
+MVF.c_u_Formula as Formula
+
+FROM 
+   t_RBSR_AUFW_u_EntAssignment TEASS
+
+LEFT OUTER JOIN 
+   t_RBSR_AUFW_u_Entitlement TENT
+ON
+   TEASS.c_r_Entitlement = TENT.c_id
+
+LEFT OUTER JOIN 
+   t_RBSR_AUFW_u_BusRole BROL
+ON
+   BROL.c_id = TEASS.c_r_BusRole
+
+LEFT OUTER JOIN
+   t_RBSR_AUFW_u_MVFormula MVF
+ON
+   MVF.c_u_KEYapplication = TENT.c_u_Application
+
+LEFT OUTER JOIN
+   t_RBSR_AUFW_u_EntAssignmentSet TEASET
+ON
+   TEASET.c_id = TEASS.c_r_EntAssignmentSet
+
+LEFT OUTER JOIN 
+   t_RBSR_AUFW_u_SubProcess SUBPR
+ON
+   TEASET.c_r_SubProcess = SUBPR.c_id
+
+WHERE
+   (TEASET.c_u_Status = 'ACTIVE')
+AND
+   (SUBPR.c_r_Process NOT IN (7))
+" + extraconds + " ORDER BY TEASS.c_r_BusRole;";
+

@@ -1,0 +1,8 @@
+Updated Role Name,Entitlement Value,Entitlement Description,Activity (Folder),Additional Comments
+ZSC_XX_ENDUSERSPT-PERFORMER_GO,AL11,Display SAP Directories,IT: IT - Common Display,
+ZSC_XX_ENDUSERSPT-PERFORMER_GO,SMOEAC,Administration Console,TBD,Display Only
+"Note:  The ""Updated Role Name"" column  can also be called ""Role Name"" if desired.",,,,
+Note:  New Entitlement Values (Tcodes) are added to the dictionary if not yet known.,,,,
+"Note: The ""Additional Comments"" field is used only to determine if this entitlement assignment is ""Display Only"".",,,,
+Note: Any row with a role name not exactly matching the selected role context (for this upload) is IGNORED.,,,,
+"Note: If the upload does not have a selected row context, than all rows that refer to already-known roles are processed, but rows that reference unknown SAP roles are ignored.",,,,

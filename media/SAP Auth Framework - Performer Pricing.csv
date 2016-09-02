@@ -1,0 +1,135 @@
+#,Application Role,Application,Platform,Entitlement Description,Entitlement Value,Field-Level Security Name,Field-Level Security Value,Additional Comments
+1,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Credit Management - Overview,F.31,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+2,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Correspondence: Print Int.Documents,F.62,BUKRS,Refer to Master EU Org Level Field Values Document,FI: AR - Correspondence Maintenance
+3,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Accounting Editing Options,FB00,,,Display Access
+4,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Display Document,FB03,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+5,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Document Changes,FB04,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+6,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Correspondence Request,FB12,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+7,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Display Payment Advice,FBE3,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+8,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Display Customer Line Items,FBL5,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+9,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Customer Line Items,FBL5N,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+10,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Display Dunning Procedure,FBMA,,,Display Access
+11,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Display Parked Document,FBV3,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+12,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Early Warning List,FCV3,,,Display Access
+13,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Display Customer (Accounting),FD03,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+14,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Customer Changes (Accounting),FD04,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+15,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Customer Balance Display,FD10N,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+16,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Display Customer Credit Management,FD33,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+17,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Credit Management - Master Data List,FDK43,,,FI: AR - Customer Credit Maintenance
+18,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Display Electronic Bank Statement,FF.6,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+19,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Lockbox total report,FOEBL1,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+20,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Notes Tickler/Query,J4I3,,,FI: AR - Functional Administration
+21,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Display Statistical Key Figures,KB33N,,,Display Access
+22,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Display profit center hierarchy,KCH3,,,Display Access
+23,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Display Profit Center,KE53,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+24,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Profit Center: Actual Line Items,KE5Z,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+25,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Display Planning CElem/Act. Input,KP07,,,Display Access
+26,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Display Cost Center,KS03,,,Display Access
+27,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Cost Centers: Actual Line Items,KSB1,,,Display Access
+28,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Controlling Documents: Actual,KSB5,,,Display Access
+29,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Display Cost Center Group,KSH3,,,Display Access
+30,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Display Standard Hierarchy,OKENN,,,Display Access
+31,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Due Date Analysis for Open Items,S_ALR_87012168,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+32,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Transaction Figures: Sales,S_ALR_87012171,,,Display Access
+33,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Customer Balances in Local Currency,S_ALR_87012172,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+34,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,List of Customer Open Items,S_ALR_87012174,,,Display Access
+35,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Open Items: Customer Due Date Forec.,S_ALR_87012175,,,Display Access
+36,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Customer Eval. with OI Sorted List,S_ALR_87012176,,,Display Access
+37,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Customer Payment History,S_ALR_87012177,,,Display Access
+38,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Customer Open Item Analysis(Overdue),S_ALR_87012178,,,Display Access
+39,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Customer List,S_ALR_87012179,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+40,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,List of customer addresses,S_ALR_87012180,,,Display Access
+41,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Display Changes to Customers,S_ALR_87012182,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+42,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,List of Customer Line Items,S_ALR_87012197,,,Display Access
+43,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,List of Cleared Customer Items,S_ALR_87012198,,,Display Access
+44,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Payment Advice Overview,S_ALR_87012201,,,Display Access
+45,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Display Changes to Credit Management,S_ALR_87012215,,,Display Access
+46,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Credit Master Sheet,S_ALR_87012218,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+47,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Actual/Actual Comparison for Year,S_ALR_87012249,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+48,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Periodic Actual/Actual Comparison,S_ALR_87012252,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+49,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Periodic Plan/Actual Comparison,S_ALR_87012256,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+50,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Payment Advice Overview(Header/Item),S_ALR_87012353,,,Display Access
+51,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Cost Centers: Actual/Plan/Variance,S_ALR_87013611,,,Display Access
+52,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Execute pricing report,V/LD,,,Display Access
+53,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Display Sales Order,VA03,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+54,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,List of Sales Orders,VA05,,,Display Access
+55,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Display Inquiry,VA13,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+56,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Inquiries List,VA15,,,Display Access
+57,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Display Billing Document,VF03,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+58,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,List Billing Documents,VF05,,,Display Access
+59,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,List Blocked Billing Documents,VFX3,,,Display Access
+60,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Display Condition,VK13,,,Display Access
+61,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Display IDoc,WE02,,,Display Access
+62,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Display Customer (Centrally),XD03,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+63,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Customer Changes (Centrally),XD04,BUKRS,Refer to Master EU Org Level Field Values Document,Display Access
+64,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Accounting documents balancing rpt,ZBAL,,,
+65,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Customer Report 1099,ZCM_1099,,,
+66,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Customer Master Bank Information,ZCM_BANK,,,
+67,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Customer Master Credit/Dunning Rpt 1,ZCM_CRED01,,,
+68,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Customer Master Credit/Dunning Rpt 2,ZCM_CRED02,,,
+69,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Customer Master with Email,ZCM_EMAIL,,,
+70,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Customer Master AR Report 5,ZCM_MASTER05,,,
+71,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Customer Master & AR Report 3,ZCM_MSTR01,,,
+72,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Customer Master & AR Report 4,ZCM_MSTR02,,,
+73,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Customer Master Profit Center Report,ZCM_PCTR,,,
+74,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Report for Customers for NFO Project,ZCM_SD01,,,
+75,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,CUSTOMER MASTER STATEMENT REPORT,ZCM_STATEMENT,,,
+76,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Operating Report A - Warehouse,ZCSO_ZO09,,,
+77,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Document List,ZDOCLIST,,,
+78,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Bridging Report,ZF_BRIDGE,,,
+79,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Customer Line Items,ZFBL5N,,,
+80,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Notes Tickler/Query,ZFJ4I3,,,
+81,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,CONTROL RELEASE PLANT VIEWS,ZMM_PLTVIEWS,,,
+82,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Idoc Monitoring Report - Master Data,ZMON,,,
+83,ZSF_MASTERPERFORMERPRICING_EU,SAP R/3 Production,PR1,Customer Master Audit Trail,ZOV51,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,

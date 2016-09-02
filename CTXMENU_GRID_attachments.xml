@@ -1,0 +1,4 @@
+<items>
+  <item Text="Download" ClientSideCommand="MENUACT_download();"/>
+  <item Text="Delete" ClientSideCommand="MENUACT_delete()"/>
+</items>

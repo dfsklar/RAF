@@ -1,0 +1,8 @@
+<items>
+  <item Text="Entitlements" ClientSideCommand="MENUACTdiveIntoDesign()"/>
+  <item Text="Properties" id="mPBV_props" ClientSideCommand="MENUACTproperties()"/>
+  <item Text="Additional Roles" id="mPBV_edit" ClientSideCommand="MENUACTadditroles()"/>
+  <item Text="Owners" id="mPBV_del" ClientSideCommand="MENUACTowners()"/>
+  <item Text="Clone" id="mPBV_clone" ClientSideCommand="MENUACTclone()"/>
+  <item Text="Delete" id="mPBV_clone" ClientSideCommand="MENUACTdelete()"/>
+</items>

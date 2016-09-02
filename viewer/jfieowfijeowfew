@@ -1,0 +1,41 @@
+SELECT
+  PR.c_id,
+  PR.c_u_Description,
+  SUBPR.c_id,
+  SUBPR.c_u_Name,
+  BR.c_id, 
+  BR.c_u_Name, 
+  BR.c_u_Description,
+  BR.c_u_RoleType as RoleTypeAbbrev, 
+  (select Displayable from DICT_BusRoleType where Abbrev=c_u_RoleType) as RoleTypeDisplayable,
+(
+SELECT COUNT(DISTINCT ENT.c_u_Application)
+   FROM t_RBSR_AUFW_u_EntAssignment EA
+LEFT OUTER JOIN t_RBSR_AUFW_u_Entitlement ENT
+   ON EA.c_r_Entitlement = ENT.c_id
+LEFT OUTER JOIN t_RBSR_AUFW_u_EntAssignmentSet EASET
+   ON EA.c_r_EntAssignmentSet = EASET.c_id 
+WHERE
+EA.c_r_BusRole = BR.c_id
+AND
+EASET.c_u_Status IN ('ACTIVE')
+AND
+EA.c_u_Status NOT IN ('X')
+) as KOUNTAPPS
+
+FROM t_RBSR_AUFW_u_BusRole BR 
+
+LEFT OUTER JOIN t_RBSR_AUFW_u_SubProcess SUBPR ON SUBPR.c_id = BR.c_r_SubProcess
+LEFT OUTER JOIN t_RBSR_AUFW_u_Process       PR ON    PR.c_id = SUBPR.c_r_Process
+
+INNER JOIN 
+t_RBSR_AUFW_u_BusRoleOwner BROWN ON  BROWN.c_r_BusRole=BR.c_id
+
+WHERE BR.c_u_Name LIKE '%usersupport%'
+  AND
+SUBPR.c_u_Status LIKE 'Active'
+  AND
+BR.c_u_Name NOT LIKE '%//DEL_%'
+
+ORDER BY
+PR.c_u_Description, SUBPR.c_u_Name, BR.c_u_Name

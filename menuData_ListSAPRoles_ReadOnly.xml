@@ -1,0 +1,5 @@
+<items>
+  <item Text="Entitlements" ClientSideCommand="MENUACTdiveIntoDesign()"/>
+<!--  <item Text="Properties" id="mPBV_props" ClientSideCommand="MENUACTproperties()"/> -->
+  <item Text="Owners" id="mPBV_del" ClientSideCommand="MENUACTowners()"/>
+</items>

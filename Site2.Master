@@ -1,0 +1,45 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site2.master.cs" Inherits="_6MAR_WebApplication.Site2" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <link rel="stylesheet" type="text/css" href="GRIDcustom.css" />
+    <link rel="stylesheet" type="text/css" href="TABScustom.css" />
+    <link rel="stylesheet" type="text/css" href="menuStyle.css" />
+    <link rel="stylesheet" type="text/css" href="treeStyle.css" />
+    <link rel="stylesheet" type="text/css" href="afwac.css" />
+    <link rel="stylesheet" type="text/css" href="insideTabStyle.css" />
+    <link rel="stylesheet" type="text/css" href="JQ/jQueryAlertDialogs/jquery.alerts.css" />
+
+    <link rel="STYLESHEET" type="text/css" href="DHTMLX/dhtmlxCombo/codebase/dhtmlxcombo.css">
+
+    <link type="text/css" href="JQ/css/custom-theme/jquery-ui-1.7.2.custom.css" rel="stylesheet" />
+
+		<script type="text/javascript" src="JQ/js/jquery-1.3.2.min.js"></script>
+		<script type="text/javascript" src="JQ/js/jquery-ui-1.7.2.custom.min.js"></script>
+    <script type="text/javascript">
+	    $JQ = jQuery.noConflict();
+    </script>
+	    <script type="text/javascript" src="prototype.js"></script>
+
+
+<script type="text/javascript" src='JQ/jQueryAlertDialogs/jquery.alerts.js'></script>
+
+
+    <!-- reference to master.js was dropped -->
+
+    <title>Untitled Page</title>
+</head>
+
+
+<body style='padding-top:15px;padding-left:25px;'>
+    <form id="form1" runat="server">
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+
+</html>

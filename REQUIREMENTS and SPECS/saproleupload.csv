@@ -1,0 +1,3 @@
+SAPRoleName,Description,System,Platform,StandardActivity,RoleType
+ZSI_XX_SM30_GO,ZSI_XX_SM30_GO,PA1,PA1,Sensitive T-Code,Elevated
+ZSI_XX_WE19_GO,ZSI_XX_WE19_GO,PA1,PA1,Sensitive T-Code,Elevated

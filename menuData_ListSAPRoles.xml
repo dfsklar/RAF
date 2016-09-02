@@ -1,0 +1,8 @@
+<items>
+  <item Text="Properties" id="mPBV_props" ClientSideCommand="MENUACTproperties()"/>
+  <item Text="TCode Entitlements" ClientSideCommand="MENUACTdiveIntoDesign()"/>
+  <item Text="1251 Entitlements" ClientSideCommand="MENUACTdiveIntoDesign1251()"/>
+  <item Text="1252 Entitlements" ClientSideCommand="MENUACTdiveIntoDesign1252()"/>
+  <item Text="Owners" id="mPBV_del" ClientSideCommand="MENUACTowners()"/>
+  <item Text="Delete" id="mPBV_clone" ClientSideCommand="DeleteSAPRole()"/>
+</items>

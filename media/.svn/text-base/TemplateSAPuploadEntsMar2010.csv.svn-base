@@ -1,0 +1,4 @@
+RoleName,Platform,TCode,ActivityFolder,Type,AccessLevel,Comment
+ZSC_XX_ENDUSERSPT-PERFORMER_GO,PC1,AL11,IT: IT - Common Display,Menu,Display,This is my comment.
+'Type' field is REQUIRED: only first letter is used: M(enu) or B(ackground).  NO DEFAULT.
+'AccessLevel' field is REQUIRED: only first letter is used: U(pdate) or D(isplay-only).  NO DEFAULT.

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  
+<!-- Whenever the name of the database changes, the ODBC must be changed accordingly in the PlanetSB interface -->
+  <appSettings>
+    <add key="DBconnstr" value="Dsn=ODBC_ccr_raf;UID=dfsklar_CCR;PWD=ccezer0" />
+    <add key="BOOLautoLoginDevel" value="0" />
+    <add key="IDsubprocessVisibleToALL" value="6" />
+    <add key="IDsubprocessTrashcan" value="11" />
+    <add key="XXXXXIPADDRopenOnlyTo" value="24.30.118.245"/>
+  </appSettings>
+
+
+  <connectionStrings>
+    <add name="afwac_sv6ConnectionString" connectionString="MultipleActiveResultSets=True;Data Source=localhost;Initial Catalog=dfsklarcce_CCR_raf;Persist Security Info=True;User ID=dfsklar_CCR;Password=ccezer0" providerName="System.Data.SqlClient" />
+  </connectionStrings>
+
+  <system.web>
+    <httpRuntime executionTimeout="5000" maxRequestLength="999999"/>
+    <pages validateRequest="false" />
+    <sessionState mode="InProc" timeout="5555" />
+    <customErrors mode="Off" />
+  </system.web>
+    <system.webServer>
+        <security>
+           <requestFiltering>
+	      <requestLimits maxAllowedContentLength="1000000000"/>
+           </requestFiltering>
+        </security>
+        <handlers>
+            <clear />
+            <add name="rules-Integrated" path="*.rules" verb="*" type="System.ServiceModel.Activation.HttpHandler, System.ServiceModel, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" resourceType="Unspecified" preCondition="integratedMode" />
+            <add name="Plesk_Handler_1817628054" path="*.rules" verb="*" modules="IsapiModule" scriptProcessor="c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll" resourceType="Unspecified" />
+            <add name="xoml-Integrated" path="*.xoml" verb="*" type="System.ServiceModel.Activation.HttpHandler, System.ServiceModel, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" resourceType="Unspecified" preCondition="integratedMode" />
+            <add name="Plesk_Handler_1817628058" path="*.xoml" verb="*" modules="IsapiModule" scriptProcessor="c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll" resourceType="Unspecified" />
+            <add name="Plesk_Handler_1817628059" path="*.asp" verb="GET,HEAD,POST" modules="IsapiModule" scriptProcessor="%windir%\system32\inetsrv\asp.dll" resourceType="File" />
+            <add name="Plesk_Handler_1817628060" path="*.cer" verb="GET,HEAD,POST" modules="IsapiModule" scriptProcessor="%windir%\system32\inetsrv\asp.dll" resourceType="File" />
+            <add name="TraceHandler-Integrated" path="trace.axd" verb="GET,HEAD,POST,DEBUG" type="System.Web.Handlers.TraceHandler" resourceType="Unspecified" preCondition="integratedMode" />
+            <add name="WebAdminHandler-Integrated" path="WebAdmin.axd" verb="GET,DEBUG" type="System.Web.Handlers.WebAdminHandler" resourceType="Unspecified" preCondition="integratedMode" />
+            <add name="AssemblyResourceLoader-Integrated" path="WebResource.axd" verb="GET,DEBUG" type="System.Web.Handlers.AssemblyResourceLoader" resourceType="Unspecified" preCondition="integratedMode" />
+            <add name="PageHandlerFactory-Integrated" path="*.aspx" verb="GET,HEAD,POST,DEBUG" type="System.Web.UI.PageHandlerFactory" resourceType="Unspecified" preCondition="integratedMode" />
+            <add name="SimpleHandlerFactory-Integrated" path="*.ashx" verb="GET,HEAD,POST,DEBUG" type="System.Web.UI.SimpleHandlerFactory" resourceType="Unspecified" preCondition="integratedMode" />
+            <add name="WebServiceHandlerFactory-Integrated" path="*.asmx" verb="GET,HEAD,POST,DEBUG" type="System.Web.Services.Protocols.WebServiceHandlerFactory, System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" resourceType="Unspecified" preCondition="integratedMode" />
+            <add name="HttpRemotingHandlerFactory-rem-Integrated" path="*.rem" verb="GET,HEAD,POST,DEBUG" type="System.Runtime.Remoting.Channels.Http.HttpRemotingHandlerFactory, System.Runtime.Remoting, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" resourceType="Unspecified" preCondition="integratedMode" />
+            <add name="HttpRemotingHandlerFactory-soap-Integrated" path="*.soap" verb="GET,HEAD,POST,DEBUG" type="System.Runtime.Remoting.Channels.Http.HttpRemotingHandlerFactory, System.Runtime.Remoting, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" resourceType="Unspecified" preCondition="integratedMode" />
+            <add name="Plesk_Handler_1817628071" path="*.axd" verb="GET,HEAD,POST,DEBUG" modules="IsapiModule" scriptProcessor="%windir%\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll" resourceType="Unspecified" />
+            <add name="Plesk_Handler_1817628072" path="*.aspx" verb="GET,HEAD,POST,DEBUG" modules="IsapiModule" scriptProcessor="%windir%\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll" resourceType="Unspecified" />
+            <add name="Plesk_Handler_1817628073" path="*.ashx" verb="GET,HEAD,POST,DEBUG" modules="IsapiModule" scriptProcessor="%windir%\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll" resourceType="Unspecified" />
+            <add name="Plesk_Handler_1817628074" path="*.asmx" verb="GET,HEAD,POST,DEBUG" modules="IsapiModule" scriptProcessor="%windir%\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll" resourceType="Unspecified" />
+            <add name="Plesk_Handler_1817628075" path="*.rem" verb="GET,HEAD,POST,DEBUG" modules="IsapiModule" scriptProcessor="%windir%\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll" resourceType="Unspecified" />
+            <add name="Plesk_Handler_1817628076" path="*.soap" verb="GET,HEAD,POST,DEBUG" modules="IsapiModule" scriptProcessor="%windir%\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll" resourceType="Unspecified" />
+            <add name="SSINC-stm" path="*.stm" verb="GET,POST" modules="ServerSideIncludeModule" resourceType="File" />
+            <add name="SSINC-shtm" path="*.shtm" verb="GET,POST" modules="ServerSideIncludeModule" resourceType="File" />
+            <add name="SSINC-shtml" path="*.shtml" verb="GET,POST" modules="ServerSideIncludeModule" resourceType="File" />
+            <add name="svc-Integrated" path="*.svc" verb="*" type="System.ServiceModel.Activation.HttpHandler, System.ServiceModel, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" resourceType="Unspecified" preCondition="integratedMode" />
+            <add name="Plesk_Handler_1817628082" path="*.svc" verb="*" modules="IsapiModule" scriptProcessor="%systemroot%\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll" resourceType="Unspecified" />
+            <add name="Plesk_Handler_1817628083" path="*.htw" verb="GET,HEAD,POST" modules="IsapiModule" scriptProcessor="c:\windows\system32\webhits.dll" resourceType="Unspecified" />
+            <add name="Plesk_Handler_1817628084" path="*.ida" verb="GET,HEAD,POST" modules="IsapiModule" scriptProcessor="c:\windows\system32\idq.dll" resourceType="File" />
+            <add name="Plesk_Handler_1817628085" path="*.idq" verb="GET,HEAD,POST" modules="IsapiModule" scriptProcessor="c:\windows\system32\idq.dll" resourceType="File" />
+            <add name="TRACEVerbHandler" path="*" verb="TRACE" modules="ProtocolSupportModule" resourceType="Unspecified" />
+            <add name="Plesk_Handler_1817628094" path="*.dll" verb="*" modules="IsapiModule" resourceType="File" requireAccess="Execute" allowPathInfo="true" />
+            <add name="Plesk_Handler_1817628095" path="*.exe" verb="*" modules="CgiModule" resourceType="File" requireAccess="Execute" allowPathInfo="true" />
+            <add name="StaticFile" path="*" verb="*" modules="StaticFileModule,DefaultDocumentModule,DirectoryListingModule" resourceType="Either" />
+        </handlers>
+    </system.webServer>
+</configuration>

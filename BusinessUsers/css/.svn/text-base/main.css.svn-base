@@ -1,0 +1,225 @@
+body{
+  text-align: left;
+  background-color: #CDCDCD;
+  font-size: .9em;
+}
+
+.indentedbox {
+    margin-left: 20pt;
+    width: 400pt;
+}
+
+a {
+  text-decoration: none
+    }
+
+a:hover, a:active{
+  text-decoration: underline;
+}
+
+img{
+  border:none;
+}
+
+div#Container{
+  width: 100%;
+  border: 1px;
+  border-style: solid;
+  border-color: black;
+}
+	
+div#Header{
+  height: 47px;
+  background-color: #E21F1F;
+  background-image: url(../images/headerlines.gif);
+  background-position: right;
+  background-repeat: no-repeat;
+  padding: 8px 0px 8px 10px;
+  font-size: 2em;
+  color: white;
+  white-space: nowrap;
+}
+
+span#Navigation{
+  float: left;
+  color: white;
+  vertical-align: middle;
+}
+
+
+span#Navigation a {
+  color: white;
+}
+
+
+
+div#Navigation{
+  background-color: #D80321;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 0px 5px 0px 5px;
+  white-space: nowrap;
+  font-family: Helvetica, sans-serif;
+}
+
+span#StatusArea{
+  float: right;
+  vertical-align: middle;
+  color:#FFFFFF;
+  padding-right: 12px;
+}
+
+div#Content{
+  text-align: left;
+  padding: 10px 10px 10px 10px;
+  min-height: 400px;
+  background-color: white;
+	
+}
+
+div#Footer{
+  background-color: #D80321;
+  text-align: center;
+  border-top: 1px solid black;
+}
+
+div#PageHeader{
+  font-family: Helvetica, sans-serif;
+  border-style: dotted;
+  border: 1px dashed gray;
+  padding: 5px 5px 5px 5px;
+	
+  background-color: #E0E0E0;
+}
+
+div#PageTitle{
+
+  font-size: 1.6em;
+  font-variant: small-caps;
+}
+
+.clear{
+  clear: both;
+ }
+
+div#PageDescription{
+  font-size: 1.1em;
+  padding-left: 20px;
+}
+
+ul.square {
+  list-style-type:square
+    }
+
+table.Print
+{
+  border-collapse: collapse;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td.rightjust:
+  text-align: right;
+}
+
+table.Print td
+{
+  border-collapse:collapse;
+  padding: 5px 5px 5px 5px;
+  border: 1px solid #CCC;
+  font-size: 10px;
+}
+table.process td
+{
+  border-collapse:collapse;
+  padding: 5px 5px 5px 5px;
+  border: 1px solid #CCC;
+  font-size: 1em;
+}
+
+table.subprocess th
+{
+  background-color: #CCCCCC;
+  border-collapse:collapse;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+table.Print th
+{
+  background-color: #CCCCCC;
+  border-collapse:collapse;
+  padding-left: 6px;
+  padding-right: 6px;
+  font-size:9px;
+}
+
+table.subprocess td
+{
+  border-collapse:collapse;
+  padding-left: 6px;
+  padding-right: 6px;
+  border: 1px solid #CCC;
+  font-size: 1em;
+  vertical-align:top;
+}
+
+
+
+table.Print tr.textalignleft td 
+{
+  text-align: left;
+  vertical-align: top;
+}
+
+table.Print  td.ActivityListHeader 
+{
+  font-weight: bold;
+}
+
+
+table.Print tr th
+{
+  background: #fafafb;
+}
+
+table.process
+{
+  border-width: 3px;
+}
+
+table.process tr th
+{
+  font-size: 125%;
+  background: #fafafb;
+}
+
+table.subprocess
+{
+  xxwidth: 100%;
+}
+
+table.subprocess tr th
+{
+  font-size: 100%;
+}
+
+caption
+{
+  text-align: left;
+  padding: 10px;
+  font-size: 110%;
+  font-weight: bold;
+}
+
+table.noborder
+{
+  border: none;
+}
+
+
+.ActivityListHeader
+{
+  font-weight: bold;
+}

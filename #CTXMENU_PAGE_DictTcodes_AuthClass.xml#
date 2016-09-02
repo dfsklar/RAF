@@ -1,0 +1,4 @@
+ <items>
+  <item Text="Register new auth object in this class" ClientSideCommand="RegisterNewAuthObj_fromClassList();"/>
+  <item Text="Edit Description" ClientSideCommand="AnnounceNYI();"/>
+</items>

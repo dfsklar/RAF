@@ -1,0 +1,2 @@
+Application,Business Role,Business Role Description,Standard Activity,Type,System,Platform,Entitlement Description,Entitlement Value,Authorization Object,Field-Level Security Name,Field-Level Security Value,4th Level Security Name,4th Level Security Value,Additional Comments,
+AS400,Sklar Test Busrole 429pm,Just a test,N/A,Job Function,NA AS/400 - CALAF1A4,CALAF1A4,Group Profile,BASISXX,N/A,N/A,N/A,,,,

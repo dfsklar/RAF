@@ -1,0 +1,5 @@
+<items>
+  <item id="menuDataSAP_Edit" Text="Edit" ClientSideCommand="MENUACTedit();"/>
+  <item id="menuDataSAP_Delete" Text="Delete" ClientSideCommand="MENUACTdelete()"/>
+  <item id="menuDataSAP_UnDelete" Text="UnDelete" ClientSideCommand="MENUACTundelete()"/>
+</items>
