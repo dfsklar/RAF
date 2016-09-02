@@ -1,6 +1,0 @@
-RoleName,Platform,TCode,ActivityFolder,Type,Activity,AccessLevel
-ZSC_XX_ENDUSERSPT-PERFORMER_GO,PC1,AL11,IT: IT - Common Display,Menu,,Display
-'Type' field is REQUIRED: only first letter is used: M(enu) or B(ackground).  NO DEFAULT.
-Regarding the 'Activity' field: if Type=B then this field must be blank.
-'AccessLevel' field is REQUIRED: only first letter is used: U(pdate) or D(isplay-only).  NO DEFAULT.
-

@@ -1,2 +1,0 @@
-Role,Standard Activity,Type,Application,System,Platform,Entitlement Description,Entitlement Value,Authorization Object,Field-Level Security Name,Field-Level Security Value,4th Level Security Name,4th Level Security Value,Additional Comments
-NOTE: The Role column is optional, and should be included only if the business role is not being specified via the "Add Ents" upload launchpad.
