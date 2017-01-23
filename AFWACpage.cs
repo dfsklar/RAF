@@ -31,9 +31,9 @@ namespace _6MAR_WebApplication
 				  // ------------------------------------------
               // THE SUBPROCESS FOR AUTO-LOGIN FOR TESTING
 
-              session.idSubprocess = 10;
-              session.nameProcess = "Common";
-              session.nameSubprocess = "Exception Roles";
+              session.idSubprocess = 66;
+              session.nameProcess = "HRM";
+              session.nameSubprocess = "Human Resource Services";
 
 
 
@@ -44,8 +44,8 @@ namespace _6MAR_WebApplication
               //session.idUser = 196;
               //session.username = "AnneVer";
 
-              session.idUser = 233;
-              session.username = "ChandraM";
+              session.idUser = 232;
+              session.username = "Virna B";
 
 
 

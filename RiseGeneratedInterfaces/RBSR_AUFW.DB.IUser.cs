@@ -157,7 +157,7 @@ try{dri.Read();} catch(Exception edri){cmd.Dispose();DBClose();throw edri;}
 			cmd.Parameters.Add("c_id", OdbcType.Int);
 			cmd.Parameters["c_id"].Value = (object)ID;
 			cmd.Connection = _dbConnection;
-			OdbcDataReader dr = cmd.ExecuteReader();
+			 OdbcDataReader dr = cmd.ExecuteReader();
 			while (dr.Read())
 			{
 				if (dr.IsDBNull(0))

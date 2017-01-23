@@ -110,10 +110,7 @@ namespace RBSR_AUFW.DB.ITcodeAssignmentSet
 			if (_dbConnection.Driver.ToLower().StartsWith("sql"))
 				cmd.CommandText += " SELECT convert(int,SCOPE_IDENTITY())";
 			cmd.Parameters.Add("c_u_tstamp", OdbcType.DateTime);
-
-            tstamp = tstamp.AddMilliseconds( 0 - tstamp.Millisecond);
-
-			cmd.Parameters["c_u_tstamp"].Value = (object)tstamp;
+            cmd.Parameters["c_u_tstamp"].Value = SetSafeDBDate(tstamp);// (object)tstamp;
 			cmd.Parameters.Add("c_r_SubProcess", OdbcType.Int);
 			cmd.Parameters["c_r_SubProcess"].Value = (object)SubProcessID;
 			cmd.Parameters.Add("c_r_User", OdbcType.Int);
@@ -207,6 +204,17 @@ try{dri.Read();} catch(Exception edri){cmd.Dispose();DBClose();throw edri;}
 			DBClose();
 			return rv;
 		}
+
+
+        public static object SetSafeDBDate(System.DateTime dtIn)
+        {
+            if (dtIn == new DateTime(0))
+                return System.DBNull.Value;
+            else
+                return new DateTime(dtIn.Year, dtIn.Month, dtIn.Day, dtIn.Hour, dtIn.Minute, dtIn.Second);
+        }
+
+
 		/// <summary>
 		/// 
 		/// update a row in table t_RBSR_AUFW_u_TcodeAssignmentSet.
@@ -224,8 +232,9 @@ try{dri.Read();} catch(Exception edri){cmd.Dispose();DBClose();throw edri;}
 			DBConnect();
 			OdbcCommand cmd = _dbConnection.CreateCommand();
 			cmd.CommandText = "update \"t_RBSR_AUFW_u_TcodeAssignmentSet\" set \"c_u_tstamp\"=?,\"c_u_Commentary\"=?,\"c_r_SubProcess\"=?,\"c_r_User\"=?,\"c_u_Status\"=? where \"c_id\" = ?";
-			cmd.Parameters.Add("c_u_tstamp", OdbcType.DateTime);
-			cmd.Parameters["c_u_tstamp"].Value = (object)tstamp;
+
+            cmd.Parameters.Add("c_u_tstamp", OdbcType.DateTime);
+            cmd.Parameters["c_u_tstamp"].Value = SetSafeDBDate(tstamp);
 			cmd.Parameters.Add("c_u_Commentary", OdbcType.NVarChar, 1024);
 			cmd.Parameters["c_u_Commentary"].Value = (Commentary != null ? (object)Commentary : DBNull.Value);
 			cmd.Parameters.Add("c_r_SubProcess", OdbcType.Int);

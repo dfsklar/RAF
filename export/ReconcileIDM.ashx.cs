@@ -257,7 +257,8 @@ RTRIM(LTRIM(BROL.c_u_Description)) as BusRoleDescr,
 MVF.c_u_Formula as Formula,
 MVF.c_u_KEYapplication as Appl,
 OWNERS.c_u_EID as EIDprimaryApprover,
-SUBPR.c_u_Name as SubprocessName
+SUBPR.c_u_Name as SubprocessName,
+BROL.c_r_SubProcess as SubprocessID
 
 FROM 
    t_RBSR_AUFW_u_EntAssignment TEASS
@@ -315,6 +316,7 @@ AND
       // These map role names to role descriptions
       Dictionary<string, string> DICTactiveBroles = new Dictionary<string, string>();
       Dictionary<string, string> DICTidmBroles = new Dictionary<string, string>();
+      Dictionary<string, string> MAPbrolenamesToSubprids = new Dictionary<string, string>();
 
       // Key = rolename + EID of primary approver
       // Value = 1
@@ -341,7 +343,7 @@ AND
           string STRapp = dr.GetValue(4).ToString();
           string STRapproverEID = dr.GetValue(5).ToString();
           string STRsubpr = dr.GetValue(6).ToString();
-
+          int IDsubpr = (int)(dr.GetValue(7));
 
 
           if ( ! DICTactiveBroles.ContainsKey(brolename))
@@ -349,6 +351,11 @@ AND
             {
               DICTactiveBroles.Add(brolename, broledescr);
             }
+
+          if (!MAPbrolenamesToSubprids.ContainsKey(brolename))
+          {
+              MAPbrolenamesToSubprids.Add(brolename, IDsubpr.ToString() + " = " + STRsubpr);
+          }
 
             if (STRapproverEID.Length > 1)
             {
@@ -473,7 +480,7 @@ AND
                 {
 
                   case "PrimaryApprover":
-		  case "RoleApprover":
+		          case "RoleApprover":
                       string target = idmrsrcRolename + (char)1 + idmrsrcValue;
                       if (DICTroleApprover.ContainsKey(target))
                       {
@@ -520,7 +527,7 @@ AND
                             continue;
                           }
                       }
-                    RecordDelta(sheetDeltas, idmrsrcRolename, idmrsrcValue, "Remove", "Entitlement", null);
+                    RecordDelta(sheetDeltas, idmrsrcRolename, idmrsrcValue, "Remove", "Entitlement", MAPbrolenamesToSubprids[idmrsrcRolename]);
                     errcountEntitlements++;
                   }
                   break;

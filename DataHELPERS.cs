@@ -291,11 +291,7 @@ namespace _6MAR_WebApplication
         }
 
 
-      int IDnewWS =
-        Ieaset.NewEntAssignmentSet(IDsubprocess, IDuser);
-      Ieaset.SetEntAssignmentSet(IDnewWS, "WORKSPACE", null, commentary, IDsubprocess,
-                                 IDuser, DateTime.Now);
-
+      // Would be nice:  OdbcTransaction taction = conn.BeginTransaction(System.Data.IsolationLevel.Snapshot);
 
       /* Find the list of EAssignments to bring over to the Workspace */
       IEntAssignment Iea = new IEntAssignment(conn);
@@ -316,6 +312,12 @@ namespace _6MAR_WebApplication
             }
         }
 
+
+      int IDnewWS = Ieaset.NewEntAssignmentSet(IDsubprocess, IDuser);
+
+      Ieaset.SetEntAssignmentSet(IDnewWS, "DONOTUSE", null, commentary, IDsubprocess,
+                                 IDuser, DateTime.Now);
+
       if (IDeas >= 0)
         {
           returnListEntAssignmentByEntAssignmentSet[] _IDea =
@@ -333,6 +335,11 @@ namespace _6MAR_WebApplication
               int IDbaby = Iea.NewEntAssignment(IDnewWS, IDbusrole, IDentitlementVector, "A");
             }
         }
+
+      Ieaset.SetEntAssignmentSet(IDnewWS, "WORKSPACE", null, commentary, IDsubprocess,
+                                 IDuser, DateTime.Now);
+      
+      conn.Close();
 
       return IDnewWS;
     }

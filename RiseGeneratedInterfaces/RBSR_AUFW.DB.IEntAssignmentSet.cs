@@ -10,7 +10,7 @@ using System.IO;
 // New Model (RBSR_AUFW)
 // Version 1.150 (#191)
 //
-// 
+// In Nov 2016, I started adding support for transactions but by no means is this complete -- do not use the new entrypoint.
 // 
 //
 //3c6e8d24-b5d1-4af5-8771-4728cd3b6c74
@@ -66,6 +66,8 @@ namespace RBSR_AUFW.DB.IEntAssignmentSet
 		private string _tempDir = ".";
 		private bool _odbcCloseAfterUse;
 		private OdbcConnection _dbConnection = null;
+        private OdbcTransaction _dbTransaction = null;
+
 		public string TempDir
 		{
 			get { return _tempDir; }
@@ -76,12 +78,23 @@ namespace RBSR_AUFW.DB.IEntAssignmentSet
 			get { return _dbConnection; }
 			set { _dbConnection = value; }
 		}
+
+
+
 		public IEntAssignmentSet() : this((OdbcConnection)null) { }
 		public IEntAssignmentSet(string connectionString) : this(new OdbcConnection(connectionString)) { }
 		public IEntAssignmentSet(OdbcConnection dbConnection)
 		{
 			_dbConnection = dbConnection;
 		}
+        public IEntAssignmentSet(OdbcConnection conn, OdbcTransaction dbTrans)
+        {
+            _dbConnection = conn;
+            _dbTransaction = dbTrans;
+        }
+
+
+
 		protected void DBConnect()
 		{
 			if (_odbcCloseAfterUse = (_dbConnection.State != ConnectionState.Open))
@@ -95,7 +108,9 @@ namespace RBSR_AUFW.DB.IEntAssignmentSet
 				}
 			}
 		}
-		protected void DBClose() { if (_odbcCloseAfterUse) _dbConnection.Close(); }
+
+        
+        protected void DBClose() { if (_odbcCloseAfterUse) _dbConnection.Close(); }
 		/// <summary>
 		/// 
 		/// insert a row in table t_RBSR_AUFW_u_EntAssignmentSet.
@@ -103,7 +118,10 @@ namespace RBSR_AUFW.DB.IEntAssignmentSet
 		/// <param name="SubProcessID"></param>
 		/// <param name="UserID"></param>
 		/// <returns>The integer ID of the new object.</returns>
-		public int NewEntAssignmentSet(int SubProcessID, int UserID)
+
+        
+        
+        public int NewEntAssignmentSet(int SubProcessID, int UserID)
 		{
 			int rv = 0;
 			DBConnect();
