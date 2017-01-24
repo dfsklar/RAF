@@ -1497,12 +1497,12 @@ EASET.c_u_Status = 'ACTIVE' ";
             IAuthRow1251 engine1251 = new IAuthRow1251(conn);
 
             int IDnewWS =
-              Ieaset.NewTcodeAssignmentSet(DateTime.Now, IDsubprocess, IDuser, "WORKSPACE");
+              Ieaset.NewTcodeAssignmentSet(DateTime.Now, IDsubprocess, IDuser, "DONOTUSE-DAMAGED");
 
             if (commentary != null)
             {
                 Ieaset.SetTcodeAssignmentSet
-                  (IDnewWS, DateTime.Now, commentary, IDsubprocess, IDuser, "WORKSPACE");
+                  (IDnewWS, DateTime.Now, commentary, IDsubprocess, IDuser, "DONOTUSE-DAMAGED");
             }
 
 
@@ -1590,6 +1590,9 @@ EASET.c_u_Status = 'ACTIVE' ";
 
                 // //
             }
+
+            Ieaset.SetTcodeAssignmentSet (IDnewWS, DateTime.Now, commentary, IDsubprocess, IDuser, "WORKSPACE");
+
             return IDnewWS;
         }
 
