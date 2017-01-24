@@ -43,6 +43,19 @@ namespace _6MAR_WebApplication
 
 
 
+      // When we moved to latest SQL Server, we found that the ODBC interface
+      // no longer allowed DatTime values with non-zero milliseconds amounts.
+      // This solves the problem by returning a DateTime with no fractional-seconds component.
+    public static object SetSafeDBDate(System.DateTime dtIn)
+    {
+        if (dtIn == new DateTime(0))
+            return System.DBNull.Value;
+        else
+            return new DateTime(dtIn.Year, dtIn.Month, dtIn.Day, dtIn.Hour, dtIn.Minute, dtIn.Second);
+    }
+
+
+
 
     public static void AutoRegisterAppsInManifestFormulaTable()
     {

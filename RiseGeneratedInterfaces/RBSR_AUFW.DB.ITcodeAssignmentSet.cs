@@ -4,6 +4,7 @@ using System.Text;
 using System.Data;
 using System.Data.Odbc;
 using System.IO;
+using _6MAR_WebApplication;
 
 //3c6e8d24-b5d1-4af5-8771-4728cd3b6c74
 //
@@ -110,7 +111,7 @@ namespace RBSR_AUFW.DB.ITcodeAssignmentSet
 			if (_dbConnection.Driver.ToLower().StartsWith("sql"))
 				cmd.CommandText += " SELECT convert(int,SCOPE_IDENTITY())";
 			cmd.Parameters.Add("c_u_tstamp", OdbcType.DateTime);
-            cmd.Parameters["c_u_tstamp"].Value = SetSafeDBDate(tstamp);// (object)tstamp;
+            cmd.Parameters["c_u_tstamp"].Value = HELPERS.SetSafeDBDate(tstamp);
 			cmd.Parameters.Add("c_r_SubProcess", OdbcType.Int);
 			cmd.Parameters["c_r_SubProcess"].Value = (object)SubProcessID;
 			cmd.Parameters.Add("c_r_User", OdbcType.Int);
@@ -206,13 +207,6 @@ try{dri.Read();} catch(Exception edri){cmd.Dispose();DBClose();throw edri;}
 		}
 
 
-        public static object SetSafeDBDate(System.DateTime dtIn)
-        {
-            if (dtIn == new DateTime(0))
-                return System.DBNull.Value;
-            else
-                return new DateTime(dtIn.Year, dtIn.Month, dtIn.Day, dtIn.Hour, dtIn.Minute, dtIn.Second);
-        }
 
 
 		/// <summary>
@@ -234,7 +228,7 @@ try{dri.Read();} catch(Exception edri){cmd.Dispose();DBClose();throw edri;}
 			cmd.CommandText = "update \"t_RBSR_AUFW_u_TcodeAssignmentSet\" set \"c_u_tstamp\"=?,\"c_u_Commentary\"=?,\"c_r_SubProcess\"=?,\"c_r_User\"=?,\"c_u_Status\"=? where \"c_id\" = ?";
 
             cmd.Parameters.Add("c_u_tstamp", OdbcType.DateTime);
-            cmd.Parameters["c_u_tstamp"].Value = SetSafeDBDate(tstamp);
+            cmd.Parameters["c_u_tstamp"].Value = HELPERS.SetSafeDBDate(tstamp);
 			cmd.Parameters.Add("c_u_Commentary", OdbcType.NVarChar, 1024);
 			cmd.Parameters["c_u_Commentary"].Value = (Commentary != null ? (object)Commentary : DBNull.Value);
 			cmd.Parameters.Add("c_r_SubProcess", OdbcType.Int);

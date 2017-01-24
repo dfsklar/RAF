@@ -4,6 +4,7 @@ using System.Text;
 using System.Data;
 using System.Data.Odbc;
 using System.IO;
+using _6MAR_WebApplication;
 
 //3c6e8d24-b5d1-4af5-8771-4728cd3b6c74
 //
@@ -244,7 +245,7 @@ try{dri.Read();} catch(Exception edri){cmd.Dispose();DBClose();throw edri;}
 			cmd.Parameters.Add("c_u_Status", OdbcType.NVarChar, 10);
 			cmd.Parameters["c_u_Status"].Value = (Status != null ? (object)Status : DBNull.Value);
 			cmd.Parameters.Add("c_u_DATETIMElock", OdbcType.DateTime);
-			cmd.Parameters["c_u_DATETIMElock"].Value = (DATETIMElock != null ? (object)DATETIMElock : DBNull.Value);
+			cmd.Parameters["c_u_DATETIMElock"].Value = (DATETIMElock.HasValue ? HELPERS.SetSafeDBDate(DATETIMElock.Value) : DBNull.Value);
 			cmd.Parameters.Add("c_u_Commentary", OdbcType.NVarChar, 1024);
 			cmd.Parameters["c_u_Commentary"].Value = (Commentary != null ? (object)Commentary : DBNull.Value);
 			cmd.Parameters.Add("c_r_SubProcess", OdbcType.Int);
@@ -252,12 +253,7 @@ try{dri.Read();} catch(Exception edri){cmd.Dispose();DBClose();throw edri;}
 			cmd.Parameters.Add("c_r_User", OdbcType.Int);
 			cmd.Parameters["c_r_User"].Value = (object)UserID;
 			cmd.Parameters.Add("c_u_DATETIMEbirth", OdbcType.DateTime);
-            if (DATETIMEbirth != null)
-            {
-                DATETIMEbirth = DATETIMEbirth.Value.AddMilliseconds(0 - DATETIMEbirth.Value.Millisecond);
-            }
-
-			cmd.Parameters["c_u_DATETIMEbirth"].Value = (DATETIMEbirth != null ? (object)DATETIMEbirth : DBNull.Value);
+			cmd.Parameters["c_u_DATETIMEbirth"].Value = (DATETIMEbirth.HasValue ? HELPERS.SetSafeDBDate(DATETIMEbirth.Value) : DBNull.Value);
 			cmd.Parameters.Add("c_id", OdbcType.Int);
 			cmd.Parameters["c_id"].Value = (object)ID;
 			cmd.Connection = _dbConnection;

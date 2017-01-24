@@ -42,7 +42,7 @@ function Button1_onclick() {
 <img src='images/RAFtextname_whiteONtransparent.png' border='0'/>
 -->
 
-<img src='Variant_CCR/images/CCR-RAF-logo-upperleft.png' border='0' />
+<img src='images/CCR-RAF-logo-upperleft.png' border='0' />
 
 
 

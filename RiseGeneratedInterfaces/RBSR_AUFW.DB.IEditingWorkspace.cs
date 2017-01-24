@@ -4,6 +4,7 @@ using System.Text;
 using System.Data;
 using System.Data.Odbc;
 using System.IO;
+using _6MAR_WebApplication;
 
 //3c6e8d24-b5d1-4af5-8771-4728cd3b6c74
 //
@@ -117,7 +118,7 @@ namespace RBSR_AUFW.DB.IEditingWorkspace
 			cmd.Parameters.Add("c_u_Commentary", OdbcType.NVarChar, 2048);
 			cmd.Parameters["c_u_Commentary"].Value = (Commentary != null ? (object)Commentary : DBNull.Value);
 			cmd.Parameters.Add("c_u_TimeOfBirth", OdbcType.DateTime);
-			cmd.Parameters["c_u_TimeOfBirth"].Value = (object)TimeOfBirth;
+			cmd.Parameters["c_u_TimeOfBirth"].Value = HELPERS.SetSafeDBDate(TimeOfBirth);
 			cmd.Parameters.Add("c_r_SubProcess", OdbcType.Int);
 			cmd.Parameters["c_r_SubProcess"].Value = (object)SubProcessID;
 			cmd.Parameters.Add("c_r_User", OdbcType.Int);
@@ -236,7 +237,7 @@ try{dri.Read();} catch(Exception edri){cmd.Dispose();DBClose();throw edri;}
 			cmd.Parameters.Add("c_u_Commentary", OdbcType.NVarChar, 2048);
 			cmd.Parameters["c_u_Commentary"].Value = (Commentary != null ? (object)Commentary : DBNull.Value);
 			cmd.Parameters.Add("c_u_TimeOfBirth", OdbcType.DateTime);
-			cmd.Parameters["c_u_TimeOfBirth"].Value = (object)TimeOfBirth;
+            cmd.Parameters["c_u_TimeOfBirth"].Value = HELPERS.SetSafeDBDate(TimeOfBirth);
 			cmd.Parameters.Add("c_u_HasUnsavedChanges", OdbcType.Bit);
 			cmd.Parameters["c_u_HasUnsavedChanges"].Value = (object)HasUnsavedChanges;
 			cmd.Parameters.Add("c_r_SubProcess", OdbcType.Int);

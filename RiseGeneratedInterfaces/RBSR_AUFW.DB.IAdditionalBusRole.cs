@@ -4,6 +4,7 @@ using System.Text;
 using System.Data;
 using System.Data.Odbc;
 using System.IO;
+using _6MAR_WebApplication;
 
 //3c6e8d24-b5d1-4af5-8771-4728cd3b6c74
 //
@@ -231,9 +232,9 @@ try{dri.Read();} catch(Exception edri){cmd.Dispose();DBClose();throw edri;}
 			cmd.Parameters.Add("c_u_RecertificationInterval", OdbcType.NVarChar, 15);
 			cmd.Parameters["c_u_RecertificationInterval"].Value = (RecertificationInterval != null ? (object)RecertificationInterval : DBNull.Value);
 			cmd.Parameters.Add("c_u_RecertificationStartDate", OdbcType.DateTime);
-			cmd.Parameters["c_u_RecertificationStartDate"].Value = (RecertificationStartDate != null ? (object)RecertificationStartDate : DBNull.Value);
+			cmd.Parameters["c_u_RecertificationStartDate"].Value = ((RecertificationStartDate.HasValue) ? HELPERS.SetSafeDBDate(RecertificationStartDate.Value) : DBNull.Value);
 			cmd.Parameters.Add("c_u_ExpirationDate", OdbcType.DateTime);
-			cmd.Parameters["c_u_ExpirationDate"].Value = (ExpirationDate != null ? (object)ExpirationDate : DBNull.Value);
+			cmd.Parameters["c_u_ExpirationDate"].Value = (ExpirationDate.HasValue ? HELPERS.SetSafeDBDate(ExpirationDate.Value) : DBNull.Value);
 			cmd.Parameters.Add("c_id", OdbcType.Int);
 			cmd.Parameters["c_id"].Value = (object)ID;
 			cmd.Connection = _dbConnection;
