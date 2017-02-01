@@ -34,6 +34,46 @@ namespace _6MAR_WebApplication
 {
 
 
+    public class RISEBASE
+    {
+        protected string _tempDir = ".";
+        protected bool _odbcCloseAfterUse;
+        protected OdbcConnection _dbConnection = null;
+        public string TempDir
+        {
+            get { return _tempDir; }
+            set { _tempDir = value; }
+        }
+        public OdbcConnection DbConnection
+        {
+            get { return _dbConnection; }
+            set { _dbConnection = value; }
+        }
+
+        protected void DBClose() { if (_odbcCloseAfterUse) _dbConnection.Close(); }
+
+        protected void DBConnect()
+        {
+            if (_odbcCloseAfterUse = (_dbConnection.State != ConnectionState.Open) && (_dbConnection.State != ConnectionState.Connecting))
+            {
+                _dbConnection.Open();
+                if (_dbConnection.Driver.ToLower().StartsWith("myodbc"))
+                {
+                    OdbcCommand cmd = _dbConnection.CreateCommand();
+                    cmd.CommandText = "SET sql_mode = 'ANSI'";
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            else
+            {
+                if ((_dbConnection.State == ConnectionState.Connecting))
+                {
+                    System.Threading.Thread.Sleep(2000);
+                }
+            }
+        }
+    }
+
 
 
     public class HELPERS

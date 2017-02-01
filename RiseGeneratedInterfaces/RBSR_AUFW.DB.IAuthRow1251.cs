@@ -105,41 +105,14 @@ namespace RBSR_AUFW.DB.IAuthRow1251
 	/// Class implementing operations on:
 	///     Table t_RBSR_AUFW_u_AuthRow1251
 	/// </summary>
-	public class IAuthRow1251
+	public class IAuthRow1251 : _6MAR_WebApplication.RISEBASE
 	{
-		private string _tempDir = ".";
-		private bool _odbcCloseAfterUse;
-		private OdbcConnection _dbConnection = null;
-		public string TempDir
-		{
-			get { return _tempDir; }
-			set { _tempDir = value; }
-		}
-		public OdbcConnection DbConnection
-		{
-			get { return _dbConnection; }
-			set { _dbConnection = value; }
-		}
 		public IAuthRow1251() : this((OdbcConnection)null) { }
 		public IAuthRow1251(string connectionString) : this(new OdbcConnection(connectionString)) { }
 		public IAuthRow1251(OdbcConnection dbConnection)
 		{
 			_dbConnection = dbConnection;
 		}
-		protected void DBConnect()
-		{
-			if (_odbcCloseAfterUse = (_dbConnection.State != ConnectionState.Open))
-			{
-				_dbConnection.Open();
-				if (_dbConnection.Driver.ToLower().StartsWith("myodbc"))
-				{
-					OdbcCommand cmd = _dbConnection.CreateCommand();
-					cmd.CommandText = "SET sql_mode = 'ANSI'";
-					cmd.ExecuteNonQuery();
-				}
-			}
-		}
-		protected void DBClose() { if (_odbcCloseAfterUse) _dbConnection.Close(); }
 		/// <summary>
 		/// 
 		/// insert a row in table t_RBSR_AUFW_u_AuthRow1251.
