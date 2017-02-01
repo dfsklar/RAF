@@ -10,6 +10,7 @@ using System.Web.SessionState;
 using RBSR_AUFW.DB.IEntAssignmentSet;
 using RBSR_AUFW.DB.ITcodeAssignmentSet;
 using RBSR_AUFW.DB.IEntitlement;
+using RBSR_AUFW.DB.IEntAssignment;
 
 namespace _6MAR_WebApplication.utilities
 {
@@ -245,6 +246,15 @@ ORDER BY AUFWENT.c_id
       }
       context.Response.Write("OK\n");
     }
+
+
+
+
+
+
+
+
+
 
 
 

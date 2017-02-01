@@ -4,6 +4,7 @@ using System.Text;
 using System.Data;
 using System.Data.Odbc;
 using System.IO;
+using _6MAR_WebApplication;
 
 //3c6e8d24-b5d1-4af5-8771-4728cd3b6c74
 //
@@ -57,41 +58,14 @@ namespace RBSR_AUFW.DB.IChangeManagementEvent
 	/// Class implementing operations on:
 	///     Table t_RBSR_AUFW_u_ChangeManagementEvent
 	/// </summary>
-	public class IChangeManagementEvent
+	public class IChangeManagementEvent : _6MAR_WebApplication.RISEBASE
 	{
-		private string _tempDir = ".";
-		private bool _odbcCloseAfterUse;
-		private OdbcConnection _dbConnection = null;
-		public string TempDir
-		{
-			get { return _tempDir; }
-			set { _tempDir = value; }
-		}
-		public OdbcConnection DbConnection
-		{
-			get { return _dbConnection; }
-			set { _dbConnection = value; }
-		}
 		public IChangeManagementEvent() : this((OdbcConnection)null) { }
 		public IChangeManagementEvent(string connectionString) : this(new OdbcConnection(connectionString)) { }
 		public IChangeManagementEvent(OdbcConnection dbConnection)
 		{
 			_dbConnection = dbConnection;
 		}
-		protected void DBConnect()
-		{
-			if (_odbcCloseAfterUse = (_dbConnection.State != ConnectionState.Open))
-			{
-				_dbConnection.Open();
-				if (_dbConnection.Driver.ToLower().StartsWith("myodbc"))
-				{
-					OdbcCommand cmd = _dbConnection.CreateCommand();
-					cmd.CommandText = "SET sql_mode = 'ANSI'";
-					cmd.ExecuteNonQuery();
-				}
-			}
-		}
-		protected void DBClose() { if (_odbcCloseAfterUse) _dbConnection.Close(); }
 		/// <summary>
 		/// 
 		/// insert a row in table t_RBSR_AUFW_u_ChangeManagementEvent.
@@ -221,7 +195,7 @@ try{dri.Read();} catch(Exception edri){cmd.Dispose();DBClose();throw edri;}
 			cmd.Parameters.Add("c_u_Who", OdbcType.NVarChar, 50);
 			cmd.Parameters["c_u_Who"].Value = (Who != null ? (object)Who : DBNull.Value);
 			cmd.Parameters.Add("c_u_TimeStamp", OdbcType.DateTime);
-			cmd.Parameters["c_u_TimeStamp"].Value = (TimeStamp != null ? (object)TimeStamp : DBNull.Value);
+			cmd.Parameters["c_u_TimeStamp"].Value = (TimeStamp.HasValue ? HELPERS.SetSafeDBDate(TimeStamp.Value) : DBNull.Value);
 			cmd.Parameters.Add("c_r_EntAssignmentSet", OdbcType.Int);
 			cmd.Parameters["c_r_EntAssignmentSet"].Value = (object)EntAssignmentSetID;
 			cmd.Parameters.Add("c_u_Commentary", OdbcType.NText);
@@ -247,7 +221,7 @@ try{dri.Read();} catch(Exception edri){cmd.Dispose();DBClose();throw edri;}
             cmd.Parameters.Add("c_u_Who", OdbcType.NVarChar, 50);
             cmd.Parameters["c_u_Who"].Value = (Who != null ? (object)Who : DBNull.Value);
             cmd.Parameters.Add("c_u_TimeStamp", OdbcType.DateTime);
-            cmd.Parameters["c_u_TimeStamp"].Value = (TimeStamp != null ? (object)TimeStamp : DBNull.Value);
+            cmd.Parameters["c_u_TimeStamp"].Value = (TimeStamp.HasValue ? HELPERS.SetSafeDBDate(TimeStamp.Value) : DBNull.Value);
             cmd.Parameters.Add("c_u_Commentary", OdbcType.NText);
             cmd.Parameters["c_u_Commentary"].Value = (Commentary != null ? (object)Commentary : DBNull.Value);
             cmd.Parameters.Add("c_id", OdbcType.Int);

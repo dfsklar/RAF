@@ -45,41 +45,15 @@ namespace RBSR_AUFW.DB.IUser
 	/// Class implementing operations on:
 	///     Table t_RBSR_AUFW_u_User
 	/// </summary>
-	public class IUser
+	public class IUser : _6MAR_WebApplication.RISEBASE
 	{
-		private string _tempDir = ".";
-		private bool _odbcCloseAfterUse;
-		private OdbcConnection _dbConnection = null;
-		public string TempDir
-		{
-			get { return _tempDir; }
-			set { _tempDir = value; }
-		}
-		public OdbcConnection DbConnection
-		{
-			get { return _dbConnection; }
-			set { _dbConnection = value; }
-		}
 		public IUser() : this((OdbcConnection)null) { }
 		public IUser(string connectionString) : this(new OdbcConnection(connectionString)) { }
 		public IUser(OdbcConnection dbConnection)
 		{
 			_dbConnection = dbConnection;
 		}
-		protected void DBConnect()
-		{
-			if (_odbcCloseAfterUse = (_dbConnection.State != ConnectionState.Open))
-			{
-				_dbConnection.Open();
-				if (_dbConnection.Driver.ToLower().StartsWith("myodbc"))
-				{
-					OdbcCommand cmd = _dbConnection.CreateCommand();
-					cmd.CommandText = "SET sql_mode = 'ANSI'";
-					cmd.ExecuteNonQuery();
-				}
-			}
-		}
-		protected void DBClose() { if (_odbcCloseAfterUse) _dbConnection.Close(); }
+
 		/// <summary>
 		/// 
 		/// insert a row in table t_RBSR_AUFW_u_User.
@@ -157,7 +131,7 @@ try{dri.Read();} catch(Exception edri){cmd.Dispose();DBClose();throw edri;}
 			cmd.Parameters.Add("c_id", OdbcType.Int);
 			cmd.Parameters["c_id"].Value = (object)ID;
 			cmd.Connection = _dbConnection;
-			OdbcDataReader dr = cmd.ExecuteReader();
+			 OdbcDataReader dr = cmd.ExecuteReader();
 			while (dr.Read())
 			{
 				if (dr.IsDBNull(0))

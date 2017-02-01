@@ -4,6 +4,7 @@ using System.Text;
 using System.Data;
 using System.Data.Odbc;
 using System.IO;
+using _6MAR_WebApplication;
 
 //3c6e8d24-b5d1-4af5-8771-4728cd3b6c74
 //
@@ -71,41 +72,15 @@ namespace RBSR_AUFW.DB.IEASfileAttachment
 	/// Class implementing operations on:
 	///     Table t_RBSR_AUFW_u_EASfileAttachment
 	/// </summary>
-	public class IEASfileAttachment
+	public class IEASfileAttachment : _6MAR_WebApplication.RISEBASE
 	{
-		private string _tempDir = ".";
-		private bool _odbcCloseAfterUse;
-		private OdbcConnection _dbConnection = null;
-		public string TempDir
-		{
-			get { return _tempDir; }
-			set { _tempDir = value; }
-		}
-		public OdbcConnection DbConnection
-		{
-			get { return _dbConnection; }
-			set { _dbConnection = value; }
-		}
 		public IEASfileAttachment() : this((OdbcConnection)null) { }
 		public IEASfileAttachment(string connectionString) : this(new OdbcConnection(connectionString)) { }
 		public IEASfileAttachment(OdbcConnection dbConnection)
 		{
 			_dbConnection = dbConnection;
 		}
-		protected void DBConnect()
-		{
-			if (_odbcCloseAfterUse = (_dbConnection.State != ConnectionState.Open))
-			{
-				_dbConnection.Open();
-				if (_dbConnection.Driver.ToLower().StartsWith("myodbc"))
-				{
-					OdbcCommand cmd = _dbConnection.CreateCommand();
-					cmd.CommandText = "SET sql_mode = 'ANSI'";
-					cmd.ExecuteNonQuery();
-				}
-			}
-		}
-		protected void DBClose() { if (_odbcCloseAfterUse) _dbConnection.Close(); }
+
 		/// <summary>
 		/// 
 		/// insert a row in table t_RBSR_AUFW_u_EASfileAttachment.
@@ -130,7 +105,7 @@ namespace RBSR_AUFW.DB.IEASfileAttachment
 			cmd.Parameters.Add("c_u_Comment", OdbcType.NVarChar, 1024);
 			cmd.Parameters["c_u_Comment"].Value = (Comment != null ? (object)Comment : DBNull.Value);
 			cmd.Parameters.Add("c_u_UploadDate", OdbcType.DateTime);
-			cmd.Parameters["c_u_UploadDate"].Value = (object)UploadDate;
+			cmd.Parameters["c_u_UploadDate"].Value = HELPERS.SetSafeDBDate(UploadDate);
 			cmd.Parameters.Add("c_r_EntAssignmentSet", OdbcType.Int);
 			cmd.Parameters["c_r_EntAssignmentSet"].Value = (object)EntAssignmentSetID;
 			OdbcDataReader dri = cmd.ExecuteReader();
@@ -238,7 +213,7 @@ namespace RBSR_AUFW.DB.IEASfileAttachment
 			cmd.Parameters.Add("c_u_Comment", OdbcType.NVarChar, 1024);
 			cmd.Parameters["c_u_Comment"].Value = (Comment != null ? (object)Comment : DBNull.Value);
 			cmd.Parameters.Add("c_u_UploadDate", OdbcType.DateTime);
-			cmd.Parameters["c_u_UploadDate"].Value = (object)UploadDate;
+            cmd.Parameters["c_u_UploadDate"].Value = HELPERS.SetSafeDBDate(UploadDate);
 			cmd.Parameters.Add("c_r_EntAssignmentSet", OdbcType.Int);
 			cmd.Parameters["c_r_EntAssignmentSet"].Value = (object)EntAssignmentSetID;
 			cmd.Parameters.Add("c_id", OdbcType.Int);

@@ -57,41 +57,15 @@ namespace RBSR_AUFW.DB.IBusRoleOwner
 	/// Class implementing operations on:
 	///     Table t_RBSR_AUFW_u_BusRoleOwner
 	/// </summary>
-	public class IBusRoleOwner
+	public class IBusRoleOwner : _6MAR_WebApplication.RISEBASE
 	{
-		private string _tempDir = ".";
-		private bool _odbcCloseAfterUse;
-		private OdbcConnection _dbConnection = null;
-		public string TempDir
-		{
-			get { return _tempDir; }
-			set { _tempDir = value; }
-		}
-		public OdbcConnection DbConnection
-		{
-			get { return _dbConnection; }
-			set { _dbConnection = value; }
-		}
 		public IBusRoleOwner() : this((OdbcConnection)null) { }
 		public IBusRoleOwner(string connectionString) : this(new OdbcConnection(connectionString)) { }
 		public IBusRoleOwner(OdbcConnection dbConnection)
 		{
 			_dbConnection = dbConnection;
 		}
-		protected void DBConnect()
-		{
-			if (_odbcCloseAfterUse = (_dbConnection.State != ConnectionState.Open))
-			{
-				_dbConnection.Open();
-				if (_dbConnection.Driver.ToLower().StartsWith("myodbc"))
-				{
-					OdbcCommand cmd = _dbConnection.CreateCommand();
-					cmd.CommandText = "SET sql_mode = 'ANSI'";
-					cmd.ExecuteNonQuery();
-				}
-			}
-		}
-		protected void DBClose() { if (_odbcCloseAfterUse) _dbConnection.Close(); }
+
 		/// <summary>
 		/// 
 		/// insert a row in table t_RBSR_AUFW_u_BusRoleOwner.

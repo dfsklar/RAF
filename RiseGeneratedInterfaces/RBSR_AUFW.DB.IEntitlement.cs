@@ -69,41 +69,15 @@ namespace RBSR_AUFW.DB.IEntitlement
 	/// Class implementing operations on:
 	///     Table t_RBSR_AUFW_u_Entitlement
 	/// </summary>
-	public class IEntitlement
+	public class IEntitlement : _6MAR_WebApplication.RISEBASE
 	{
-		private string _tempDir = ".";
-		private bool _odbcCloseAfterUse;
-		private OdbcConnection _dbConnection = null;
-		public string TempDir
-		{
-			get { return _tempDir; }
-			set { _tempDir = value; }
-		}
-		public OdbcConnection DbConnection
-		{
-			get { return _dbConnection; }
-			set { _dbConnection = value; }
-		}
 		public IEntitlement() : this((OdbcConnection)null) { }
 		public IEntitlement(string connectionString) : this(new OdbcConnection(connectionString)) { }
 		public IEntitlement(OdbcConnection dbConnection)
 		{
 			_dbConnection = dbConnection;
 		}
-		protected void DBConnect()
-		{
-			if (_odbcCloseAfterUse = (_dbConnection.State != ConnectionState.Open))
-			{
-				_dbConnection.Open();
-				if (_dbConnection.Driver.ToLower().StartsWith("myodbc"))
-				{
-					OdbcCommand cmd = _dbConnection.CreateCommand();
-					cmd.CommandText = "SET sql_mode = 'ANSI'";
-					cmd.ExecuteNonQuery();
-				}
-			}
-		}
-		protected void DBClose() { if (_odbcCloseAfterUse) _dbConnection.Close(); }
+
 		/// <summary>
 		/// 
 		/// insert a row in table t_RBSR_AUFW_u_Entitlement.

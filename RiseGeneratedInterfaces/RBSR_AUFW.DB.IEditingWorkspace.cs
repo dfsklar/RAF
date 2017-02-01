@@ -4,6 +4,7 @@ using System.Text;
 using System.Data;
 using System.Data.Odbc;
 using System.IO;
+using _6MAR_WebApplication;
 
 //3c6e8d24-b5d1-4af5-8771-4728cd3b6c74
 //
@@ -60,41 +61,15 @@ namespace RBSR_AUFW.DB.IEditingWorkspace
 	/// Class implementing operations on:
 	///     Table t_RBSR_AUFW_u_EditingWorkspace
 	/// </summary>
-	public class IEditingWorkspace
+	public class IEditingWorkspace : _6MAR_WebApplication.RISEBASE
 	{
-		private string _tempDir = ".";
-		private bool _odbcCloseAfterUse;
-		private OdbcConnection _dbConnection = null;
-		public string TempDir
-		{
-			get { return _tempDir; }
-			set { _tempDir = value; }
-		}
-		public OdbcConnection DbConnection
-		{
-			get { return _dbConnection; }
-			set { _dbConnection = value; }
-		}
 		public IEditingWorkspace() : this((OdbcConnection)null) { }
 		public IEditingWorkspace(string connectionString) : this(new OdbcConnection(connectionString)) { }
 		public IEditingWorkspace(OdbcConnection dbConnection)
 		{
 			_dbConnection = dbConnection;
 		}
-		protected void DBConnect()
-		{
-			if (_odbcCloseAfterUse = (_dbConnection.State != ConnectionState.Open))
-			{
-				_dbConnection.Open();
-				if (_dbConnection.Driver.ToLower().StartsWith("myodbc"))
-				{
-					OdbcCommand cmd = _dbConnection.CreateCommand();
-					cmd.CommandText = "SET sql_mode = 'ANSI'";
-					cmd.ExecuteNonQuery();
-				}
-			}
-		}
-		protected void DBClose() { if (_odbcCloseAfterUse) _dbConnection.Close(); }
+
 		/// <summary>
 		/// 
 		/// insert a row in table t_RBSR_AUFW_u_EditingWorkspace.
@@ -117,7 +92,7 @@ namespace RBSR_AUFW.DB.IEditingWorkspace
 			cmd.Parameters.Add("c_u_Commentary", OdbcType.NVarChar, 2048);
 			cmd.Parameters["c_u_Commentary"].Value = (Commentary != null ? (object)Commentary : DBNull.Value);
 			cmd.Parameters.Add("c_u_TimeOfBirth", OdbcType.DateTime);
-			cmd.Parameters["c_u_TimeOfBirth"].Value = (object)TimeOfBirth;
+			cmd.Parameters["c_u_TimeOfBirth"].Value = HELPERS.SetSafeDBDate(TimeOfBirth);
 			cmd.Parameters.Add("c_r_SubProcess", OdbcType.Int);
 			cmd.Parameters["c_r_SubProcess"].Value = (object)SubProcessID;
 			cmd.Parameters.Add("c_r_User", OdbcType.Int);
@@ -236,7 +211,7 @@ try{dri.Read();} catch(Exception edri){cmd.Dispose();DBClose();throw edri;}
 			cmd.Parameters.Add("c_u_Commentary", OdbcType.NVarChar, 2048);
 			cmd.Parameters["c_u_Commentary"].Value = (Commentary != null ? (object)Commentary : DBNull.Value);
 			cmd.Parameters.Add("c_u_TimeOfBirth", OdbcType.DateTime);
-			cmd.Parameters["c_u_TimeOfBirth"].Value = (object)TimeOfBirth;
+            cmd.Parameters["c_u_TimeOfBirth"].Value = HELPERS.SetSafeDBDate(TimeOfBirth);
 			cmd.Parameters.Add("c_u_HasUnsavedChanges", OdbcType.Bit);
 			cmd.Parameters["c_u_HasUnsavedChanges"].Value = (object)HasUnsavedChanges;
 			cmd.Parameters.Add("c_r_SubProcess", OdbcType.Int);
