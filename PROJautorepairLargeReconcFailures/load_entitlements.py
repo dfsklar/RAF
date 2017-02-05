@@ -5,9 +5,12 @@ import pickle
 
 dict_formulas = pickle.load(open('mvformulas.pkl', 'rb'))
 
-
-# Must first read in: Entitlement.csv and store it keyed by: GENmanifestValue
+# KEY: generated manifest value
+# VALUE: array of all rows that generated that manifest value
 dict_entitlements = {}
+set_redundants = set()
+
+
 with open('Entitlement.csv', 'rb') as csvfile:
     dialect = csv.Sniffer().sniff(csvfile.read(1024))
     csvfile.seek(0)
@@ -24,13 +27,13 @@ with open('Entitlement.csv', 'rb') as csvfile:
             try:
                 c_id = row[0]
                 system = row[3]
-                platform = row[4]
+                platform = Platform = row[4]
                 entitlementname = row[5]
-                entitlementvalue = row[6]
+                entitlementvalue = EntitlementValue = row[6]
                 authobjname = row[7]
                 authobjvalue = row[8]
                 fieldsecname = row[9]
-                fieldsecvalue = row[10]
+                fieldsecvalue = FieldSecValue = row[10]
                 level4secname = row[11]
                 level4secvalue = row[12]
                 appname = row[15]
@@ -47,20 +50,34 @@ with open('Entitlement.csv', 'rb') as csvfile:
                 #print "=========="
                 #print formula
                 try:
+                    genmanifest = ''
                     genmanifest = eval(formula)
-                    #print genmanifest
                 except:
+                    print '================'
                     print("Unexpected error:", sys.exc_info()[0])
+                    print formula
+                    print '. . .'
+                    print genmanifest
+                    continue
                 if (len(genmanifest) < 1) or (genmanifest=='NULL'):
                     num_nomanifest += 1
                 elif dict_entitlements.has_key(genmanifest):
-                    print 'REDUNDANT: %s /// %s' % (genmanifest, row)
+                    dict_entitlements[genmanifest] += row
+                    set_redundants.add(genmanifest)
                     num_redundant += 1
                 else:
-                    dict_entitlements[genmanifest] = c_id
+                    dict_entitlements[genmanifest] = [row]
                     numloaded += 1
             except:
                 ignorenum += 1
+
+for bad_manifest in set_redundants:
+    print '==========='
+    print bad_manifest
+    for x in dict_entitlements[bad_manifest]:
+        print x
+
+sys.exit(1)
 
 pickle.dump(dict_entitlements, open('ents.pkl', 'wb'))
 print 'Number of IGNORED lines: %d' % ignorenum
