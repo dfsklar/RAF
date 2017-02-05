@@ -44,11 +44,10 @@ with open('Entitlement.csv', 'rb') as csvfile:
                     formula = dict_formulas[appname]
                 except:
                     print row
-                    print ".... NO FORMULA FOR THIS APP: " + appname
+                    print "FATAL!!!! NO FORMULA FOR THIS APP: " + appname
                     print '=============='
                     sys.exit(1)
-                #print "=========="
-                #print formula
+                    
                 try:
                     genmanifest = ''
                     genmanifest = eval(formula)
@@ -62,9 +61,8 @@ with open('Entitlement.csv', 'rb') as csvfile:
                 if (len(genmanifest) < 1) or (genmanifest=='NULL'):
                     num_nomanifest += 1
                 elif dict_entitlements.has_key(genmanifest):
-                    dict_entitlements[genmanifest] += row
+                    dict_entitlements[genmanifest].append(row)
                     set_redundants.add(genmanifest)
-                    num_redundant += 1
                 else:
                     dict_entitlements[genmanifest] = [row]
                     numloaded += 1
@@ -72,16 +70,16 @@ with open('Entitlement.csv', 'rb') as csvfile:
                 ignorenum += 1
 
 for bad_manifest in set_redundants:
-    print '==========='
+    print '========== OVERUSED MANIFEST ========'
     print bad_manifest
     for x in dict_entitlements[bad_manifest]:
         print x
 
-sys.exit(1)
-
 pickle.dump(dict_entitlements, open('ents.pkl', 'wb'))
+pickle.dump(set_redundants, open('manifests_ambiguous.pkl', 'wb'))
+
 print 'Number of IGNORED lines: %d' % ignorenum
 print 'Number of manifests loaded: %d' % numloaded
-print 'Number of manifests seen multiple times: %d' % num_redundant
+print '^^^ of the above, how many are ambiguous: %d' % len(set_redundants)
 
 
