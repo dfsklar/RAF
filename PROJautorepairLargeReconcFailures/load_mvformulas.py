@@ -19,7 +19,7 @@ with open('MVFormula.csv', 'r') as csvfile:
                 print "BAD LINE: %s // %s,%s,%s" % (line, fieldsecname, entval, authobj)
                 ignorenum += 1
             else:
-                dict_mvf[appname] = formula
+                dict_mvf[appname] = formula.replace('&gt;','>').replace('&amp;','&')
 
 pickle.dump(dict_mvf, open('mvformulas.pkl', 'wb'))
 print 'Number of IGNORED lines: %d' % ignorenum
