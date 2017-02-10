@@ -1,0 +1,27 @@
+This is when I was ignoring only 'X':
+ Number of IGNORED lines: 29
+ Number of manifests loaded: 19427
+ ^^^ of the above, how many are ambiguous: 1672
+ Number of lines with no manifest: 0
+
+
+This is when I was only allow 'A':
+ Number of IGNORED lines: 29
+ Number of manifests loaded: 19373
+ ^^^ of the above, how many are ambiguous: 1662
+ Number of lines with no manifest: 0
+So clearly, there are some manifests that are represented only via 'I' status.
+
+What about if I allow all?
+ Number of IGNORED lines: 29
+ Number of manifests loaded: 20466
+ ^^^ of the above, how many are ambiguous: 1915
+ Number of lines with no manifest: 0
+So clearly, there are some manifests that are represented only via 'X' status!
+Well that makes sense really, as perhaps the 'X' and 'I' manifests exist but are NOT referenced
+by any ent assignment.
+
+
+SO: for first stab, let's accept only 'A' and see how many entassignments cannot be restored because of this.
+
+
