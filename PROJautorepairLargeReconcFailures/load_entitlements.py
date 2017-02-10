@@ -1,4 +1,3 @@
-import csv
 import sys
 import pickle
 
@@ -11,17 +10,15 @@ dict_entitlements = {}
 set_redundants = set()
 
 
-with open('Entitlement.csv', 'rb') as csvfile:
-    dialect = csv.Sniffer().sniff(csvfile.read(1024))
-    csvfile.seek(0)
-    reader = csv.reader(csvfile, dialect)
+with open('Entitlement.txt', 'r') as csvfile:
     linenum = 0
     ignorenum = 0
     needingstrip = 0
     numloaded = 0
     num_nomanifest = 0
     num_redundant = 0
-    for row in reader:
+    for line in csvfile:
+        row = line.strip().split('\t')
         linenum += 1
         if not (row[0] == 'c_id'):
             try:
@@ -37,9 +34,20 @@ with open('Entitlement.csv', 'rb') as csvfile:
                 level4secname = row[11]
                 level4secvalue = row[12]
                 appname = row[15]
+                prehash = row[16]
+                status = row[17]
+
+                if status == 'X':
+                  continue
+                if status == 'I':
+                  continue
+                if prehash[0:6] == 'XXredu':
+                  continue
+
                 # Turns out that the generated manifest value stored in the Ents table is basically useless/obsolete.
                 #   genmanifestraw = row[14].rstrip()
                 # So we are going to regenerate the manifest from the formula for this application
+                
                 try:
                     formula = dict_formulas[appname]
                 except:
@@ -53,11 +61,12 @@ with open('Entitlement.csv', 'rb') as csvfile:
                     genmanifest = eval(formula)
                 except:
                     print '================'
-                    print("Unexpected error:", sys.exc_info()[0])
+                    print("FATAL!!!!!!:", sys.exc_info()[0])
                     print formula
                     print '. . .'
                     print genmanifest
-                    continue
+                    sys.exit(1)
+
                 if (len(genmanifest) < 1) or (genmanifest=='NULL'):
                     num_nomanifest += 1
                 elif dict_entitlements.has_key(genmanifest):
@@ -80,6 +89,5 @@ pickle.dump(set_redundants, open('manifests_ambiguous.pkl', 'wb'))
 
 print 'Number of IGNORED lines: %d' % ignorenum
 print 'Number of manifests loaded: %d' % numloaded
+print 'Number of lines with no manifest: %d' % num_nomanifest
 print '^^^ of the above, how many are ambiguous: %d' % len(set_redundants)
-
-

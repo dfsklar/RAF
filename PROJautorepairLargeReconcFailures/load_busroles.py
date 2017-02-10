@@ -1,15 +1,12 @@
-import csv
 import sys
 import pickle
 
 dict_busroles = {}
-with open('BusRole.csv', 'rb') as csvfile:
-    dialect = csv.Sniffer().sniff(csvfile.read(1024))
-    csvfile.seek(0)
-    reader = csv.reader(csvfile, dialect)
+with open('BusRole.txt', 'r') as csvfile:
     linenum = 0
     ignorenum = 0
-    for row in reader:
+    for line in csvfile:
+        row = line.split('\t')
         linenum += 1
         try:
             c_id = row[0]

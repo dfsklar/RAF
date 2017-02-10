@@ -1,16 +1,15 @@
-import csv
 import sys
 import pickle
 
 dict_mvf = {}
 linenum = 0
 ignorenum = 0
-with open('MVFormula.csv', 'r') as csvfile:
+with open('MVFormula.txt', 'r') as csvfile:
     for line in csvfile:
         linenum += 1
         line = line.rstrip()
         try:
-            (c_id, appname, entval, authobj, fieldsecname, formula) = line.split(',')
+            (c_id, appname, entval, authobj, fieldsecname, formula) = line.split('\t')
         except:
             print "BAD LINE: %s" % line
             ignorenum += 1
