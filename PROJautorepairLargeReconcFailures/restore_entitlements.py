@@ -1,4 +1,3 @@
-import csv
 import sys
 import pickle
 
@@ -12,8 +11,7 @@ set_unknown_roles = set()
 set_unknown_manifests = set()
 set_inuse_ambiguous = set()
 
-with open('Result of IDM reconcile based on WS-5139.csv', 'rU') as csvfile:
-    reader = csv.reader(csvfile)
+with open('idm_reconcile_result_ws5139.txt', 'rU') as csvfile:
     linenum = 0
     errcounts = {
         'unknown_role': 0,
@@ -22,7 +20,8 @@ with open('Result of IDM reconcile based on WS-5139.csv', 'rU') as csvfile:
         }
     attemptnum = 0
     oknum = 0
-    for row in reader:
+    for line in csvfile:
+        row = line.rstrip().split('\t')
         linenum += 1
         if row[0] != 'Role Name':
             rolename = row[0]
