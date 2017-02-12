@@ -1,7 +1,8 @@
 import sys
 import pickle
 
-dict_busroles = {}
+dict_busroles = {}   # KEY rolename, VALUE ID
+
 with open('BusRole.txt', 'r') as csvfile:
     linenum = 0
     ignorenum = 0
