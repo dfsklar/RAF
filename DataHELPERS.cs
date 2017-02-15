@@ -828,7 +828,7 @@ namespace _6MAR_WebApplication
              * 
              * */
 
-            connectionString = @"Driver={Microsoft Text Driver (*.txt; *.csv)};Dbq=" + importFolder + ";";
+            connectionString = @"Driver={Microsoft Access Text Driver (*.txt, *.csv)};Dbq=" + importFolder + ";";
             conn = new System.Data.Odbc.OdbcConnection(connectionString);
 
             //we only pass it the folder.  The csv file import is in the query which follows
