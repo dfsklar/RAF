@@ -12,6 +12,7 @@ using _6MAR_WebApplication;
 // Version 1.150 (#191)
 //
 // In Nov 2016, I started adding support for transactions but by no means is this complete -- do not use the new entrypoint.
+// In fact, I just now (Feb 2017) removed all of the transaction code; you'll find it in the github master branch though.
 // 
 //
 //3c6e8d24-b5d1-4af5-8771-4728cd3b6c74
@@ -62,56 +63,15 @@ namespace RBSR_AUFW.DB.IEntAssignmentSet
 	/// Class implementing operations on:
 	///     Table t_RBSR_AUFW_u_EntAssignmentSet
 	/// </summary>
-	public class IEntAssignmentSet
+	public class IEntAssignmentSet : _6MAR_WebApplication.RISEBASE
 	{
-		private string _tempDir = ".";
-		private bool _odbcCloseAfterUse;
-		private OdbcConnection _dbConnection = null;
-        private OdbcTransaction _dbTransaction = null;
-
-		public string TempDir
-		{
-			get { return _tempDir; }
-			set { _tempDir = value; }
-		}
-		public OdbcConnection DbConnection
-		{
-			get { return _dbConnection; }
-			set { _dbConnection = value; }
-		}
-
-
-
 		public IEntAssignmentSet() : this((OdbcConnection)null) { }
 		public IEntAssignmentSet(string connectionString) : this(new OdbcConnection(connectionString)) { }
 		public IEntAssignmentSet(OdbcConnection dbConnection)
 		{
 			_dbConnection = dbConnection;
 		}
-        public IEntAssignmentSet(OdbcConnection conn, OdbcTransaction dbTrans)
-        {
-            _dbConnection = conn;
-            _dbTransaction = dbTrans;
-        }
 
-
-
-		protected void DBConnect()
-		{
-			if (_odbcCloseAfterUse = (_dbConnection.State != ConnectionState.Open))
-			{
-				_dbConnection.Open();
-				if (_dbConnection.Driver.ToLower().StartsWith("myodbc"))
-				{
-					OdbcCommand cmd = _dbConnection.CreateCommand();
-					cmd.CommandText = "SET sql_mode = 'ANSI'";
-					cmd.ExecuteNonQuery();
-				}
-			}
-		}
-
-        
-        protected void DBClose() { if (_odbcCloseAfterUse) _dbConnection.Close(); }
 		/// <summary>
 		/// 
 		/// insert a row in table t_RBSR_AUFW_u_EntAssignmentSet.
