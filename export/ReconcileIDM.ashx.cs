@@ -17,6 +17,11 @@
   Does a comparison and emits an Excel spreadsheet.
   No history saving occurs.
 
+  -----------
+ * 
+ * Note that the MVFormula is used afresh to create the privilege-string
+ * used for the comparison.  I.e. the pre-generated priv string in
+ * the entitlements table is IGNORED.
 
 */
 
@@ -127,25 +132,6 @@ namespace _6MAR_WebApplication.export
         }
         
 
-
-
-      /*
-        Tokenizer TK = new Tokenizer();
-        string curnode = TK.GetToken(context.Request.Params["roles"], ',');
-        while (curnode != null) {
-        if (curnode.StartsWith("SP/")) {
-        curnode = curnode.Substring(3);
-        CSVlistOfInterestingSubprocesses += ("," + curnode);
-        }else{
-        CSVlistOfInterestingRoles += ("," + curnode);
-        }
-        curnode = TK.MoveToNext();
-        }
-      */      
-
-
-      
-
       int errcountEntitlements = 0;
       int errcountRoleMetadata = 0;
 
@@ -245,6 +231,24 @@ namespace _6MAR_WebApplication.export
 
 
 
+	  string SQLsubpr = @" SELECT c_r_SubProcess, c_u_Name FROM t_RBSR_AUFW_u_BusRole;";
+      cmd.CommandText = SQLsubpr;
+      OdbcDataReader drSubpr = cmd.ExecuteReader();
+
+      Dictionary<string, string> MAPbrolenamesToSubprids = new Dictionary<string, string>();
+      while (drSubpr.Read())
+        {
+          int IDsubprid = (int)(drSubpr.GetValue(0));
+          string brolename = drSubpr.GetValue(1).ToString();
+          if (!MAPbrolenamesToSubprids.ContainsKey(brolename))
+          {
+              MAPbrolenamesToSubprids.Add(brolename, IDsubprid.ToString());  // + " = " + STRsubpr);
+          }
+		}
+      drSubpr.Close();
+			 
+
+
       string extraconds = " AND (TEASS.c_u_Status NOT IN ('X')) ";
 
       // Perform a massive SQL select to obtain all active entitlements in R-AF
@@ -316,7 +320,6 @@ AND
       // These map role names to role descriptions
       Dictionary<string, string> DICTactiveBroles = new Dictionary<string, string>();
       Dictionary<string, string> DICTidmBroles = new Dictionary<string, string>();
-      Dictionary<string, string> MAPbrolenamesToSubprids = new Dictionary<string, string>();
 
       // Key = rolename + EID of primary approver
       // Value = 1
@@ -352,10 +355,12 @@ AND
               DICTactiveBroles.Add(brolename, broledescr);
             }
 
+/*
           if (!MAPbrolenamesToSubprids.ContainsKey(brolename))
           {
               MAPbrolenamesToSubprids.Add(brolename, IDsubpr.ToString() + " = " + STRsubpr);
           }
+*/
 
             if (STRapproverEID.Length > 1)
             {
@@ -527,7 +532,16 @@ AND
                             continue;
                           }
                       }
-                    RecordDelta(sheetDeltas, idmrsrcRolename, idmrsrcValue, "Remove", "Entitlement", MAPbrolenamesToSubprids[idmrsrcRolename]);
+                    /* 
+                     * This next line needs a try/catch for the case where the idmrsrcRolename is unknown in the MAP.  This has occurred.
+                     */
+                    try
+                    {
+                        RecordDelta(sheetDeltas, idmrsrcRolename, idmrsrcValue, "Remove", "Entitlement", MAPbrolenamesToSubprids[idmrsrcRolename]);
+                    }
+                    catch (Exception) {
+                        RecordDelta(sheetDeltas, idmrsrcRolename, idmrsrcValue, "Remove", "Entitlement", "Note: this role is not known to the RAF system at all.");
+                    }
                     errcountEntitlements++;
                   }
                   break;

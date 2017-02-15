@@ -1,0 +1,768 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{160B657C-A6C8-4CC0-9EF4-0E86873B9894}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>_6MAR_WebApplication</RootNamespace>
+    <AssemblyName>16MAR_WebApplication</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CarlosAg.ExcelXmlWriter, Version=1.0.0.6, Culture=neutral" />
+    <Reference Include="ComponentArt.Web.UI, Version=2011.1.1134.4, Culture=neutral, PublicKeyToken=9bc9f846553156bb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\ComponentArt.Web.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Eval3, Version=1.1.3399.36129, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Eval3\bin\Eval3.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.7.2.24, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\DotNetZip-v1.7\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Default.aspx" />
+    <Content Include="PAGElaunchBRoleEntitlementUpload.sitemap.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="viewer\LISTallApplsInScope.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AFWACpage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFWACsession.cs" />
+    <Compile Include="DataHELPERS_SAP.cs" />
+    <Compile Include="export\BugFind_RevivedPhantoms.ashx.cs">
+      <DependentUpon>BugFind_RevivedPhantoms.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="export\BugFind_LiveAssignmentsToDeadEnts.ashx.cs">
+      <DependentUpon>BugFind_LiveAssignmentsToDeadEnts.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="export\EntitlementsPerSubpr.ashx.cs">
+      <DependentUpon>EntitlementsPerSubpr.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="export\Attachment.ashx.cs">
+      <DependentUpon>Attachment.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="export\BusRolePersonnelDump.ashx.cs">
+      <DependentUpon>BusRolePersonnelDump.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="export\ReconcfromSnapshot.ashx.cs">
+      <DependentUpon>ReconcfromSnapshot.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="export\ReconcileIDM.ashx.cs">
+      <DependentUpon>ReconcileIDM.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="export\ReconcileSAP.ashx.cs">
+      <DependentUpon>ReconcileSAP.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="export\RolesUsingEntitlement.ashx.cs">
+      <DependentUpon>RolesUsingEntitlement.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="export\SAPworkspace.ashx.cs">
+      <DependentUpon>SAPworkspace.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="export\Workspace.ashx.cs">
+      <DependentUpon>workspace.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="GuidedEditor\ajaxupdater.ashx.cs">
+      <DependentUpon>ajaxupdater.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="GuidedEditor\RecordEntitlementStatusMod.ashx.cs">
+      <DependentUpon>RecordEntitlementStatusMod.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="GuidedEditor\RecordEntitlementMod.ashx.cs">
+      <DependentUpon>RecordEntitlementMod.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGElaunchBRoleEntitlementsUpload.aspx.cs">
+      <DependentUpon>PAGElaunchBRoleEntitlementsUpload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGElaunchBRoleEntitlementsUpload.aspx.designer.cs">
+      <DependentUpon>PAGElaunchBRoleEntitlementsUpload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.IAdditionalBusRole.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.IAuthRow1251.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.IBusRoleOwner.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.IChangeManagementEvent.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.IEASfileAttachment.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.IFuncApplNotes.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.IMETADATA_SubprToActivityList.cs" />
+    <Compile Include="PAGE_MapSubprToActivities.aspx.cs">
+      <DependentUpon>PAGE_MapSubprToActivities.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGE_MapSubprToActivities.aspx.designer.cs">
+      <DependentUpon>PAGE_MapSubprToActivities.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE_DictTcodes.aspx.cs">
+      <DependentUpon>PAGE_DictTcodes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGE_DictTcodes.aspx.designer.cs">
+      <DependentUpon>PAGE_DictTcodes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.IOrgValue1252.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.IReconcDiffItem.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.IReconcReport.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.ISAPauthClass.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.ISAPauthField.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.ISAPauthObj.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.ISAPChangeManagementEvent.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.ISAPRoleOwner.cs" />
+    <Compile Include="PAGE_attachments.aspx.cs">
+      <DependentUpon>PAGE_attachments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGE_attachments.aspx.designer.cs">
+      <DependentUpon>PAGE_attachments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE_idmreconcile.aspx.cs">
+      <DependentUpon>PAGE_idmreconcile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGE_idmreconcile.aspx.designer.cs">
+      <DependentUpon>PAGE_idmreconcile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE_Bents_bulkassign.aspx.cs">
+      <DependentUpon>PAGE_Bents_bulkassign.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGE_Bents_bulkassign.aspx.designer.cs">
+      <DependentUpon>PAGE_Bents_bulkassign.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site2.Master.cs">
+      <DependentUpon>Site2.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site2.Master.designer.cs">
+      <DependentUpon>Site2.Master</DependentUpon>
+    </Compile>
+    <Compile Include="utilities\CSharptokenizer.cs" />
+    <Compile Include="utilities\StringTokenizer.cs" />
+    <Compile Include="utilities\UploadSAPEntitlementsViaChain.ashx.cs">
+      <DependentUpon>UploadSAPEntitlementsViaChain.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="viewer\LISTallApplsInScope.aspx.cs">
+      <DependentUpon>LISTallApplsInScope.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewer\LISTallApplsInScope.aspx.designer.cs">
+      <DependentUpon>LISTallApplsInScope.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="viewer\viewer.Master.cs">
+      <DependentUpon>viewer.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewer\viewer.Master.designer.cs">
+      <DependentUpon>viewer.Master</DependentUpon>
+    </Compile>
+    <Compile Include="viewer\home.aspx.cs">
+      <DependentUpon>home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewer\home.aspx.designer.cs">
+      <DependentUpon>home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="viewer\LISTbusroles.aspx.cs">
+      <DependentUpon>LISTbusroles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewer\LISTbusroles.aspx.designer.cs">
+      <DependentUpon>LISTbusroles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="viewer\DETAILbusrole.aspx.cs">
+      <DependentUpon>DETAILbusrole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewer\DETAILbusrole.aspx.designer.cs">
+      <DependentUpon>DETAILbusrole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="viewer\ENTVECTORbusrole.aspx.cs">
+      <DependentUpon>ENTVECTORbusrole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewer\ENTVECTORbusrole.aspx.designer.cs">
+      <DependentUpon>ENTVECTORbusrole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="viewer\ENTVECTORbusrole_GRID.aspx.cs">
+      <DependentUpon>ENTVECTORbusrole_GRID.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewer\ENTVECTORbusrole_GRID.aspx.designer.cs">
+      <DependentUpon>ENTVECTORbusrole_GRID.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="viewer\LISTbusroles_byOwner.aspx.cs">
+      <DependentUpon>LISTbusroles_byOwner.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewer\LISTbusroles_byOwner.aspx.designer.cs">
+      <DependentUpon>LISTbusroles_byOwner.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page_Reconc_History.aspx.cs">
+      <DependentUpon>Page_Reconc_History.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page_Reconc_History.aspx.designer.cs">
+      <DependentUpon>Page_Reconc_History.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page_Reconc_Analysis.aspx.cs">
+      <DependentUpon>Page_Reconc_Analysis.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page_Reconc_Analysis.aspx.designer.cs">
+      <DependentUpon>Page_Reconc_Analysis.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE_sapreconcile.aspx.cs">
+      <DependentUpon>PAGE_sapreconcile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGE_sapreconcile.aspx.designer.cs">
+      <DependentUpon>PAGE_sapreconcile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE_SAP_uploadDictionary.aspx.cs">
+      <DependentUpon>PAGE_SAP_uploadDictionary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGE_SAP_uploadDictionary.aspx.designer.cs">
+      <DependentUpon>PAGE_SAP_uploadDictionary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SAP1252Workspace.aspx.cs">
+      <DependentUpon>SAP1252Workspace.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SAP1252Workspace.aspx.designer.cs">
+      <DependentUpon>SAP1252Workspace.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SAP1251Workspace.aspx.cs">
+      <DependentUpon>SAP1251Workspace.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SAP1251Workspace.aspx.designer.cs">
+      <DependentUpon>SAP1251Workspace.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DLOGselectAuthObj.aspx.cs">
+      <DependentUpon>DLOGselectAuthObj.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DLOGselectAuthObj.aspx.designer.cs">
+      <DependentUpon>DLOGselectAuthObj.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DLOGmaintainListOfRelatedFields.aspx.cs">
+      <DependentUpon>DLOGmaintainListOfRelatedFields.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DLOGmaintainListOfRelatedFields.aspx.designer.cs">
+      <DependentUpon>DLOGmaintainListOfRelatedFields.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="viewer\LISTsaproles.aspx.cs">
+      <DependentUpon>LISTsaproles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewer\LISTsaproles.aspx.designer.cs">
+      <DependentUpon>LISTsaproles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="viewer\LISTsaproles_byTcode.aspx.cs">
+      <DependentUpon>LISTsaproles_byTcode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewer\LISTsaproles_byTcode.aspx.designer.cs">
+      <DependentUpon>LISTsaproles_byTcode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="viewer\LISTbusroles_byAppl.aspx.cs">
+      <DependentUpon>LISTbusroles_byAppl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewer\LISTbusroles_byAppl.aspx.designer.cs">
+      <DependentUpon>LISTbusroles_byAppl.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="XMLtree_RolesInSubprocess.ashx.cs">
+      <DependentUpon>XMLtree_RolesInSubprocess.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="PreviewManifestString.ashx.cs">
+      <DependentUpon>PreviewManifestString.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ManifestFormulaEvaluator.cs" />
+    <Compile Include="ListSAPRoles.aspx.cs">
+      <DependentUpon>ListSAPRoles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListSAPRoles.aspx.designer.cs">
+      <DependentUpon>ListSAPRoles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataHELPERS.cs" />
+    <Compile Include="Default.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GuidedEditor\SeloptionFactory.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>SeloptionFactory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GuidedEditor\SeloptionFactory.aspx.designer.cs">
+      <DependentUpon>SeloptionFactory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HNDLPOST_busrolelist.ashx.cs">
+      <DependentUpon>HNDLPOST_busrolelist.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.IApplication.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.IBusRole.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.IEditingWorkspace.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.IEntAssignment.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.IEntAssignmentSet.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.IEntitlement.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.IEventLog.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.IMVFormula.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.IProcess.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.IProcess1.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.ISAProle.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.ISAPsecurityOrg.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.ISAPsecurityOrgAxis.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.ISAPsecurityOrgValue.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.ISubProcess.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.ITcodeAssignment.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.ITcodeAssignmentSet.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.ITcodeDictionary.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.ITcodeEntitlement.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.IUser.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.IUser1.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.IWorkspaceEntitlement.cs" />
+    <Compile Include="RiseGeneratedInterfaces\RBSR_AUFW.DB.IWorkspaceTcode.cs" />
+    <Compile Include="Site1.Master.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site1.Master.designer.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PAGElaunchUpload.aspx.cs">
+      <DependentUpon>PAGElaunchUpload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGElaunchUpload.aspx.designer.cs">
+      <DependentUpon>PAGElaunchUpload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListEASets.aspx.cs">
+      <DependentUpon>ListEASets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListEASets.aspx.designer.cs">
+      <DependentUpon>ListEASets.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="utilities\CleaningCrew.ashx.cs">
+      <DependentUpon>CleaningCrew.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewEASet.aspx.cs">
+      <DependentUpon>ViewEASet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewEASet.aspx.designer.cs">
+      <DependentUpon>ViewEASet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SessionLOGIN.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>SessionLOGIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SessionLOGIN.aspx.designer.cs">
+      <DependentUpon>SessionLOGIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HOME.aspx.cs">
+      <DependentUpon>HOME.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HOME.aspx.designer.cs">
+      <DependentUpon>HOME.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NIY.aspx.cs">
+      <DependentUpon>NIY.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NIY.aspx.designer.cs">
+      <DependentUpon>NIY.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListEWorkspaces.aspx.cs">
+      <DependentUpon>ListEWorkspaces.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListEWorkspaces.aspx.designer.cs">
+      <DependentUpon>ListEWorkspaces.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE_BRoles_LaunchNewWorkspace.aspx.cs">
+      <DependentUpon>PAGE_BRoles_LaunchNewWorkspace.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGE_BRoles_LaunchNewWorkspace.aspx.designer.cs">
+      <DependentUpon>PAGE_BRoles_LaunchNewWorkspace.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListBRoles.aspx.cs">
+      <DependentUpon>ListBRoles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="ListBRoles.aspx.designer.cs">
+      <DependentUpon>ListBRoles.aspx</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="EntitlementWorkspace.aspx.cs">
+      <DependentUpon>EntitlementWorkspace.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EntitlementWorkspace.aspx.designer.cs">
+      <DependentUpon>EntitlementWorkspace.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGElaunchDownload.aspx.cs">
+      <DependentUpon>PAGElaunchDownload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGElaunchDownload.aspx.designer.cs">
+      <DependentUpon>PAGElaunchDownload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="logout.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="logout.aspx.designer.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGElaunchSAPUpload.aspx.cs">
+      <DependentUpon>PAGElaunchSAPUpload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGElaunchSAPUpload.aspx.designer.cs">
+      <DependentUpon>PAGElaunchSAPUpload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGEmanifestFormulas.aspx.cs">
+      <DependentUpon>PAGEmanifestFormulas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGEmanifestFormulas.aspx.designer.cs">
+      <DependentUpon>PAGEmanifestFormulas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListSAPWorkspaces.aspx.cs">
+      <DependentUpon>ListSAPWorkspaces.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListSAPWorkspaces.aspx.designer.cs">
+      <DependentUpon>ListSAPWorkspaces.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGElaunchSAPentitlementsUpload.aspx.cs">
+      <DependentUpon>PAGElaunchSAPentitlementsUpload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGElaunchSAPentitlementsUpload.aspx.designer.cs">
+      <DependentUpon>PAGElaunchSAPentitlementsUpload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SAPEntitlementWorkspace.aspx.cs">
+      <DependentUpon>SAPEntitlementWorkspace.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SAPEntitlementWorkspace.aspx.designer.cs">
+      <DependentUpon>SAPEntitlementWorkspace.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGEroleDesigner.aspx.cs">
+      <DependentUpon>PAGEroleDesigner.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGEroleDesigner.aspx.designer.cs">
+      <DependentUpon>PAGEroleDesigner.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGEroleDesAppList.aspx.cs">
+      <DependentUpon>PAGEroleDesAppList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGEroleDesAppList.aspx.designer.cs">
+      <DependentUpon>PAGEroleDesAppList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE_BEnts_Upload.aspx.cs">
+      <DependentUpon>PAGE_BEnts_Upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGE_BEnts_Upload.aspx.designer.cs">
+      <DependentUpon>PAGE_BEnts_Upload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE_Bents_vectors.aspx.cs">
+      <DependentUpon>PAGE_BEnts_Vectors.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGE_Bents_vectors.aspx.designer.cs">
+      <DependentUpon>PAGE_BEnts_Vectors.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE_BRoles_Workspace.aspx.cs">
+      <DependentUpon>PAGE_BRoles_Workspace.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGE_BRoles_Workspace.aspx.designer.cs">
+      <DependentUpon>PAGE_BRoles_Workspace.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page_SAP_History.aspx.cs">
+      <DependentUpon>Page_SAP_History.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page_SAP_History.aspx.designer.cs">
+      <DependentUpon>Page_SAP_History.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGEreportLaunchpad.aspx.cs">
+      <DependentUpon>PAGEreportLaunchpad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGEreportLaunchpad.aspx.designer.cs">
+      <DependentUpon>PAGEreportLaunchpad.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="combo_select.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gridediting.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GuidedEditor\test.htm" />
+    <Content Include="GuidedEditor\SeloptionFactory.aspx" />
+    <Content Include="menuData.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="menuDataNOEDIT.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Site1.Master" />
+    <Content Include="PAGElaunchUpload.aspx" />
+    <Content Include="ListEASets.aspx" />
+    <Content Include="GRIDcustom.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="media\afwac.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ViewEASet.aspx" />
+    <Content Include="SessionLOGIN.aspx" />
+    <Content Include="HOME.aspx" />
+    <Content Include="NIY.aspx" />
+    <Content Include="ListEWorkspaces.aspx" />
+    <Content Include="PAGE_BRoles_LaunchNewWorkspace.aspx" />
+    <Content Include="ListBRoles.aspx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EntitlementWorkspace.aspx" />
+    <Content Include="PAGElaunchDownload.aspx" />
+    <Content Include="logout.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <Content Include="launch_chksum_recalc.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ConfigProdServers\web.config" />
+    <Content Include="json2.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="launch_ent_redundancy_search.htm" />
+    <Content Include="ListBRoles.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="master.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="media\ADDED.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="media\EDITEDbusroles.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="media\EDITEDcommentary.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="media\EDITEDvector.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="menuDataNOEDITSAP.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="menuDataSAP.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="menudata_PAGE_BEnts_Vectors.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MSGnosess.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PAGEmanifestFormulas.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PAGEreportLaunchpad.js" />
+    <Content Include="PAGEroleDesigner.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PAGE_BEnts_Vectors.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PAGE_MapSubprToActivities.js" />
+    <Content Include="PreviewManifestString.ashx" />
+    <Content Include="export\workspace.ashx" />
+    <Content Include="export\SAPworkspace.ashx" />
+    <Content Include="GuidedEditor\RecordEntitlementMod.ashx" />
+    <Content Include="GuidedEditor\RecordEntitlementStatusMod.ashx" />
+    <Content Include="export\EntitlementsPerSubpr.ashx" />
+    <Content Include="GuidedEditor\ajaxupdater.ashx" />
+    <Content Include="PAGElaunchBRoleEntitlementsUpload.aspx" />
+    <Content Include="PAGE_MapSubprToActivities.aspx" />
+    <Content Include="PAGE_DictTcodes.aspx" />
+    <Content Include="PAGE_attachments.aspx" />
+    <Content Include="PAGE_idmreconcile.aspx" />
+    <Content Include="PAGE_Bents_bulkassign.aspx" />
+    <Content Include="viewer\home.aspx" />
+    <Content Include="viewer\LISTbusroles.aspx" />
+    <Content Include="viewer\DETAILbusrole.aspx" />
+    <Content Include="viewer\ENTVECTORbusrole.aspx" />
+    <Content Include="viewer\ENTVECTORbusrole_GRID.aspx" />
+    <Content Include="viewer\LISTbusroles_byOwner.aspx" />
+    <Content Include="Page_Reconc_History.aspx" />
+    <Content Include="Page_Reconc_Analysis.aspx" />
+    <Content Include="PAGE_sapreconcile.aspx" />
+    <Content Include="PAGE_SAP_uploadDictionary.aspx" />
+    <Content Include="SAP1252Workspace.aspx" />
+    <Content Include="SAP1251Workspace.aspx" />
+    <Content Include="DLOGselectAuthObj.aspx" />
+    <Content Include="DLOGmaintainListOfRelatedFields.aspx" />
+    <Content Include="viewer\LISTsaproles.aspx" />
+    <Content Include="viewer\LISTsaproles_byTcode.aspx" />
+    <Content Include="viewer\LISTbusroles_byAppl.aspx" />
+    <Content Include="XMLtree_RolesInSubprocess.ashx" />
+    <Content Include="export\RolesUsingEntitlement.ashx" />
+    <Content Include="export\BugFind_RevivedPhantoms.ashx" />
+    <Content Include="export\BugFind_LiveAssignmentsToDeadEnts.ashx" />
+    <Content Include="export\Attachment.ashx" />
+    <Content Include="export\ReconcileIDM.ashx" />
+    <Content Include="export\ReconcfromSnapshot.ashx" />
+    <Content Include="export\ReconcileSAP.ashx" />
+    <Content Include="export\BusRolePersonnelDump.ashx" />
+    <None Include="media\TemplateBroleEntitlementUpload.csv" />
+    <None Include="media\TemplateEntitlementUpload.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="media\TemplateSAPEntitlementUpload.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="media\TemplateSAProlenames.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Site2.Master" />
+    <None Include="SQL Scripts\TSQL--FuncDefine--f_relatedBusRoles.sql" />
+    <None Include="SQL Scripts\TSQL--FuncDefine--f_relatedBusRolesFmtOrdList.sql" />
+    <Content Include="viewer\viewer.Master" />
+    <Content Include="prototype.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SAPgridediting.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TABScustom.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="utilities\CleaningCrew.ashx" />
+    <Content Include="ListSAPRoles.aspx" />
+    <Content Include="HNDLPOST_busrolelist.ashx" />
+    <Content Include="PAGElaunchSAPUpload.aspx" />
+    <Content Include="PAGEmanifestFormulas.aspx" />
+    <Content Include="ListSAPWorkspaces.aspx" />
+    <Content Include="PAGElaunchSAPentitlementsUpload.aspx" />
+    <Content Include="SAPEntitlementWorkspace.aspx" />
+    <Content Include="PAGEroleDesigner.aspx" />
+    <Content Include="PAGEroleDesAppList.aspx" />
+    <Content Include="PAGE_BEnts_Upload.aspx" />
+    <Content Include="PAGE_BEnts_Vectors.aspx" />
+    <Content Include="PAGE_BRoles_Workspace.aspx" />
+    <Content Include="Page_SAP_History.aspx" />
+    <Content Include="PAGEreportLaunchpad.aspx" />
+    <Content Include="utilities\UploadSAPEntitlementsViaChain.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_GlobalResources\" />
+    <Folder Include="SQLscripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49777</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
