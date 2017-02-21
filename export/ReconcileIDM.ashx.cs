@@ -189,7 +189,7 @@ namespace _6MAR_WebApplication.export
 
         {
           book = new Workbook();
-          context.Response.ContentType = "text/xml";
+          context.Response.ContentType = "application/vnd.xls";
           context.Response.AddHeader("Content-Disposition",
                                      "filename=RAFidmReconcile.xls;attachment");
 
@@ -226,7 +226,6 @@ namespace _6MAR_WebApplication.export
 
 
       OdbcConnection conn2 = HELPERS.NewOdbcConn_FORCE();
-      IMVFormula ENGINEmanif = new IMVFormula(conn2);
       IEntitlement ENGINEwsent = new IEntitlement(conn2);
 
 
@@ -428,7 +427,7 @@ AND
 
           string RESLTforCompare = RESLT;
           if (!boolCaseSens) {
-            RESLTforCompare = RESLT.ToLower();
+                    RESLTforCompare = RESLT.ToLower().Replace(" ", "");
           }
 
 
@@ -511,7 +510,7 @@ AND
                 case "Entitlement":
                   string idmrsrcPrivForCompare = idmrsrcValue;
                   if (!boolCaseSens) {
-                    idmrsrcPrivForCompare = idmrsrcValue.ToLower();
+                                idmrsrcPrivForCompare = idmrsrcValue.ToLower().Replace(" ", "");
                   }
                   string idmrsrcKey = idmrsrcRolename + (char)1 + idmrsrcPrivForCompare;
                   if (DICTactiveEnts.ContainsKey(idmrsrcKey)) {
@@ -532,9 +531,6 @@ AND
                             continue;
                           }
                       }
-                    /* 
-                     * This next line needs a try/catch for the case where the idmrsrcRolename is unknown in the MAP.  This has occurred.
-                     */
                     try
                     {
                         RecordDelta(sheetDeltas, idmrsrcRolename, idmrsrcValue, "Remove", "Entitlement", MAPbrolenamesToSubprids[idmrsrcRolename]);

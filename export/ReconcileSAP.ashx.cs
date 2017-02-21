@@ -210,9 +210,6 @@ namespace _6MAR_WebApplication.export
 
 
 
-		  OdbcConnection conn2 = HELPERS.NewOdbcConn_FORCE();
-
-
 
 		  string extraconds = " AND ((TEASS.c_u_EditStatus & 4)<>4) " ;
 
@@ -372,7 +369,6 @@ AND
 				  {
 					 StringTok.StringTokenizer TK2 =
 						new StringTok.StringTokenizer(keytoadd, keyDelimiter);
-					 string curnode2;
 					 string reportRolename = TK2.NextToken();
 					 string reportPlatform = TK2.NextToken();
 					 string reportTcode    = TK2.NextToken();

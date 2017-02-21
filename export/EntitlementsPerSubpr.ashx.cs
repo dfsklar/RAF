@@ -314,10 +314,10 @@ WHERE
 
               object RESLT;
               ComputePrivilegeString(context, ENGINEmanif, ENGINEwsent, IDwsentrow, out RESLT);
+              string resultAsStr = RESLT.ToString().Replace(" ", "");
 
-
-              // If the first time we are seeing this role, emit its description text.
-              if (!DICTboolHaveSeenThisRole.ContainsKey(dr.GetValue(colnumRolename) as string))
+                    // If the first time we are seeing this role, emit its description text.
+                    if (!DICTboolHaveSeenThisRole.ContainsKey(dr.GetValue(colnumRolename) as string))
                 {
                     string rolename = dr.GetValue(colnumRolename) as string; 
                     context.Response.Write(CSVquoteize(rolename) + ",");
@@ -341,7 +341,7 @@ WHERE
 
               context.Response.Write(CSVquoteize(dr.GetValue(colnumRolename) as string) + ",");
 
-              context.Response.Write(CSVquoteize(RESLT as string) + ",");
+              context.Response.Write(CSVquoteize(resultAsStr.Replace(" ","")) + ",");
               context.Response.Write("Entitlement");
               context.Response.Write("\n");
             }
@@ -494,7 +494,8 @@ WHERE
                         }
                     }
                 }
-              context.Response.Write(CSVquoteize(RESLT as string));
+              string resultAsStr = RESLT.ToString().Replace(" ", "");
+              context.Response.Write(CSVquoteize(resultAsStr));
               context.Response.Write("\n");
             }
 

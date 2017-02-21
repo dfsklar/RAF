@@ -15,7 +15,7 @@ namespace _6MAR_WebApplication
   {
 
     //Version info:
-    static public string AFWACRELNUM = "RAF version 17.02.03";
+    static public string AFWACRELNUM = "RAF version 17.02.21-B";
 
 
     protected AFWACsession THESESSION = null;
