@@ -104,7 +104,7 @@ namespace _6MAR_WebApplication
                 return;
             }
 
-            context.Response.Write(RESLT.ToString());
+            context.Response.Write(RESLT.ToString().Replace(" ",""));
 
         }
 

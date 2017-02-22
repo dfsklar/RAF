@@ -48,8 +48,6 @@ namespace _6MAR_WebApplication
 
 
     public int aNumber = 5;
-
-    public event Eval3.iEvalValue.ValueChangedEventHandler ValueChanged;
 				
     public string[] anArray 
     {

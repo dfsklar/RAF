@@ -403,7 +403,6 @@ namespace RBSR_AUFW.DB.IEASfileAttachment
 			returnUploadEASfileAttachmentContent rv = new returnUploadEASfileAttachmentContent();
 			DBConnect();
 			OdbcCommand cmd = _dbConnection.CreateCommand();
-			FileStream writeFS = null;
             rv.transactionId = "unused";
 
 			if(true==true)
