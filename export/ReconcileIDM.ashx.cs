@@ -238,7 +238,7 @@ namespace _6MAR_WebApplication.export
       while (drSubpr.Read())
         {
           int IDsubprid = (int)(drSubpr.GetValue(0));
-          string brolename = drSubpr.GetValue(1).ToString();
+          string brolename = drSubpr.GetValue(1).ToString().ToLower().Trim();
           if (!MAPbrolenamesToSubprids.ContainsKey(brolename))
           {
               MAPbrolenamesToSubprids.Add(brolename, IDsubprid.ToString());  // + " = " + STRsubpr);
@@ -339,7 +339,7 @@ AND
       while (dr.Read())
         {
           int IDwsentrow = (int)(dr.GetValue(0));
-          string brolename = dr.GetValue(1).ToString();
+          string brolename = dr.GetValue(1).ToString().ToLower().Trim();
           string broledescr = dr.GetValue(2).ToString();
           string STRformula = dr.GetValue(3).ToString();
           string STRapp = dr.GetValue(4).ToString();
@@ -353,13 +353,6 @@ AND
             {
               DICTactiveBroles.Add(brolename, broledescr);
             }
-
-/*
-          if (!MAPbrolenamesToSubprids.ContainsKey(brolename))
-          {
-              MAPbrolenamesToSubprids.Add(brolename, IDsubpr.ToString() + " = " + STRsubpr);
-          }
-*/
 
             if (STRapproverEID.Length > 1)
             {
@@ -476,7 +469,7 @@ AND
 
           foreach (DataRow idmrow in dt_idmdump.Rows)
             {
-              string idmrsrcRolename = idmrow[0].ToString().Trim();
+              string idmrsrcRolename = idmrow[0].ToString().ToLower().Trim();
               string idmrsrcValue = idmrow[1].ToString().Trim();
               string idmrsrcObjType = idmrow[2].ToString().Trim();
 
